@@ -34,12 +34,21 @@
         }
         .masonry-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            grid-auto-rows: 200px;
+            /* الهاتف: عمود واحد | التابلت: عمودين | الكمبيوتر: 3 أعمدة */
+            grid-template-columns: repeat(1, 1fr);
             gap: 1.5rem;
         }
-        .masonry-item-large {
-            grid-row: span 2;
+
+        @media (min-width: 640px) {
+            .masonry-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-grid { 
+                grid-template-columns: repeat(3, 1fr); 
+                grid-auto-rows: 200px;
+            }
+            .masonry-item-large { grid-row: span 2; }
         }
         .glass-nav {
             backdrop-filter: blur(10px);
@@ -51,32 +60,59 @@
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
 <nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200 dark:border-slate-800">
-<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-gold">
-<span class="material-icons-outlined">architecture</span>
-</div>
-<div class="hidden md:block">
-<h1 class="text-xl font-bold text-primary dark:text-gold tracking-tight">شلاش السليمان</h1>
-<p class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400">للتجارة والمقاولات</p>
-</div>
-</div>       
-<div class="hidden lg:flex items-center gap-8 text-sm font-medium">
-<a class="hover:text-primary transition-colors" href={% url "home" %}>الرئيسية</a>
-<a class="hover:text-primary transition-colors" href="#">من نحن</a>
-<a class="text-primary border-b-2 border-primary pb-1" href={% url "projects" %}>مشاريعنا</a>
-<a class="hover:text-primary transition-colors" href={% url "services" %}>خدماتنا</a>
-<a class="hover:text-primary transition-colors" href="#">تواصل معنا</a>
-</div>
-<div class="flex items-center gap-4"> 
-<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
-<span class="material-icons-outlined text-slate-600 dark:text-slate-300">dark_mode</span>
-</button>
-<a class="bg-primary text-white px-6 py-2.5 rounded text-sm font-semibold hover:bg-opacity-90 transition-all" href="#">طلب عرض سعر</a>
-</div>
-</div>
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <div class="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center text-gold">
+                <span class="material-icons-outlined text-xl md:text-2xl">architecture</span>
+            </div>
+            <div class="block">
+                <h1 class="text-lg md:text-xl font-bold text-primary dark:text-gold tracking-tight leading-none">شلاش السليمان</h1>
+                <p class="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400">للتجارة والمقاولات</p>
+            </div>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium">
+            <a class="hover:text-primary transition-colors" href="{% url 'home' %}">الرئيسية</a>
+            <a class="hover:text-primary transition-colors" href="#">من نحن</a>
+            <a class="text-primary border-b-2 border-primary pb-1" href="{% url 'projects' %}">مشاريعنا</a>
+            <a class="hover:text-primary transition-colors" href="{% url 'services' %}">خدماتنا</a>
+            <a class="hover:text-primary transition-colors" href="#">تواصل معنا</a>
+        </div>
+
+        <div class="flex items-center gap-2 md:gap-4">
+            <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+                <span class="material-icons-outlined text-slate-600 dark:text-slate-300">dark_mode</span>
+            </button>
+            <a class="hidden sm:block bg-primary text-white px-6 py-2.5 rounded text-sm font-semibold hover:bg-opacity-90 transition-all" href="#">طلب عرض سعر</a>
+            
+            <button class="lg:hidden p-2 text-primary" id="mobile-menu-btn">
+                <span class="material-icons-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-sidebar" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] hidden">
+        <div class="fixed inset-y-0 right-0 w-64 bg-white dark:bg-background-dark shadow-xl p-6 transform translate-x-full transition-transform duration-300" id="sidebar-content">
+            <div class="flex justify-between items-center mb-8">
+                <span class="font-bold text-primary">القائمة</span>
+                <button id="close-sidebar" class="text-slate-500"><span class="material-icons-outlined">close</span></button>
+            </div>
+            <div class="flex flex-col gap-6 font-medium">
+                <a class="hover:text-primary" href="{% url 'home' %}">الرئيسية</a>
+                <a class="hover:text-primary" href="#">من نحن</a>
+                <a class="text-primary" href="{% url 'projects' %}">مشاريعنا</a>
+                <a class="hover:text-primary" href="{% url 'services' %}">خدماتنا</a>
+                <a class="hover:text-primary" href="#">تواصل معنا</a>
+                <hr class="border-slate-100 dark:border-slate-800">
+                <a class="bg-primary text-white text-center py-3 rounded-lg" href="#">طلب عرض سعر</a>
+            </div>
+        </div>
+    </div>
 </nav>
+
+
 <header class="pt-32 pb-16 px-6 text-center max-w-4xl mx-auto">
 <span class="text-gold font-bold tracking-widest text-sm mb-4 block">إرث من الإنجاز</span>
 <h2 class="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white leading-tight">عقود من التميز في البناء والتطوير</h2>
@@ -85,13 +121,12 @@
         </p>
 </header>
 <section class="max-w-7xl mx-auto px-6 mb-12">
-<div class="flex flex-wrap items-center justify-center gap-3">
-<button class="px-6 py-2 rounded-full bg-primary text-white shadow-lg shadow-primary/20 text-sm font-medium">الكل</button>
-<button class="px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary transition-all text-sm font-medium">البنية التحتية</button>
-<button class="px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary transition-all text-sm font-medium">الطاقة المتجددة</button>
-<button class="px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary transition-all text-sm font-medium">الأعمال الإنشائية</button>
-<button class="px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary transition-all text-sm font-medium">التجارة العامة</button>
-</div>
+    <div class="flex flex-nowrap md:flex-wrap items-center justify-start md:justify-center gap-3 overflow-x-auto pb-4 no-scrollbar">
+        <button class="whitespace-nowrap px-6 py-2 rounded-full bg-primary text-white shadow-lg text-sm font-medium">الكل</button>
+        <button class="whitespace-nowrap px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 text-sm font-medium">البنية التحتية</button>
+        <button class="whitespace-nowrap px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 text-sm font-medium">الطاقة المتجددة</button>
+        <button class="whitespace-nowrap px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 text-sm font-medium">الأعمال الإنشائية</button>
+    </div>
 </section>
 <main class="max-w-7xl mx-auto px-6 pb-24">
 <div class="masonry-grid">
@@ -310,5 +345,27 @@
 </div>
 </div>
 </footer>
+
+<script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('mobile-sidebar');
+    const sidebarContent = document.getElementById('sidebar-content');
+
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.remove('hidden');
+        setTimeout(() => sidebarContent.classList.remove('translate-x-full'), 10);
+    });
+
+    const closeSidebar = () => {
+        sidebarContent.classList.add('translate-x-full');
+        setTimeout(() => sidebar.classList.add('hidden'), 300);
+    };
+
+    closeBtn.addEventListener('click', closeSidebar);
+    sidebar.addEventListener('click', (e) => {
+        if (e.target === sidebar) closeSidebar();
+    });
+</script>
 
 </body></html>

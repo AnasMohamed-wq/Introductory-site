@@ -33,30 +33,56 @@
         h1, h2, h3 { font-family: 'Cairo', sans-serif; }
         .tab-active { border-bottom: 3px solid #6B0D11; color: #6B0D11; }
         .maroon-gradient { background: linear-gradient(135deg, #6B0D11 0%, #4A090B 100%); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-300">
+
 <nav class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex justify-between items-center h-20">
-<div class="flex items-center">
-<img alt="Shlash Logo" class="h-12 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwRqh_IzqrMOj_dn881wOUGam8pyUWT8tA-WT1j5cA5b7JGwJpLWDhuE4cyDDO8KXo2g9S0Y5eTbE_t9Cfz99JFUp3Jh_81aqQLpIq6qrF0yPrJeUlTPTwMSOQAnfDQcWskL9Zv4sQJSp1a029wtzZs1k_7cdLuP6mJStMTtUlJMNkZXmz6_7BEF6kIByuUuIWA134SN_5YeD0BnJbKzoTEA_qptf6a9T_A28GjoMcPiQj4ec_AfPauNbTtzCqQRXNlx_jpOvUx2w"/>
-</div>
-<div class="hidden md:flex space-x-8 space-x-reverse">
-<a class="hover:text-primary transition-colors font-medium" href={% url "home" %}>الرئيسية</a>
-<a class="text-primary font-bold border-b-2 border-primary" href={% url "services" %}>خدماتنا</a>
-<a class="hover:text-primary transition-colors font-medium" href={% url "projects" %}>مشاريعنا</a>
-<a class="hover:text-primary transition-colors font-medium" href="#">اتصل بنا</a>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
-<span class="material-icons-round">dark_mode</span>
-</button>
-<a class="bg-primary text-white px-6 py-2 rounded-full font-bold hover:bg-opacity-90 transition-all shadow-lg shadow-primary/20" href="#">طلب اقتباس</a>
-</div>
-</div>
-</div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex items-center">
+                <img alt="Shlash Logo" class="h-10 md:h-12 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwRqh_IzqrMOj_dn881wOUGam8pyUWT8tA-WT1j5cA5b7JGwJpLWDhuE4cyDDO8KXo2g9S0Y5eTbE_t9Cfz99JFUp3Jh_81aqQLpIq6qrF0yPrJeUlTPTwMSOQAnfDQcWskL9Zv4sQJSp1a029wtzZs1k_7cdLuP6mJStMTtUlJMNkZXmz6_7BEF6kIByuUuIWA134SN_5YeD0BnJbKzoTEA_qptf6a9T_A28GjoMcPiQj4ec_AfPauNbTtzCqQRXNlx_jpOvUx2w">
+            </div>
+            
+            <div class="hidden md:flex space-x-8 space-x-reverse">
+                <a class="hover:text-primary transition-colors font-medium" href="{% url 'home' %}">الرئيسية</a>
+                <a class="text-primary font-bold border-b-2 border-primary" href="{% url 'services' %}">خدماتنا</a>
+                <a class="hover:text-primary transition-colors font-medium" href="{% url 'projects' %}">مشاريعنا</a>
+                <a class="hover:text-primary transition-colors font-medium" href="#">اتصل بنا</a>
+            </div>
+
+            <div class="flex items-center gap-2 md:gap-4">
+                <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+                    <span class="material-icons-round">dark_mode</span>
+                </button>
+                <a class="hidden sm:block bg-primary text-white px-6 py-2 rounded-full font-bold hover:bg-opacity-90 transition-all shadow-lg" href="#">طلب اقتباس</a>
+                
+                <button class="md:hidden p-2 text-primary" id="mobile-menu-btn">
+                    <span class="material-icons-round text-3xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-sidebar" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] hidden">
+        <div class="fixed inset-y-0 right-0 w-72 bg-white dark:bg-background-dark shadow-xl p-6 transform translate-x-full transition-transform duration-300" id="sidebar-content">
+            <div class="flex justify-between items-center mb-8 border-b pb-4">
+                <span class="font-bold text-primary dark:text-secondary">القائمة</span>
+                <button id="close-sidebar" class="text-slate-500"><span class="material-icons-round">close</span></button>
+            </div>
+            <div class="flex flex-col gap-6 font-medium">
+                <a class="hover:text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="{% url 'home' %}">الرئيسية</a>
+                <a class="text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="{% url 'services' %}">خدماتنا</a>
+                <a class="hover:text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="{% url 'projects' %}">مشاريعنا</a>
+                <a class="hover:text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="#">اتصل بنا</a>
+                <a class="bg-primary text-white text-center py-4 rounded-xl shadow-lg mt-4" href="#">طلب اقتباس</a>
+            </div>
+        </div>
+    </div>
 </nav>
+
 <section class="relative h-64 md:h-80 maroon-gradient flex items-center overflow-hidden">
 <div class="absolute inset-0 opacity-20">
 <img alt="Construction Background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs6hUtNxvgqTigveG5Vv1TfbMW_66xj06Vzlq9qVMd96lOYjUw_kZLsKcZT61T8jywOXPZSj5mZ4uOPOHqopvjhPFdKLR5vkF4iTkbIuHSz7YJF7d7j-UBvSdf_cpxqMwepQns3uE7f53piTmGQyo9dwAhwVlrmkToSnV3892KvPRt01u_vmmSOZT7Mc2VUen68ZGf9hHdCTVp_RjoYcjLdcEwA71apkyowRx5GEeBMfOw66YsjhDRF4hdnRTvKT9CIzMTrOaZS7c"/>
@@ -72,21 +98,23 @@
 <h2 class="text-3xl font-bold mb-4">مجالات التميز</h2>
 <div class="h-1 w-20 bg-secondary mx-auto"></div>
 </div>
-<div class="flex flex-col">
-<div class="flex flex-wrap border-b border-slate-200 dark:border-slate-800 mb-8 overflow-x-auto whitespace-nowrap">
-<button class="px-8 py-4 font-bold text-lg tab-active flex items-center gap-2">
-<span class="material-icons-round">engineering</span> الأعمال الهندسية
-                    </button>
-<button class="px-8 py-4 font-medium text-lg text-slate-500 hover:text-primary transition-colors flex items-center gap-2">
-<span class="material-icons-round">oil_barrel</span> خدمات حقول النفط
-                    </button>
-<button class="px-8 py-4 font-medium text-lg text-slate-500 hover:text-primary transition-colors flex items-center gap-2">
-<span class="material-icons-round">solar_power</span> الطاقة المتجددة
-                    </button>
-<button class="px-8 py-4 font-medium text-lg text-slate-500 hover:text-primary transition-colors flex items-center gap-2">
-<span class="material-icons-round">shopping_cart</span> الأعمال التجارية
-                    </button>
+
+<div class="flex flex-nowrap border-b border-slate-200 dark:border-slate-800 mb-8 overflow-x-auto no-scrollbar whitespace-nowrap">
+    <button class="px-6 md:px-8 py-4 font-bold text-base md:text-lg tab-active flex items-center gap-2 flex-shrink-0">
+        <span class="material-icons-round text-sm md:text-base">engineering</span> الأعمال الهندسية
+    </button>
+    <button class="px-6 md:px-8 py-4 font-medium text-base md:text-lg text-slate-500 hover:text-primary transition-colors flex items-center gap-2 flex-shrink-0">
+        <span class="material-icons-round text-sm md:text-base">oil_barrel</span> خدمات حقول النفط
+    </button>
+    <button class="px-6 md:px-8 py-4 font-medium text-base md:text-lg text-slate-500 hover:text-primary transition-colors flex items-center gap-2 flex-shrink-0">
+        <span class="material-icons-round text-sm md:text-base">solar_power</span> الطاقة المتجددة
+    </button>
+    <button class="px-6 md:px-8 py-4 font-medium text-base md:text-lg text-slate-500 hover:text-primary transition-colors flex items-center gap-2 flex-shrink-0">
+        <span class="material-icons-round text-sm md:text-base">shopping_cart</span> الأعمال التجارية
+    </button>
 </div>
+
+
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="bg-background-light dark:bg-background-dark p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
 <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6">
@@ -265,11 +293,13 @@
 <div class="absolute top-0 right-0 p-8 opacity-10">
 <span class="material-icons-round text-8xl">handshake</span>
 </div>
+
 <h2 class="text-3xl md:text-4xl font-bold mb-6">هل تبحث عن شريك موثوق لمشروعك القادم؟</h2>
 <p class="text-lg md:text-xl font-medium mb-8 max-w-2xl mx-auto opacity-90">نحن هنا لنضع خبراتنا وأسطولنا بين يديك. اتصل بنا اليوم للحصول على استشارة فنية متخصصة.</p>
-<div class="flex flex-col sm:flex-row justify-center gap-4">
-<a class="bg-primary text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all shadow-xl shadow-primary/30" href="#">اطلب استشارة مجانية</a>
-<a class="bg-white/20 backdrop-blur-sm border-2 border-primary/20 px-10 py-4 rounded-full font-bold text-lg hover:bg-white/30 transition-all" href="#">تحميل الملف التعريفي PDF</a>
+
+<div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
+    <a class="bg-primary text-white px-6 md:px-10 py-4 rounded-full font-bold text-base md:text-lg hover:bg-opacity-90 transition-all shadow-xl shadow-primary/30" href="#">اطلب استشارة مجانية</a>
+    <a class="bg-white/20 backdrop-blur-sm border-2 border-primary/20 px-6 md:px-10 py-4 rounded-full font-bold text-base md:text-lg hover:bg-white/30 transition-all text-primary" href="#">تحميل البروفايل PDF</a>
 </div>
 </div>
 </div>
@@ -316,5 +346,24 @@
 </div>
 </div>
 </footer>
+<script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('mobile-sidebar');
+    const sidebarContent = document.getElementById('sidebar-content');
+
+    menuBtn.onclick = () => {
+        sidebar.classList.remove('hidden');
+        setTimeout(() => sidebarContent.classList.remove('translate-x-full'), 10);
+    };
+
+    const hideSidebar = () => {
+        sidebarContent.classList.add('translate-x-full');
+        setTimeout(() => sidebar.classList.add('hidden'), 300);
+    };
+
+    closeBtn.onclick = hideSidebar;
+    sidebar.onclick = (e) => { if(e.target === sidebar) hideSidebar(); };
+</script>
 
 </body></html>
