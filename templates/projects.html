@@ -66,7 +66,7 @@
         .dark .nav-solid {
             background-color: #111827 !important;
         }
-        
+
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
@@ -361,21 +361,41 @@
     const closeBtn = document.getElementById('close-sidebar');
     const sidebar = document.getElementById('mobile-sidebar');
     const sidebarContent = document.getElementById('sidebar-content');
+    const navbar = document.querySelector('nav'); // تحديد الناف بار
+
+    function checkNavBg() {
+        if (window.scrollY > 10 || !sidebar.classList.contains('hidden')) {
+            navbar.classList.add('nav-solid');
+        } else {
+            navbar.classList.remove('nav-solid');
+        }
+    }
 
     menuBtn.addEventListener('click', () => {
         sidebar.classList.remove('hidden');
+        navbar.classList.add('nav-solid');
         setTimeout(() => sidebarContent.classList.remove('translate-x-full'), 10);
+        
     });
 
     const closeSidebar = () => {
         sidebarContent.classList.add('translate-x-full');
-        setTimeout(() => sidebar.classList.add('hidden'), 300);
+        setTimeout(() => {
+            sidebar.classList.add('hidden');
+            checkNavBg(); // تحقق إذا كان يجب إعادة الشفافية بعد الإغلاق
+        }, 300);
     };
 
     closeBtn.addEventListener('click', closeSidebar);
     sidebar.addEventListener('click', (e) => {
         if (e.target === sidebar) closeSidebar();
     });
+
+
+   window.onscroll = () => {
+        checkNavBg();
+    };
+
 </script>
 
 </body></html>

@@ -44,7 +44,7 @@
         .dark .nav-solid {
             background-color: #111827 !important;
         }
-        
+
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-300">
@@ -356,24 +356,52 @@
 </div>
 </div>
 </footer>
+
+
 <script>
     const menuBtn = document.getElementById('mobile-menu-btn');
     const closeBtn = document.getElementById('close-sidebar');
     const sidebar = document.getElementById('mobile-sidebar');
     const sidebarContent = document.getElementById('sidebar-content');
+    const navbar = document.querySelector('nav'); 
 
-    menuBtn.onclick = () => {
+    function checkNavBg() {
+        // إذا نزلنا أكثر من 10 بكسل أو كانت القائمة الجانبية مفتوحة
+        if (window.scrollY > 10 || !sidebar.classList.contains('hidden')) {
+            navbar.classList.add('nav-solid');
+            navbar.classList.remove('glass-nav'); // إزالة الشفافية لتجنب التداخل
+        } else {
+            navbar.classList.remove('nav-solid');
+            navbar.classList.add('glass-nav'); // إعادة الشفافية عند الصعود للأعلى
+        }
+    }
+
+    menuBtn.addEventListener('click', () => {
         sidebar.classList.remove('hidden');
+        navbar.classList.add('nav-solid');
+        // تأخير بسيط لتفعيل تأثير الانزلاق (Animation)
         setTimeout(() => sidebarContent.classList.remove('translate-x-full'), 10);
-    };
+    });
 
-    const hideSidebar = () => {
+    const closeSidebar = () => {
         sidebarContent.classList.add('translate-x-full');
-        setTimeout(() => sidebar.classList.add('hidden'), 300);
+        setTimeout(() => {
+            sidebar.classList.add('hidden');
+            checkNavBg(); 
+        }, 300);
     };
 
-    closeBtn.onclick = hideSidebar;
-    sidebar.onclick = (e) => { if(e.target === sidebar) hideSidebar(); };
+    closeBtn.addEventListener('click', closeSidebar);
+    
+    // إغلاق عند الضغط خارج القائمة
+    sidebar.addEventListener('click', (e) => {
+        if (e.target === sidebar) closeSidebar();
+    });
+
+    // تصحيح إغلاق القوس هنا
+    window.onscroll = () => {
+        checkNavBg();
+    }; // هنا كان الخطأ (نقص القوس)
 </script>
 
 </body></html>
