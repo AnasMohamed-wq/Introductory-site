@@ -29,27 +29,38 @@
         };
     </script>
 <style>
-        body { font-family: 'Tajawal', sans-serif; }
-        h1, h2, h3 { font-family: 'Cairo', sans-serif; }
-        .tab-active { border-bottom: 3px solid #6B0D11; color: #6B0D11; }
-        .maroon-gradient { background: linear-gradient(135deg, #6B0D11 0%, #4A090B 100%); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        /* خلفية صلبة للموبايل وللتمرير */
-        .nav-solid {
-            background-color: #ffffff !important; /* أو #111827 في حالة الـ Dark Mode */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+    body { font-family: 'Tajawal', sans-serif; }
+    h1, h2, h3 { font-family: 'Cairo', sans-serif; }
+    .tab-active { border-bottom: 3px solid #6B0D11; color: #6B0D11; }
+    .maroon-gradient { background: linear-gradient(135deg, #6B0D11 0%, #4A090B 100%); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        .dark .nav-solid {
-            background-color: #111827 !important;
-        }
+    /* خلفية صلبة عند التمرير أو في الموبايل */
+    .nav-solid {
+        background-color: white !important;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    .dark .nav-solid {
+        background-color: #111827 !important;
+    }
 
-    </style>
+    /* ضمان عتمة القائمة الجانبية 100% */
+    #sidebar-content {
+        background-color: white !important;
+        z-index: 100;
+    }
+    .dark #sidebar-content {
+        background-color: #111827 !important;
+    }
+</style>
+
+
+
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
-<nav class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <div class="flex items-center">
@@ -57,10 +68,10 @@
             </div>
             
             <div class="hidden md:flex space-x-8 space-x-reverse">
-                <a class="hover:text-primary transition-colors font-medium" href="{% url 'home' %}">الرئيسية</a>
+                <a class="hover:text-primary transition-colors font-medium text-slate-700 dark:text-slate-200" href="{% url 'home' %}">الرئيسية</a>
                 <a class="text-primary font-bold border-b-2 border-primary" href="{% url 'services' %}">خدماتنا</a>
-                <a class="hover:text-primary transition-colors font-medium" href="{% url 'projects' %}">مشاريعنا</a>
-                <a class="hover:text-primary transition-colors font-medium" href="#">اتصل بنا</a>
+                <a class="hover:text-primary transition-colors font-medium text-slate-700 dark:text-slate-200" href="{% url 'projects' %}">مشاريعنا</a>
+                <a class="hover:text-primary transition-colors font-medium text-slate-700 dark:text-slate-200" href="#">اتصل بنا</a>
             </div>
 
             <div class="flex items-center gap-2 md:gap-4">
@@ -76,18 +87,20 @@
         </div>
     </div>
 
-    <div id="mobile-sidebar" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] hidden">
-        <div class="fixed inset-y-0 right-0 w-72 bg-white dark:bg-background-dark shadow-xl p-6 transform translate-x-full transition-transform duration-300" id="sidebar-content">
-            <div class="flex justify-between items-center mb-8 border-b pb-4">
-                <span class="font-bold text-primary dark:text-secondary">القائمة</span>
-                <button id="close-sidebar" class="text-slate-500"><span class="material-icons-round">close</span></button>
+    <div id="mobile-sidebar" class="fixed inset-0 bg-black/75 z-[60]  hidden md:hidden">
+        <div class="fixed inset-y-0 right-0 w-72 bg-white dark:bg-background-dark shadow-2xl p-6 transform translate-x-full transition-transform duration-300" id="sidebar-content">
+            <div class="flex justify-between items-center mb-8 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <span class="font-bold text-primary dark:text-secondary text-lg">القائمة</span>
+                <button id="close-sidebar" class="text-slate-500 hover:text-primary transition-colors">
+                    <span class="material-icons-round text-2xl">close</span>
+                </button>
             </div>
-            <div class="flex flex-col gap-6 font-medium">
-                <a class="hover:text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="{% url 'home' %}">الرئيسية</a>
-                <a class="text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="{% url 'services' %}">خدماتنا</a>
-                <a class="hover:text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="{% url 'projects' %}">مشاريعنا</a>
-                <a class="hover:text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="#">اتصل بنا</a>
-                <a class="bg-primary text-white text-center py-4 rounded-xl shadow-lg mt-4" href="#">طلب اقتباس</a>
+            <div class="flex flex-col gap-6 bg-white  font-medium">
+                <a class="text-slate-700 dark:text-slate-200 hover:text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="{% url 'home' %}">الرئيسية</a>
+                <a class="text-primary font-bold py-2 border-b border-slate-50 dark:border-slate-800" href="{% url 'services' %}">خدماتنا</a>
+                <a class="text-slate-700 dark:text-slate-200 hover:text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="{% url 'projects' %}">مشاريعنا</a>
+                <a class="text-slate-700 dark:text-slate-200 hover:text-primary py-2 border-b border-slate-50 dark:border-slate-800" href="#">اتصل بنا</a>
+                <a class="bg-primary text-white text-center py-4 rounded-xl shadow-lg mt-4 font-bold" href="#">طلب اقتباس</a>
             </div>
         </div>
     </div>
@@ -365,43 +378,44 @@
     const sidebarContent = document.getElementById('sidebar-content');
     const navbar = document.querySelector('nav'); 
 
+    // دالة التحكم في خلفية الناف بار
     function checkNavBg() {
-        // إذا نزلنا أكثر من 10 بكسل أو كانت القائمة الجانبية مفتوحة
+        // إذا تم التمرير أو كانت القائمة مفتوحة
         if (window.scrollY > 10 || !sidebar.classList.contains('hidden')) {
             navbar.classList.add('nav-solid');
-            navbar.classList.remove('glass-nav'); // إزالة الشفافية لتجنب التداخل
         } else {
             navbar.classList.remove('nav-solid');
-            navbar.classList.add('glass-nav'); // إعادة الشفافية عند الصعود للأعلى
         }
     }
 
+    // فتح القائمة الجانبية
     menuBtn.addEventListener('click', () => {
         sidebar.classList.remove('hidden');
-        navbar.classList.add('nav-solid');
-        // تأخير بسيط لتفعيل تأثير الانزلاق (Animation)
-        setTimeout(() => sidebarContent.classList.remove('translate-x-full'), 10);
+        document.body.style.overflow = 'hidden'; // تجميد الصفحة خلف القائمة منعاً للتداخل
+        navbar.classList.add('nav-solid'); // جعل الناف بار صلب فوراً
+        setTimeout(() => {
+            sidebarContent.classList.remove('translate-x-full');
+        }, 10);
     });
 
+    // إغلاق القائمة الجانبية
     const closeSidebar = () => {
         sidebarContent.classList.add('translate-x-full');
+        document.body.style.overflow = ''; // إعادة التمرير
         setTimeout(() => {
             sidebar.classList.add('hidden');
-            checkNavBg(); 
+            checkNavBg(); // إعادة فحص حالة الخلفية بعد الإغلاق
         }, 300);
     };
 
     closeBtn.addEventListener('click', closeSidebar);
     
-    // إغلاق عند الضغط خارج القائمة
+    // إغلاق عند الضغط على المساحة الشفافة خلف القائمة
     sidebar.addEventListener('click', (e) => {
         if (e.target === sidebar) closeSidebar();
     });
 
-    // تصحيح إغلاق القوس هنا
-    window.onscroll = () => {
-        checkNavBg();
-    }; // هنا كان الخطأ (نقص القوس)
+    // مراقبة التمرير
+    window.addEventListener('scroll', checkNavBg);
 </script>
-
 </body></html>
