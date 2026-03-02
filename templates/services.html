@@ -34,7 +34,17 @@
         .tab-active { border-bottom: 3px solid #6B0D11; color: #6B0D11; }
         .maroon-gradient { background: linear-gradient(135deg, #6B0D11 0%, #4A090B 100%); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* خلفية صلبة للموبايل وللتمرير */
+        .nav-solid {
+            background-color: #ffffff !important; /* أو #111827 في حالة الـ Dark Mode */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .nav-solid {
+            background-color: #111827 !important;
+        }
+        
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition-colors duration-300">
