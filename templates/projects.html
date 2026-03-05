@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar"><head>
+<html class="scroll-smooth" dir="ltr" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>مشاريعنا وإنجازاتنا | شلاش السليمان للتجارة والمقاولات</title>
+<title>Our Projects - Shalash Al-Sulaiman Trading &amp; Contracting</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
 <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        primary: "#6B0F14", // Maroon from the screenshot
-                        gold: "#C5A059",    // Gold from the logo
-                        "background-light": "#FDFDFD",
-                        "background-dark": "#121212",
+                        primary: "#C59434", // Matte Gold
+                        burgundy: "#5A151A", // Dark Burgundy from Logo
+                        "background-light": "#FDFCFB",
+                        "background-dark": "#120506",
                     },
                     fontFamily: {
-                        display: ["Noto Sans Arabic", "sans-serif"],
-                        serif: ["Playfair Display", "serif"],
+                        display: ["Cairo", "IBM Plex Sans Arabic", "sans-serif"],
+                        sans: ["IBM Plex Sans Arabic", "sans-serif"],
                     },
                     borderRadius: {
                         DEFAULT: "0.5rem",
@@ -28,374 +30,433 @@
             },
         };
     </script>
+
 <style>
-        body {
-            font-family: 'Noto Sans Arabic', sans-serif;
-        }
-        .masonry-grid {
-            display: grid;
-            /* الهاتف: عمود واحد | التابلت: عمودين | الكمبيوتر: 3 أعمدة */
-            grid-template-columns: repeat(1, 1fr);
-            gap: 1.5rem;
-        }
 
-        @media (min-width: 640px) {
-            .masonry-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        @media (min-width: 1024px) {
-            .masonry-grid { 
-                grid-template-columns: repeat(3, 1fr); 
-                grid-auto-rows: 200px;
-            }
-            .masonry-item-large { grid-row: span 2; }
-        }
-        .glass-nav {
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-        .dark .glass-nav {
-            background-color: rgba(18, 18, 18, 0.8);
-        }
-        /* خلفية صلبة للموبايل وللتمرير */
-        .nav-solid {
-            background-color: #ffffff !important; /* أو #111827 في حالة الـ Dark Mode */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+.gold-glow:hover {
+    box-shadow: 0 0 20px rgba(197, 159, 89, 0.4);
+    border-color: #c59f59;
+}
 
-        .dark .nav-solid {
-            background-color: #111827 !important;
-        }
+/* NAVBAR */
 
-    </style>
+.nav-scrolled {
+    background-color: #5A151A;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+}
+
+#navbar:not(.nav-scrolled) {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+}
+
+/* MOBILE MENU */
+
+#mobile-sidebar {
+    background-color: #5A151A;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    z-index: 140;
+}
+
+#mobile-sidebar.is-open {
+    transform: translateX(0);
+}
+
+#navbar {
+    z-index: 150;
+}
+
+/* MOBILE LINKS */
+
+.mobile-link {
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.mobile-link:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+/* PROJECT CARDS */
+
+.project-card:hover .overlay {
+    opacity: 0.95;
+    transform: translateY(0);
+}
+
+.overlay {
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+</style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
 
-<nav class="fixed top-0 w-full z-40 glass-nav border-b border-slate-200 dark:border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <div class="flex items-center gap-4">
-            <div class="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center text-gold">
-                <span class="material-icons-outlined text-xl md:text-2xl">architecture</span>
-            </div>
-            <div class="block">
-                <h1 class="text-lg md:text-xl font-bold text-primary dark:text-gold tracking-tight leading-none">شلاش السليمان</h1>
-                <p class="text-[9px] md:text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400">للتجارة والمقاولات</p>
-            </div>
-        </div>
 
-        <div class="hidden lg:flex items-center gap-8 text-sm font-medium">
-            <a class="hover:text-primary transition-colors" href="{% url 'home' %}">الرئيسية</a>
-            <a class="hover:text-primary transition-colors" href="#">من نحن</a>
-            <a class="text-primary border-b-2 border-primary pb-1" href="{% url 'projects' %}">مشاريعنا</a>
-            <a class="hover:text-primary transition-colors" href="{% url 'services' %}">خدماتنا</a>
-            <a class="hover:text-primary transition-colors" href="#">تواصل معنا</a>
+ <nav class="fixed w-full z-[200]  transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
+    <div class="flex items-center gap-3">
+        <div class="bg-white p-1 rounded">
+            <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
         </div>
-
-        <div class="flex items-center gap-2 md:gap-4">
-            <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
-                <span class="material-icons-outlined text-slate-600 dark:text-slate-300">dark_mode</span>
-            </button>
-            <a class="hidden sm:block bg-primary text-white px-6 py-2.5 rounded text-sm font-semibold hover:bg-opacity-90 transition-all" href="#">طلب عرض سعر</a>
-            
-            <button class="lg:hidden p-2 text-primary" id="mobile-menu-btn">
-                <span class="material-icons-outlined text-3xl">menu</span>
-            </button>
-        </div>
+        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">Shlash Al-Sulaiman</span>
     </div>
 
-<div id="mobile-sidebar" class="fixed inset-0 bg-black/70 z-50 hidden lg:hidden">
-        <div class="fixed inset-y-0 right-0 w-64 bg-white dark:bg-background-dark shadow-xl p-6 transform translate-x-full transition-transform duration-300" id="sidebar-content">
-            <div class="flex justify-between items-center mb-8">
-                <span class="font-bold text-primary">القائمة</span>
-                <button id="close-sidebar" class="text-slate-500"><span class="material-icons-outlined">close</span></button>
-            </div>
-            <div class="flex flex-col gap-6 bg-white font-medium">
-                <a class="hover:text-primary" href="{% url 'home' %}">الرئيسية</a>
-                <a class="hover:text-primary" href="#">من نحن</a>
-                <a class="text-primary" href="{% url 'projects' %}">مشاريعنا</a>
-                <a class="hover:text-primary" href="{% url 'services' %}">خدماتنا</a>
-                <a class="hover:text-primary" href="#">تواصل معنا</a>
-                <hr class="border-slate-100 dark:border-slate-800">
-                <a class="bg-primary text-white text-center py-3 rounded-lg" href="#">طلب عرض سعر</a>
-            </div>
-        </div>
+    <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
+        <a class="hover:text-secondary transition-colors" href="{% url 'home' %}">Home</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'about' %}">About</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'courses' %}">Courses</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'projects' %}">Projects</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'machine' %}">Machine</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'vision' %}">Vision </a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'contact' %}">Contact Us</a>
     </div>
-</nav>
+
+    <div class="flex items-center gap-2 md:gap-4">
+        <button class="shimmer-effect hidden lg:flex items-center gap-2 bg-secondary hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
+            <span class="material-symbols-outlined text-sm">download</span> Profile PDF
+        </button>
+        
+        <button class="p-2 rounded-full hover:bg-white/10  transition-colors" id="theme-toggle">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+
+        <button class="md:hidden p-2 text-white relative z-[200] " id="mobile-menu-btn">
+            <span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
+        </button>
+    </div>
+
+    <div id="mobile-sidebar"class="fixed top-20 left-0 w-full h-[calc(100vh-80px)] 
+bg-primary/95 backdrop-blur-lg 
+flex flex-col items-center justify-center 
+space-y-8 text-2xl font-bold uppercase tracking-widest 
+transition-all duration-500 translate-x-full md:hidden"
+>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'home' %}">Home</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'about' %}">About</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'courses' %}">Courses</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'projects' %}">Projects</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'machine' %}">Machine</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'vision' %}">Vision </a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'contact' %}">Contact Us</a>
+        <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" target="_blank" class="bg-secondary text-white px-8 py-3 rounded-full text-lg font-bold">PDF Profile</a>
+    </div>
+</nav> 
+     
 
 
-<header class="pt-32 pb-16 px-6 text-center max-w-4xl mx-auto">
-<span class="text-gold font-bold tracking-widest text-sm mb-4 block">إرث من الإنجاز</span>
-<h2 class="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white leading-tight">عقود من التميز في البناء والتطوير</h2>
-<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            نحن نفخر بتقديم حلول هندسية مبتكرة ومشاريع تجارية مستدامة تساهم في بناء مستقبل المنطقة، مع التزامنا بأعلى معايير الجودة العالمية.
-        </p>
+
+
+
+
+
+<header class="relative py-16 md:py-24 overflow-hidden bg-burgundy">
+<div class="absolute inset-0 opacity-20">
+<img alt="Construction background" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXNzyBz9w1FZn9U_e-eLT0vhQnkTK9Akr_EUz0pZtUtQ6TW7F34ukiYb1kygVtXzr1hBICIW4uocrs83VfKQFVj3kojRwAxoDH-902X1sgO6UjIZkds4Q-3ErB8EMfvqqHEPvfo2ifLyHCAn_4a0vugy79cPx7kTni8ObOgAEzd7F5aNyeKZ8Xx_oVH898t0IDdP_kUjB0glHDiGJ3fS-idQ63U2sQr0rDksiTQI3I3ZxX9CwR0Hc_kIh9Q5E3cCK_v3M_LGUaqg"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-burgundy via-burgundy/80 to-transparent"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+
+
+<h1 class="text-4xl md:text-6xl font-display font-bold text-white mb-4">
+                Our <span class="text-primary">Portfolio</span>
+</h1>
+<p class="max-w-2xl text-slate-300 text-lg">
+                Delivering excellence across major sectors in Iraq and beyond. From civil engineering to renewable energy solutions, our work speaks for our commitment to quality.
+            </p>
+</div>
 </header>
-<section class="max-w-7xl mx-auto px-6 mb-12">
-    <div class="flex flex-nowrap md:flex-wrap items-center justify-start md:justify-center gap-3 overflow-x-auto pb-4 no-scrollbar">
-        <button class="whitespace-nowrap px-6 py-2 rounded-full bg-primary text-white shadow-lg text-sm font-medium">الكل</button>
-        <button class="whitespace-nowrap px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 text-sm font-medium">البنية التحتية</button>
-        <button class="whitespace-nowrap px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 text-sm font-medium">الطاقة المتجددة</button>
-        <button class="whitespace-nowrap px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 text-sm font-medium">الأعمال الإنشائية</button>
-    </div>
+<section class="py-12 bg-slate-50 dark:bg-zinc-900/50 sticky top-20 z-40 shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+<button class="px-6 py-2 rounded-full bg-primary text-white font-bold shadow-lg shadow-primary/20 transition-all">
+                    All Projects
+                </button>
+<button class="px-6 py-2 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700 hover:border-primary transition-all">
+                    Engineering
+                </button>
+<button class="px-6 py-2 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700 hover:border-primary transition-all">
+                    Oil Field Services
+                </button>
+<button class="px-6 py-2 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold border border-slate-200 dark:border-slate-700 hover:border-primary transition-all">
+                    Renewable Energy
+                </button>
+</div>
+</div>
 </section>
-<main class="max-w-7xl mx-auto px-6 pb-24">
-<div class="masonry-grid">
-<div class="relative group overflow-hidden rounded-xl masonry-item-large">
-<img alt="Solar Power Project" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiBbKO4WkAneIGMlK0Lq2GrWF31UUUvyKyJBjeKKsmx3PCIPkMkZCoEfKM2ZTTS2rC3KZxWVKMsFl49CL9sMnzPaUW9DYkbn0YVMf4hvaMONclBQMtqWw7qTzSn7aOmsglBiuE-lt3f-0JrIhFo6Arw3Ng4Xs95u7ttA9NxwBzk4XXFjmC8zTSHmGR6NW_Mkcmb1Rc0fJ82q_t1MfY2qAQt9ZHLficxMhnwyHDs0mC3KdTUJuOt66GZxCnOuWknblxcndfFhAeArI"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-<div class="absolute bottom-0 p-8 text-white w-full">
-<p class="text-gold text-xs font-bold mb-2 tracking-widest uppercase">طاقة متجددة</p>
-<h3 class="text-2xl font-bold mb-1">محطة الطاقة الشمسية - الشميطية</h3>
-<div class="flex items-center gap-4 text-sm opacity-90 mt-4">
-<span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">business</span> اليونيسف (UNICEF)</span>
-<span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">calendar_today</span> 2023</span>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="mb-20">
+<div class="flex items-center gap-4 mb-8">
+<div class="h-10 w-2 bg-primary"></div>
+<h2 class="text-3xl font-bold font-display text-burgundy dark:text-white">Engineering &amp; Infrastructure</h2>
 </div>
-<button class="mt-6 px-6 py-2 border border-white/30 rounded text-sm font-medium hover:bg-white hover:text-primary transition-all translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-500">
-                        عرض التفاصيل
-                    </button>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group relative project-card aspect-[4/5] overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+<img alt="Urban Construction" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs9qYnI6HOeiGPTAdtfegkOH0CT9GBOLEHVJyVH_-z6uQWrt3VHd1a8NVjnuY-F5GTqKwaZLpEB13JutLtLuVJjf0OKisOUNVjYeDIMWHQSk7Dr0PYiJreBx2S7LEk2kggYvIsVvae8sCE73dmpZCb-1w7IxeJ4lW1DkL8J0vhpUl-N65b6L9r0AKFKX7yuGqwInegbigBdTIGgSLHn4gYTKEZDEkYy_g-tw_aQAFW7CwwIBy-efk11i-dMWE6_uZ4jHcdqP6n-w"/>
+<div class="overlay absolute inset-0 bg-burgundy flex flex-col justify-end p-8 opacity-0 translate-y-4">
+<span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">Construction</span>
+<h3 class="text-white text-2xl font-bold mb-3">Modern Commercial Complex</h3>
+<p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                            Full-scale civil construction including structural engineering and architectural finishing for a 12-story commercial hub.
+                        </p>
+<button class="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+                            View Details <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+<div class="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded text-xs text-white font-medium group-hover:hidden">
+                        Civil Engineering
+                    </div>
+</div>
+<div class="group relative project-card aspect-[4/5] overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+<img alt="Water Sanitation" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCof5KqDDBb5uNFHwRAnjeOkbARPSlm4eQ9MN8dVesTD3f84t9BWhu71TeG7PlDSap7CcP6rKoDQfN-Ap6yUPa3aQZphQYyM6Prn8eR4QfF2J1K2-BxSX6wgMf9mAyN8-jVGiIb-JhFIDj_R89ecxZ1_-f1FNI8Z_no5gEoFhdb2z4O6fFsybZQk54W0BBjYlJKG9zrZeCi5MHn-g4d6h0lwgpLUaYws82MeUVCMV-OP45iMyA7EhPIPsuDoHzw-Ualli2AlK7efQ"/>
+<div class="overlay absolute inset-0 bg-burgundy flex flex-col justify-end p-8 opacity-0 translate-y-4">
+<span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">Water &amp; Sanitation</span>
+<h3 class="text-white text-2xl font-bold mb-3">City Filtration Plant</h3>
+<p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                            Implementing advanced filtration systems and large-scale pipeline networks to serve metropolitan water needs.
+                        </p>
+<button class="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+                            View Details <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+<div class="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded text-xs text-white font-medium group-hover:hidden">
+                        Public Utilities
+                    </div>
+</div>
+<div class="group relative project-card aspect-[4/5] overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+<img alt="Road Construction" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBRlUQ3lc9qn552vO9IRtBDtz-83Hh8df3jpEYNe0fWaxMO5TzD-gIW3gEt7Ug5CtzxAnjO6snn4dEN253hLNE-5orCkUS_prtFzMVg0_CTWpTjRK-G4QvNtd49TMqIQISivjmwk7pyTsEKrX6LuNPnpOfsuV6JDT5BjzdXoKq3CkhtRwmsJPHcw2AlEpDE0u8XLSf6V4cM45KGAbn7zH_juiquDLIO5Otg2a1IlJ-aFPOBmbAnjPEHFzTEQK0up0DCAPVj-i7jQ"/>
+<div class="overlay absolute inset-0 bg-burgundy flex flex-col justify-end p-8 opacity-0 translate-y-4">
+<span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">Roads &amp; Transport</span>
+<h3 class="text-white text-2xl font-bold mb-3">Highway Expansion Link</h3>
+<p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                            Developing critical transport links with sustainable asphalt technology and integrated safety systems.
+                        </p>
+<button class="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+                            View Details <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+<div class="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded text-xs text-white font-medium group-hover:hidden">
+                        Transportation
+                    </div>
 </div>
 </div>
-<div class="relative group overflow-hidden rounded-xl">
-<img alt="Construction Work" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVTNVjaumZFVLIsh8K-ucYhckCmNHqvliyzHXioh5cK-pTrRDuDr5yXlscu_Kgt9OSlQ7_ibmafPxruRl94Rqg6SIqCc3O496GHzb-0qmomKx0w5ik1K4kelC36J7KfQEe7GBvP7T4xgwDyLjp_mv5kXMCNMF3uaGYk6f9luLttOirErEWtb2AThKPGb5KJJ_yJFsNun3uhAki3aLy9oVHfCok26suZF8DAgh1gz2hsVzTCfOxyxlw0vQwUi3IbYTZFwug902d028"/>
-<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-<div class="absolute bottom-0 p-6 text-white">
-<h3 class="text-lg font-bold">إعادة تأهيل الطرق الرئيسية</h3>
-<p class="text-xs text-slate-300">محافظة دير الزور | 2022</p>
+</div>
+<div class="mb-20">
+<div class="flex items-center gap-4 mb-8">
+<div class="h-10 w-2 bg-primary"></div>
+<h2 class="text-3xl font-bold font-display text-burgundy dark:text-white">Oil Field Services</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative rounded-2xl overflow-hidden bg-burgundy h-80 group">
+<img alt="Oil Field" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMLY_RJzxebgw9UHTqjo_qKwgUpb9FeGc91hgT8u1pJny-1eX_1ljtet2dj4vEQYMVdIXNfUpFui4XPNQIydfKPglCPxr9qp6GzK0ERQxNz2GuzPTS2C4utFIltY7gbSqoX0Yvy5vwVYBRdLir2MaGGL5jz8scg__LX4PzoSR-n3qHOA2EnxI-B3vBBY895kvaNdyRqI0ARvsbMTZE3w7ZGj5TwVggNBl_J-49GoqgNMVQaECMRbqghhGrn28z35D_5dDzyAMALQ"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-center">
+<h3 class="text-primary text-3xl font-bold mb-4">Drilling Site Support</h3>
+<p class="text-white/80 max-w-lg mb-6">Providing comprehensive logistical and technical support for remote oil field operations, ensuring safety and efficiency.</p>
+<div class="flex gap-4">
+<span class="bg-primary/20 border border-primary/50 px-4 py-1 rounded-full text-primary text-xs font-bold uppercase">Logistics</span>
+<span class="bg-primary/20 border border-primary/50 px-4 py-1 rounded-full text-primary text-xs font-bold uppercase">Technical Support</span>
 </div>
 </div>
-<div class="relative group overflow-hidden rounded-xl">
-<img alt="Industrial Logistics" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT1u9Y7pvYeCbNbNj7FpvUfndl1CM1SjSqehBzN0s8ntiIhGIZZrl1Ew5C_oL6Z3r9I7janbjNokLVqbPoxAvIF4i2M_FoJHDfppUW6oEok6M6z24yArxYxTFodjslnacDUp_VfdKJaGmECk6cWw7T2lkVRQtIOoZY2pbNPvdHaCxfVMTxZ29pK9u3CfDKstVLXfTZSic_jO7MQg6Z6xx32_oThfHTdgcqfAp-MnYe05g8MYjj2c3ld_YL3L_mexoaZsPkEkKLQEA"/>
-<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-<div class="absolute bottom-0 p-6 text-white">
-<h3 class="text-lg font-bold">تجهيزات طبية ومخبرية</h3>
-<p class="text-xs text-slate-300">مجمع الشفاء الطبي | 2021</p>
+</div>
+<div class="relative rounded-2xl overflow-hidden bg-zinc-800 h-80 group">
+<img alt="Pipeline" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1WN0Wqf4zCBu4DZdg3P1ZBcLDNfFFETuQG_CghgdLW1HW6Baww5vwcmUKfwu5WX7Oo69XQ4NFwCwJygUOw8P-C-DNLgosZF-Crsfc2B7u-dC23gL6qJrXsX374OQSBqUeXSlkvErr150PU30tEMEwTPxtwUNL6o9IR9BOpFegiEtW39hlJVh1iSJuSfDfbA29K3EkiaQo5NHIT1F2F9l1hXnhCgQHfMgcVt1v2WOj4sEbWFo4CAuXFbIOpxRptSsRoU5MvngkcQ"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-center">
+<h3 class="text-primary text-3xl font-bold mb-4">Pipeline Maintenance</h3>
+<p class="text-white/80 max-w-lg mb-6">Expert maintenance and repair services for critical oil and gas transport infrastructure across the region.</p>
+<div class="flex gap-4">
+<span class="bg-primary/20 border border-primary/50 px-4 py-1 rounded-full text-primary text-xs font-bold uppercase">Maintenance</span>
+<span class="bg-primary/20 border border-primary/50 px-4 py-1 rounded-full text-primary text-xs font-bold uppercase">Safety Compliance</span>
 </div>
 </div>
-<div class="relative group overflow-hidden rounded-xl">
-<img alt="Civil Engineering" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKrWxPK0arZNLOYDq8Vl-K9OqUrbnUdFzN8pn4HRkXKN_HUCqDVMmDLN7uJm-38fcB6O77Wva87o4Seevpn9u71rR5oYnEoxMPKsS_9Q_pjTaWHC_pDCMEjDpo1k_fLao7-mztHwbGvRNb0B2jyaOwG6kkrxq8qZfME1x1sOkSR58YvQ15CcPCnJnaqyhkgx2ZDcKSiWcQXh2eSL8xPUzE-oeYwqYyrJxA31LoCyptiXA3ClAT2FR9B_E7YlMtPtuzJuAn_EpFm6Y"/>
-<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-<div class="absolute bottom-0 p-6 text-white">
-<h3 class="text-lg font-bold">مجمع المباني السكنية الحديثة</h3>
-<p class="text-xs text-slate-300">القطاع التجاري | 2023</p>
 </div>
 </div>
-<div class="relative group overflow-hidden rounded-xl masonry-item-large">
-<img alt="Infrastructure Water" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvZjo5TdMM0wSHre4-tppddiF04MBNu-gpYFdkd1K7KkSTF3kDEHV-dUeYLVFc8zWsXpt5fY4gW6MM_nbnUXm-jlDLO3uXBeayxBnnL54YRWEtzHVw7L86rKoSNLHbYffKM2231-FeuG5HxAaT-kvr5OqvAHSd_xghAIuDQ8-pWeVD8Ac6ZKiaJCe--D9fwlKQjvRi2Y7BKXTwSClZuiqJGk02F9tCB139IiTDn0_TNN53Cb_nBFjKarMs33YXDMSpSuQiGO_HE2I"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-<div class="absolute bottom-0 p-8 text-white w-full">
-<p class="text-gold text-xs font-bold mb-2 tracking-widest uppercase">بنية تحتية</p>
-<h3 class="text-2xl font-bold mb-1">مشروع شبكات المياه والصرف</h3>
-<div class="flex items-center gap-4 text-sm opacity-90 mt-4">
-<span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">location_on</span> المنطقة الشرقية</span>
-<span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">calendar_today</span> 2024</span>
 </div>
-<button class="mt-6 px-6 py-2 border border-white/30 rounded text-sm font-medium hover:bg-white hover:text-primary transition-all translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-500">
-                        عرض التفاصيل
-                    </button>
+<div>
+<div class="flex items-center gap-4 mb-8">
+<div class="h-10 w-2 bg-primary"></div>
+<h2 class="text-3xl font-bold font-display text-burgundy dark:text-white">Renewable Energy</h2>
 </div>
+<div class="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl overflow-hidden flex flex-col lg:flex-row">
+<div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+<span class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Sustainable Future</span>
+<h3 class="text-3xl font-bold text-burgundy dark:text-white mb-6">Solar Power Plant Development</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                        Leading the transition to green energy in the region with large-scale solar farm implementation. We handle everything from site assessment to grid integration and long-term maintenance.
+                    </p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300 font-medium">15MW Total Installed Capacity</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300 font-medium">Smart Grid Integration Ready</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-slate-700 dark:text-slate-300 font-medium">Eco-friendly Construction Methods</span>
+</li>
+</ul>
+<a class="inline-flex items-center text-burgundy dark:text-primary font-bold gap-2 hover:gap-4 transition-all" href="#">
+                        Learn more about our energy initiatives
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
 </div>
-<div class="relative group overflow-hidden rounded-xl">
-<img alt="Energy Projects" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHQkGL8RXkALywase_aXzBs1qM5vP0qRYumsEqOa5_6JOpSNZTQNsrpjpOBR7yiT0GPHidlP7EOIOPDT3PnBJyK3hIoQw5_VwjZZuyXyX47BVcOqf6kmKJK965JlEtFd8UxMfdSmOtgHJyGH095LEHGlB6XhkuVY90fH8ltFojccNThC4MV9kChB7ojjTAb_zePIa7jfSBse466MIGSn7jzAk7uQtmrRETSeh_ZOtk-uHcxqessywXIkpC4Hyc8UfBrwEEOMa-V0o"/>
-<div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-<div class="absolute bottom-0 p-6 text-white">
-<h3 class="text-lg font-bold">خدمات حقول النفط</h3>
-<p class="text-xs text-slate-300">قطاع الطاقة والخدمات | 2022</p>
+<div class="lg:w-1/2">
+<img alt="Solar Panels" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHhedInCFMTei-_cSRDUpJiZG-8g7qAUQVe4_dF-4Vhgi3SRhq31vspPB2mTrjzrQmLkVI0y6zGkOGooURz4XX0ZKyo0IGCM3e5S4daR5z1o8LhzkWI-TkaqzJNpkswz_o6Ew5cdNRL_IKyQsi4r6bIt3kPXzOHFBc6syP6mkheREz18SHFMo0QypL8ScuGasl6dFOT56fWllaXY-4szuhoG64W0ZatJa_YNC5663HMQjp0mVx-7pVDxqII2Ft2YWDmr57BIFbaw"/>
 </div>
 </div>
 </div>
 </main>
-<section class="bg-primary py-24 px-6 overflow-hidden relative">
-<div class="absolute top-0 right-0 w-1/2 h-full bg-slate-900/20 skew-x-12 transform translate-x-32"></div>
-<div class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-<div>
-<span class="text-gold font-bold tracking-widest text-sm mb-4 block uppercase">قصة نجاح مميزة</span>
-<h2 class="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">تطوير البنية التحتية المتكاملة لمنطقة الشميطية</h2>
-<div class="space-y-6 text-white/80 leading-relaxed text-lg">
-<p>
-                        "لقد أظهر فريق شلاش السليمان كفاءة استثنائية في تنفيذ المشروع قبل الموعد المحدد، مع التزام تام بكافة المتطلبات التقنية والهندسية المعقدة."
-                    </p>
-<footer class="flex items-center gap-4 text-white">
-<div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
-<span class="material-icons-outlined text-gold">person</span>
-</div>
-<div>
-<p class="font-bold">م. أحمد الحمد</p>
-<p class="text-sm opacity-70 italic">استشاري المشاريع الدولية</p>
-</div>
-</footer>
-</div>
-<div class="mt-12 flex gap-8">
-<div>
-<p class="text-3xl font-bold text-white">100%</p>
-<p class="text-sm text-gold">إكمال في الوقت</p>
-</div>
-<div class="border-r border-white/20"></div>
-<div>
-<p class="text-3xl font-bold text-white">15+</p>
-<p class="text-sm text-gold">مهندس متخصص</p>
-</div>
-<div class="border-r border-white/20"></div>
-<div>
-<p class="text-3xl font-bold text-white">0</p>
-<p class="text-sm text-gold">حوادث عمل</p>
-</div>
-</div>
-</div>
-<div class="relative">
-<img alt="Large scale project" class="rounded-2xl shadow-2xl relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDljPeWofYiDrZJV3-jli8Il2vpSmDUAKZA7n-hcqzkX3dTkIMBS-YdgC7UFbNwLV6rBUT_WEfaXPoSiblKzos4l63OvyElfsfVU5W01zaiV-bbACx6TZAv8zK35PX5qa7d99PYBIKS6ktrydCA2k_BRs5ItXy77yWxF76IiNRL754x2jrMNul29n7dRNlBD0182jMjsWj7iG23Jap7y7Ue-SFAyqR8JFZmio4Ncf6VwS3fTteQy5r-ZFWIFLYXSzjV4vAXtE8eQEE"/>
-<div class="absolute -bottom-8 -left-8 w-48 h-48 bg-gold rounded-2xl -z-10 opacity-30"></div>
+<section class="py-20 bg-primary">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-3xl md:text-5xl font-display font-bold text-burgundy mb-6">Have a Project in Mind?</h2>
+<p class="text-burgundy/80 text-lg mb-10 max-w-2xl mx-auto">Let's build the future together. Contact our engineering team today for a comprehensive consultation.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-burgundy text-white px-10 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition-all">Start Collaboration</button>
+<button class="bg-transparent border-2 border-burgundy text-burgundy px-10 py-4 rounded-lg font-bold text-lg hover:bg-burgundy hover:text-white transition-all">Our Services</button>
 </div>
 </div>
 </section>
-<section class="py-24 px-6 bg-slate-50 dark:bg-slate-900/50">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-16">
-<h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">الاعتمادات والتراخيص الرسمية</h2>
-<p class="text-slate-600 dark:text-slate-400">ملتزمون بكافة المعايير القانونية والتجارية في الجمهورية العربية السورية</p>
-</div>
-<div class="grid md:grid-cols-3 gap-8">
-<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-shadow group text-center">
-<div class="w-16 h-16 mx-auto mb-6 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-primary dark:text-gold group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-icons-outlined">verified_user</span>
-</div>
-<h3 class="font-bold text-lg mb-2">وزارة الاقتصاد والتجارة</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mb-6">سجل تجاري معتمد وشهادة مزاولة مهنة لكافة الأنشطة التجارية والمقاولات</p>
-<a class="text-primary dark:text-gold text-sm font-semibold flex items-center justify-center gap-2 hover:underline" href="#">
-                        عرض المستند <span class="material-icons-outlined text-sm">visibility</span>
-</a>
-</div>
-<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-shadow group text-center">
-<div class="w-16 h-16 mx-auto mb-6 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-primary dark:text-gold group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-icons-outlined">account_balance</span>
-</div>
-<h3 class="font-bold text-lg mb-2">غرفة التجارة والصناعة</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mb-6">عضوية الدرجة الممتازة في غرفة التجارة، مما يضمن مصداقيتنا في السوق المحلي والدولي</p>
-<a class="text-primary dark:text-gold text-sm font-semibold flex items-center justify-center gap-2 hover:underline" href="#">
-                        عرض المستند <span class="material-icons-outlined text-sm">visibility</span>
-</a>
-</div>
-<div class="bg-white dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-shadow group text-center">
-<div class="w-16 h-16 mx-auto mb-6 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-primary dark:text-gold group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-icons-outlined">engineering</span>
-</div>
-<h3 class="font-bold text-lg mb-2">تصنيف المقاولين</h3>
-<p class="text-sm text-slate-500 dark:text-slate-400 mb-6">تصنيف فني متقدم في مجالات الهندسة المدنية، الميكانيكية، والكهربائية</p>
-<a class="text-primary dark:text-gold text-sm font-semibold flex items-center justify-center gap-2 hover:underline" href="#">
-                        عرض المستند <span class="material-icons-outlined text-sm">visibility</span>
-</a>
-</div>
-</div>
-</div>
-</section>
-<footer class="bg-slate-900 text-slate-400 pt-20 pb-10 px-6">
-<div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
-<div class="col-span-1 md:col-span-1">
-<div class="flex items-center gap-3 mb-6">
-<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-gold">
-<span class="material-icons-outlined">architecture</span>
-</div>
-<span class="text-xl font-bold text-white tracking-tight">شلاش السليمان</span>
-</div>
+<footer class="bg-zinc-950 text-slate-400 py-16">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<div>
+<img alt="Logo" class="h-16 w-auto mb-6 brightness-150" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk4KdzcgzkVZ3q6Hpci0yrv_NhOFmkuyG1V14TTcb6aVnUwPQGAJmyivEBtAItC4jvNRaXdKrEuu-C4eMi4T7hgPO5DtSvPChH__1qry8tggcPTj6ashA6YpvLNdVRR3sxmTuHk-UfZt5znQQozBtLWwrzQcXpNVInmOU0fLhN1Ftlh4pUFL_0zuO5UF4cKGyLAlIGW1QBoWB_r4JLiXbqN72fbmi3qtRNvf1Db8K_LbEF2uYV3xehU2u9LQsBuJXA1ov51OrSEg"/>
 <p class="text-sm leading-relaxed mb-6">
-                    نحن رواد في قطاع المقاولات والتجارة العامة، نجمع بين الخبرة المحلية والمعايير العالمية لتحقيق رؤيتكم على أرض الواقع.
-                </p>
+                        Shalash Al-Sulaiman Trading &amp; Contracting is a regional leader in delivering high-quality engineering and energy solutions.
+                    </p>
 <div class="flex gap-4">
-<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors text-white" href="#">
-<span class="material-icons-outlined text-sm">public</span>
+<a class="h-10 w-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-primary hover:text-burgundy transition-all" href="#">
+<span class="material-symbols-outlined text-xl">language</span>
 </a>
-<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors text-white" href="#">
-<span class="material-icons-outlined text-sm">email</span>
-</a>
-<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors text-white" href="#">
-<span class="material-icons-outlined text-sm">phone</span>
+<a class="h-10 w-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-primary hover:text-burgundy transition-all" href="#">
+<span class="material-symbols-outlined text-xl">alternate_email</span>
 </a>
 </div>
 </div>
 <div>
-<h4 class="text-white font-bold mb-6">روابط سريعة</h4>
+<h4 class="text-white font-bold mb-6">Quick Links</h4>
 <ul class="space-y-4 text-sm">
-<li><a class="hover:text-gold transition-colors" href={% url "home" %}>عن الشركة</a></li>
-<li><a class="hover:text-gold transition-colors" href={% url "projects" %}>مشاريعنا</a></li>
-<li><a class="hover:text-gold transition-colors" href={% url "services" %}>خدماتنا</a></li>
-<li><a class="hover:text-gold transition-colors" href="#">السياسات والخصوصية</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Our History</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Safety Policies</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Project Portfolio</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Career Opportunities</a></li>
 </ul>
 </div>
 <div>
-<h4 class="text-white font-bold mb-6">خدماتنا</h4>
+<h4 class="text-white font-bold mb-6">Our Services</h4>
 <ul class="space-y-4 text-sm">
-<li><a class="hover:text-gold transition-colors" href="#">الأعمال الهندسية والإنشائية</a></li>
-<li><a class="hover:text-gold transition-colors" href="#">مشاريع الطاقة المتجددة</a></li>
-<li><a class="hover:text-gold transition-colors" href="#">تجارة الآليات والمعدات</a></li>
-<li><a class="hover:text-gold transition-colors" href="#">التجهيزات الطبية والمخبرية</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">General Contracting</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pipeline Services</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Renewable Solutions</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Logistics &amp; Supply</a></li>
 </ul>
 </div>
 <div>
-<h4 class="text-white font-bold mb-6">تواصل معنا</h4>
+<h4 class="text-white font-bold mb-6">Contact Info</h4>
 <ul class="space-y-4 text-sm">
 <li class="flex items-start gap-3">
-<span class="material-icons-outlined text-primary text-base">location_on</span>
-<span>الجمهورية العربية السورية، دير الزور، الشارع العام</span>
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span>Baghdad, Iraq - Karrada District,<br/>Main Commercial Street</span>
 </li>
 <li class="flex items-center gap-3">
-<span class="material-icons-outlined text-primary text-base">phone</span>
-<span>+963 944 000 000</span>
+<span class="material-symbols-outlined text-primary text-sm">phone</span>
+<span>+964 770 000 0000</span>
 </li>
 <li class="flex items-center gap-3">
-<span class="material-icons-outlined text-primary text-base">alternate_email</span>
-<span>info@shlash-sulaiman.com</span>
+<span class="material-symbols-outlined text-primary text-sm">mail</span>
+<span>info@shalsulaiman.com</span>
 </li>
 </ul>
 </div>
 </div>
-<div class="max-w-7xl mx-auto border-t border-slate-800 pt-8 flex flex-col md:row items-center justify-between gap-4 text-xs">
-<p>© 2024 شلاش السليمان للتجارة والمقاولات. جميع الحقوق محفوظة.</p>
+<div class="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center text-xs gap-4">
+<p>© 2024 Shalash Al-Sulaiman Trading &amp; Contracting Co. All rights reserved.</p>
 <div class="flex gap-6">
-<a class="hover:text-white transition-colors" href="#">سياسة الخصوصية</a>
-<a class="hover:text-white transition-colors" href="#">شروط الاستخدام</a>
+<a class="hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-white" href="#">Terms of Service</a>
+</div>
 </div>
 </div>
 </footer>
 
+</body>
 <script>
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const closeBtn = document.getElementById('close-sidebar');
-    const sidebar = document.getElementById('mobile-sidebar');
-    const sidebarContent = document.getElementById('sidebar-content');
-    const navbar = document.querySelector('nav'); // تحديد الناف بار
+    // 1. مراقبة التمرير لتغيير خلفية الـ Navbar
 
-    function checkNavBg() {
-        if (window.scrollY > 10 || !sidebar.classList.contains('hidden')) {
-            navbar.classList.add('nav-solid');
+
+    // 2. التحكم في تبديل الوضع الليلي (Dark Mode) وتغيير الأيقونة
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            themeToggle.innerHTML = '<span class="material-symbols-outlined">dark_mode</span>';
         } else {
-            navbar.classList.remove('nav-solid');
+            html.classList.add('dark');
+            themeToggle.innerHTML = '<span class="material-symbols-outlined">light_mode</span>';
         }
+    });
+
+    // 3. التحكم في قائمة الموبايل (فتح/إغلاق وتغيير الأيقونة)
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileSidebar = document.getElementById('mobile-sidebar');
+    const menuIcon = document.getElementById('menu-icon');
+    const nav = document.getElementById('navbar');
+
+    if (mobileMenuBtn && mobileSidebar) {
+        mobileMenuBtn.addEventListener('click', () => {
+            // إضافة أو إزالة كلاس الفتح
+            mobileSidebar.classList.toggle('is-open');
+            
+            // التحقق هل القائمة مفتوحة الآن؟
+            const isOpen = mobileSidebar.classList.contains('is-open');
+
+            if (isOpen) {
+                menuIcon.innerText = 'close'; // تغيير الأيقونة لـ X
+                document.body.style.overflow = 'hidden'; // منع السكرول
+                nav.classList.add('nav-scrolled'); // تلوين الناف بار لضمان رؤية الزر
+            } else {
+                menuIcon.innerText = 'menu'; // إعادة الأيقونة لـ Menu
+                document.body.style.overflow = ''; // تفعيل السكرول
+                // إزالة التلوين فقط إذا كان المستخدم في الأعلى
+                if (window.scrollY <= 50) {
+                    nav.classList.remove('nav-scrolled');
+                }
+            }
+        });
     }
 
-    menuBtn.addEventListener('click', () => {
-        sidebar.classList.remove('hidden');
-        navbar.classList.add('nav-solid');
-        setTimeout(() => sidebarContent.classList.remove('translate-x-full'), 10);
-        
+    // إغلاق القائمة عند النقر على أي رابط
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileSidebar.classList.remove('is-open');
+            menuIcon.innerText = 'menu';
+            document.body.style.overflow = '';
+        });
     });
 
-    const closeSidebar = () => {
-        sidebarContent.classList.add('translate-x-full');
-        setTimeout(() => {
-            sidebar.classList.add('hidden');
-            checkNavBg(); // تحقق إذا كان يجب إعادة الشفافية بعد الإغلاق
-        }, 300);
-    };
-
-    closeBtn.addEventListener('click', closeSidebar);
-    sidebar.addEventListener('click', (e) => {
-        if (e.target === sidebar) closeSidebar();
+    // السكرول العادي للناف بار
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            // لا تلغِ التلوين إذا كانت القائمة مفتوحة
+            if (!mobileSidebar.classList.contains('is-open')) {
+                nav.classList.remove('nav-scrolled');
+            }
+        }
     });
-
-
-   window.onscroll = () => {
-        checkNavBg();
-    };
-
 </script>
 
-</body></html>
+
+</html>

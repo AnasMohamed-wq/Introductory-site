@@ -2,12 +2,12 @@
 <html class="scroll-smooth" dir="ltr" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Shlash Al-Sulaiman Trading &amp; Contracting</title>
+<title>Shlash Al-Sulaiman Trading &amp; Contracting Co </title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&amp;family=Montserrat:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
 <script>
         tailwind.config = {
             darkMode: "class",
@@ -16,6 +16,7 @@
                     colors: {
                         primary: "#800000", // Maroon
                         secondary: "#C5A059", // Matte Gold
+                        "neutral-dark": "#1a080a",
                         "background-light": "#F9F9F9",
                         "background-dark": "#121212",
                     },
@@ -26,85 +27,160 @@
                     borderRadius: {
                         DEFAULT: "0.5rem",
                     },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        kenBurns: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.1)' },
+                        },
+                        shimmer: {
+                            '100%': { left: '125%' },
+                        },
+                        infiniteScroll: {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(-50%)' },
+                        }
+                    },
+                    animation: {
+                        fadeInUp: 'fadeInUp 1s ease-out forwards',
+                        kenBurns: 'kenBurns 20s ease-in-out infinite alternate',
+                        shimmer: 'shimmer 2.5s infinite',
+                        infiniteScroll: 'infiniteScroll 40s linear infinite',
+                    }
                 },
             },
         };
     </script>
-<style>
-        body { font-family: 'Montserrat', 'Cairo', sans-serif; }
-        .nav-scrolled { background-color: #800000 !important; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+<style type="text/tailwindcss">
+    @layer utilities {
+        .nav-scrolled { @apply bg-primary shadow-lg py-2; }
         .hero-gradient { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)); }
-        .service-card:hover .service-overlay { opacity: 0.9; }
-    </style>
-</head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+        .shimmer-effect { @apply relative overflow-hidden; }
+        .shimmer-effect::after {
+            content: '';
+            @apply absolute top-0 -left-[75%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] pointer-events-none;
+            animation: shimmer 3s infinite;
+        }
 
-<nav class="fixed w-full z-50 transition-all duration-300 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
+        /* تنسيقات البطاقات - أصبحت خارج الـ media query لضمان النعومة في كل الأجهزة */
+        .service-card {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card h4, .service-card p, .service-card span {
+            transition: all 0.4s ease;
+        }
+
+        /* تفعيل التمدد فقط في الشاشات الكبيرة */
+        @media (min-width: 1024px) {
+            .service-card:hover {
+                flex: 2.5 1 0% !important;
+            }
+        }
+
+        .reveal-hidden {
+            opacity: 0;
+            transition: all 1s ease-out;
+        }
+        .reveal-left { transform: translateX(-50px); }
+        .reveal-right { transform: translateX(50px); }
+        .reveal-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    /* لجعل القائمة الجانبية تنزلق بنعومة */
+        #mobile-sidebar {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        /* حالة القائمة عندما تكون مفتوحة */
+        .mobile-menu-open {
+            transform: translateX(0) !important;
+        }
+
+
+</style>
+
+                
+
+
+
+
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
+
+
+<nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
     <div class="flex items-center gap-3">
         <div class="bg-white p-1 rounded">
-            <img alt="Shlash Logo" class="h-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtnVZHbXX0HhYUU4ng0_crMqXWuq01IHXL-RSKVSJ0kdrLFKIArcPn3vUJziNdybACOZPl5Kt37UDtj15idr0CE9B-ll6DvpmZBHihbD-EU2ThAuyw3xud67dTA0ubDOvpJyHEwF-rLIHy2U6mYxXUpzVa8i9L-Vz0zVCZh17Gyd2gUwUkRR2Td9CJ3jWW3nlWPvXJF8hPsWIHV0Lpl18AY1Cbvkm6BZfRcUzZIX_ik7QIL_QotK-1n6sdHbRTuW92GJZVKsjMPsE"/>
+            <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
         </div>
-        <span class="hidden sm:block font-bold text-sm md:text-lg tracking-wider">SHLASH AL-SULAIMAN</span>
+        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">Shlash Al-Sulaiman</span>
     </div>
 
     <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
         <a class="hover:text-secondary transition-colors" href="{% url 'home' %}">Home</a>
-        <a class="hover:text-secondary transition-colors" href="#about">About</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'services' %}">Services</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'about' %}">About</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'courses' %}">Courses</a>
         <a class="hover:text-secondary transition-colors" href="{% url 'projects' %}">Projects</a>
-        <a class="hover:text-secondary transition-colors" href="#contact">Contact</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'machine' %}">Machine</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'vision' %}">Vision </a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'contact' %}">Contact Us</a>
     </div>
 
     <div class="flex items-center gap-2 md:gap-4">
-        <button class="border border-white/30 hover:bg-white/10 px-2 py-1 rounded text-[10px] md:text-xs">EN/AR</button>
-        <button class="p-2 rounded-full hover:bg-white/10" id="theme-toggle">
-            <span class="material-icons-outlined text-xl">dark_mode</span>
+        <button class="shimmer-effect hidden lg:flex items-center gap-2 bg-secondary hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
+            <span class="material-symbols-outlined text-sm">download</span> Profile PDF
         </button>
         
-        <button class="md:hidden p-2 text-white" id="mobile-menu-button">
-            <span class="material-icons-outlined text-3xl">menu</span>
+        <button class="p-2 rounded-full hover:bg-white/10 transition-colors" id="theme-toggle">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+
+        <button class="md:hidden p-2 text-white" id="mobile-menu-btn">
+            <span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
         </button>
     </div>
 
-    <div class="fixed inset-0 bg-primary z-[60] transform translate-x-full transition-transform duration-300 md:hidden" id="mobile-menu">
-        <div class="flex justify-end p-6">
-            <button class="text-white" id="close-menu">
-                <span class="material-icons-outlined text-4xl">close</span>
-            </button>
-        </div>
-        <div class="flex flex-col items-center gap-8 pt-10 text-xl font-bold uppercase tracking-widest">
-            <a class="hover:text-secondary" href="{% url 'home' %}">Home</a>
-            <a class="hover:text-secondary" href="#about">About</a>
-            <a class="hover:text-secondary" href="{% url 'services' %}">Services</a>
-            <a class="hover:text-secondary" href="{% url 'projects' %}">Projects</a>
-            <a class="hover:text-secondary" href="#contact">Contact</a>
-            <button class="bg-secondary text-white px-8 py-3 rounded-full text-sm">Profile PDF</button>
-        </div>
+    <div class="fixed inset-0 bg-primary/95 backdrop-blur-lg z-[-1] flex flex-col items-center justify-center space-y-8 text-2xl font-bold uppercase tracking-widest transition-all duration-500 translate-x-full md:hidden" id="mobile-sidebar">
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'home' %}">Home</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'about' %}">About</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'courses' %}">Courses</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'projects' %}">Projects</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'machine' %}">Machine</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'vision' %}">Vision </a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'contact' %}">Contact Us</a>
+        <button class="bg-secondary text-white px-8 py-3 rounded-full text-lg font-bold">PDF Profile</button>
     </div>
 </nav>
 
 
-
 <section class="relative h-screen w-full flex items-center overflow-hidden">
 <div class="absolute inset-0">
-<img alt="Construction Machinery" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMMOu0EsV-H_ONG3A9nQD4A7Ba8TgtR7HOAAkZiKxDvuV4LnX7eOrq7nEpogospmGMAIpSq5psBSzurPDJ6MtKhVZEcfRazjd7yD5E0DPk-9-uP7VZI9BH2Z2Ha7U8KAKvhWHTnO51T0nkmeM3xJFmk52x3XkzNltzckqzFcTW7KTB0uILs2dC0qMj7Rx_tKbDSthsNdngWDOA14g-_wQ5tIW8c21fhxJY221OerRKyE0uLsvPqeD-4A9GiC06MMQhhCZXEf0vSp0"/>
+<img alt="Construction Machinery" class="w-full h-full object-cover animate-kenBurns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMMOu0EsV-H_ONG3A9nQD4A7Ba8TgtR7HOAAkZiKxDvuV4LnX7eOrq7nEpogospmGMAIpSq5psBSzurPDJ6MtKhVZEcfRazjd7yD5E0DPk-9-uP7VZI9BH2Z2Ha7U8KAKvhWHTnO51T0nkmeM3xJFmk52x3XkzNltzckqzFcTW7KTB0uILs2dC0qMj7Rx_tKbDSthsNdngWDOA14g-_wQ5tIW8c21fhxJY221OerRKyE0uLsvPqeD-4A9GiC06MMQhhCZXEf0vSp0"/>
 <div class="absolute inset-0 hero-gradient"></div>
 </div>
 <div class="relative z-10 container mx-auto px-6 md:px-12 text-white max-w-5xl">
+<div class="animate-fadeInUp opacity-0" style="animation-delay: 0.2s;">
 <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 Shlash Al-Sulaiman <br/>
-<span class="text-secondary">Trading &amp; Contracting</span>
+<span class="text-secondary">Trading &amp; Contracting Co . </span>
 </h1>
 <p class="text-xl md:text-2xl mb-10 text-slate-200 max-w-2xl font-light">
                 Building the Future with Expertise Since 2011. Leading infrastructure and oil field development in the region.
             </p>
 <div class="flex flex-wrap gap-4">
-<a class="bg-secondary hover:bg-opacity-90 text-white px-8 py-4 rounded font-bold text-lg uppercase transition-all inline-block" href="#projects">
+<a class="shimmer-effect bg-secondary hover:bg-opacity-90 text-white px-8 py-4 rounded font-bold text-lg uppercase transition-all inline-block" href="#projects">
                     Explore Projects
                 </a>
 <a class="bg-transparent border-2 border-white hover:bg-white hover:text-primary px-8 py-4 rounded font-bold text-lg uppercase transition-all inline-block" href="#services">
                     Our Services
                 </a>
+</div>
 </div>
 </div>
 <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
@@ -115,163 +191,214 @@
 </section>
 <div class="relative z-20 -mt-10 container mx-auto px-6 max-w-6xl">
 <div class="bg-white dark:bg-slate-800 shadow-2xl rounded-xl p-8 md:p-12 flex flex-col md:flex-row justify-around items-center gap-8 border-b-4 border-secondary">
-<div class="text-center">
-<div class="flex items-center justify-center text-primary dark:text-secondary mb-2">
-<span class="material-icons-outlined text-4xl">history</span>
+<div class="text-center group">
+<div class="flex items-center justify-center text-primary dark:text-secondary mb-2 transition-transform duration-300 group-hover:scale-110">
+<span class="material-symbols-outlined text-4xl">history</span>
 </div>
-<div class="text-3xl font-bold dark:text-white">13+</div>
+<div class="text-3xl font-bold dark:text-white flex items-center justify-center">
+<span class="stat-counter" data-target="13">0</span>+
+            </div>
 <div class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-widest font-semibold">Years Experience</div>
 </div>
 <div class="w-px h-12 bg-slate-200 dark:bg-slate-700 hidden md:block"></div>
-<div class="text-center">
-<div class="flex items-center justify-center text-primary dark:text-secondary mb-2">
-<span class="material-icons-outlined text-4xl">local_shipping</span>
+<div class="text-center group">
+<div class="flex items-center justify-center text-primary dark:text-secondary mb-2 transition-transform duration-300 group-hover:scale-110">
+<span class="material-symbols-outlined text-4xl">local_shipping</span>
 </div>
-<div class="text-3xl font-bold dark:text-white">50+</div>
+<div class="text-3xl font-bold dark:text-white flex items-center justify-center">
+<span class="stat-counter" data-target="50">0</span>+
+            </div>
 <div class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-widest font-semibold">Heavy Vehicles</div>
 </div>
 <div class="w-px h-12 bg-slate-200 dark:bg-slate-700 hidden md:block"></div>
-<div class="text-center">
-<div class="flex items-center justify-center text-primary dark:text-secondary mb-2">
-<span class="material-icons-outlined text-4xl">business</span>
+<div class="text-center group">
+<div class="flex items-center justify-center text-primary dark:text-secondary mb-2 transition-transform duration-300 group-hover:scale-110">
+<span class="material-symbols-outlined text-4xl">business</span>
 </div>
-<div class="text-3xl font-bold dark:text-white">100+</div>
+<div class="text-3xl font-bold dark:text-white flex items-center justify-center">
+<span class="stat-counter" data-target="100">0</span>+
+            </div>
 <div class="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-widest font-semibold">Completed Projects</div>
 </div>
 </div>
 </div>
-<section class="py-24 px-6 md:px-12 bg-background-light dark:bg-background-dark" id="about">
+<section class="py-24 px-6 md:px-12 bg-background-light dark:bg-background-dark overflow-hidden" id="about">
 <div class="container mx-auto max-w-7xl">
 <div class="grid md:grid-cols-2 gap-16 items-center">
-<div class="relative">
-<img alt="Construction Team" class="rounded-2xl shadow-xl w-full h-[500px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsdAEQ-X3mOE0zYPpAO8sP9Q0C-224yX0zeGqkDE3AfMxsR_-vuWW1rP4mbrOQwxewPHfQW1CR5PrPs13rw9VoG_6oz6Eo7CEAk9loaABq9BC8jjiUzxnjIvTV5rNYALTu4Ce8Fg4B0RF5JJlpxE2581I0UhYt36vKHKZ9lOJsXQTBYy56T45_Qf6hozFMb6VUNBzrzRT32tLwxg2HCB2NnfdWE0bHhhiu34AILJMVsevLxlxxY3SZM3OsVGDojtshC_DHnEwCBpM"/>
-<div class="absolute -bottom-6 -right-6 bg-secondary p-8 rounded-2xl hidden lg:block">
+<div class="relative reveal-hidden reveal-left" data-reveal="">
+<img alt="Construction Team" class="rounded-2xl shadow-xl w-full h-[500px] object-cover" src="{{ MEDIA_URL }}img/eng.png"/>
+<div class="absolute -bottom-6 -right-6 bg-secondary p-8 rounded-2xl hidden lg:block shadow-xl">
 <span class="text-white text-xl font-bold">Reliable Partner <br/>Since 2011</span>
 </div>
 </div>
-<div class="space-y-6">
+<div class="space-y-6 reveal-hidden reveal-right" data-reveal="">
 <h4 class="text-primary font-bold uppercase tracking-widest flex items-center gap-2">
 <span class="w-10 h-[2px] bg-secondary"></span>
-                        Who We Are
-                    </h4>
+                    Who We Are
+                </h4>
 <h2 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight">
-                        Leading the Way in Modern <br/>Engineering Solutions
-                    </h2>
+                    Leading the Way in Modern <br/>Engineering Solutions
+                </h2>
 <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Established as a specialized firm in trading and contracting, we aim to provide innovative and comprehensive solutions in mechanical, electrical, civil, and engineering fields. Since our inception in 2011, our focus has been on delivering added value to our clients.
-                    </p>
+                    Established as a specialized firm in trading and contracting, we aim to provide innovative and comprehensive solutions in mechanical, electrical, civil, and engineering fields. Since our inception in 2011, our focus has been on delivering added value to our clients.
+                </p>
 <div class="grid grid-cols-2 gap-6 pt-4">
 <div class="flex items-start gap-3">
-<span class="material-icons-outlined text-secondary">check_circle</span>
+<span class="material-symbols-outlined text-secondary">check_circle</span>
 <div>
 <h5 class="font-bold dark:text-white">Quality Assurance</h5>
 <p class="text-sm text-slate-500">Highest industry standards.</p>
 </div>
 </div>
 <div class="flex items-start gap-3">
-<span class="material-icons-outlined text-secondary">check_circle</span>
+<span class="material-symbols-outlined text-secondary">check_circle</span>
 <div>
 <h5 class="font-bold dark:text-white">On-Time Delivery</h5>
 <p class="text-sm text-slate-500">Efficient project cycles.</p>
 </div>
 </div>
 </div>
-<a class="inline-flex items-center gap-2 text-primary dark:text-secondary font-bold hover:underline" href="#">
-                        Learn More About Us <span class="material-icons-outlined">arrow_forward</span>
+<a class="inline-flex items-center gap-2 text-primary dark:text-secondary font-bold hover:underline transition-all duration-300 hover:gap-4" href="#">
+                    Learn More About Us <span class="material-symbols-outlined">arrow_forward</span>
 </a>
 </div>
 </div>
 </div>
 </section>
-<section class="py-24 px-6 md:px-12 bg-white dark:bg-slate-900" id="services">
-<div class="container mx-auto max-w-7xl">
-<div class="text-center mb-16 space-y-4">
-<h4 class="text-primary font-bold uppercase tracking-widest">Our Expertise</h4>
-<h2 class="text-4xl md:text-5xl font-bold dark:text-white">Core Services</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<div class="group relative overflow-hidden rounded-2xl h-[400px] service-card cursor-pointer">
-<img alt="Engineering Works" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw8Ia80SwF3Koj6YTSFT1ArPrzH8_16jkKeWpGmFFVU_VhIXGS9vJ1HAY2JwGGQImOtFXTt5vvILLrhyzQdG8KP-q1UXhIkNlE28_QUog7VxEFGptaJb6qo-0eYKOnenS9XipkDvHUVu8ZS9x62qeYB9EmuQIplmrriVeoNM-du9N_3qcmPaEN8_X-NGBEpalxzqv0lOpbRG5BoqcVaP8lIzUl3OXIIKmZeEft_Cuuw252OFLyzuJVhQcE8-mqo7Ll4b4jAncrr7Q"/>
-<div class="absolute inset-0 bg-primary/60 dark:bg-slate-900/70 p-8 flex flex-col justify-end transition-all duration-300 service-overlay">
-<span class="material-icons-outlined text-secondary text-5xl mb-4">architecture</span>
-<h3 class="text-white text-2xl font-bold mb-2">Engineering Works</h3>
-<p class="text-slate-200 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            Comprehensive infrastructure, civil, and rehabilitation services for major projects.
-                        </p>
-</div>
-</div>
-<div class="group relative overflow-hidden rounded-2xl h-[400px] service-card cursor-pointer">
-<img alt="Oil Field Services" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB958pzrcz8Hu952GVnRGU5qlAIHkuTvfsS1SyjwHwZ3SNquC4QkS7FoIjqIuE2Jebbus5Aoi-G1L0lxpTxWzbhOVYgvX8PmsbJWKFHTau7RrLME88n-WDpFuRNl-1hzHcjjoRtfPVrsduPBRDmjxi8-XI9YHWwv_gabTnTfifWhvJummb9FZRVQaO9gswD_Fd0K2PjtzDibl6Z927nqZU5BH5Pf2E91_Vnrd1jrcIGU9KA_4jWWIrSYmEX9MFYCORZczw0i7XhoCI"/>
-<div class="absolute inset-0 bg-primary/60 dark:bg-slate-900/70 p-8 flex flex-col justify-end transition-all duration-300 service-overlay">
-<span class="material-icons-outlined text-secondary text-5xl mb-4">oil_barrel</span>
-<h3 class="text-white text-2xl font-bold mb-2">Oil Field Services</h3>
-<p class="text-slate-200 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            Maintenance, drilling support, and logistical solutions for energy sector clients.
-                        </p>
-</div>
-</div>
-<div class="group relative overflow-hidden rounded-2xl h-[400px] service-card cursor-pointer">
-<img alt="Renewable Energy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgOyN6P0XQ05DWS72POTDgQgSUsnKl3D4BLrnJOfj3CFeFfnox-9eWjKqHY_YkRHxwp87Fx4uzAak5n5mpkxiKXmL9t3vEUVwJKIZzE7mvfVKWX5uyaRUsFPL6COFUZtXohqWnDabV7SUrxjzvpao7orsjcCfnibvD55W_yPGwGNXLv1KrnIfdKDM_w30SrANO0x282Qa5cB4HpWRRHqqcQo_O1ImUtA7cido8y_KmAA3-XJih_TfgFtPQ0e_X7bzWUI5glpFtVL0"/>
-<div class="absolute inset-0 bg-primary/60 dark:bg-slate-900/70 p-8 flex flex-col justify-end transition-all duration-300 service-overlay">
-<span class="material-icons-outlined text-secondary text-5xl mb-4">solar_power</span>
-<h3 class="text-white text-2xl font-bold mb-2">Renewable Energy</h3>
-<p class="text-slate-200 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            Advanced solar power installations and sustainable energy consulting.
-                        </p>
-</div>
-</div>
-<div class="group relative overflow-hidden rounded-2xl h-[400px] service-card cursor-pointer">
-<img alt="Commercial Trading" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkoHMNfUKJhqeslzDukzpZj_dsCurcYBwWpOB6Y-0-jIqZW0jCHUKsegahBwoiTubteaIqOV5qPy9Q6RlwyajL5FgdZmOFlaSnn--G3qE_XhyDU-0aSrIXz-GqCtUxa8PkullG2oU0wx7M06OnSny3IFcawGhdz_iAoX4ViCpY8natNXJxN4oFgx24BnD2fZp0ht4j4mnLKfStaVmLKj5uboWmr660qUKrNXjfRNDTZxKAJBGrxr1nrvY8RlkqOingyyqYMUOZIR4"/>
-<div class="absolute inset-0 bg-primary/60 dark:bg-slate-900/70 p-8 flex flex-col justify-end transition-all duration-300 service-overlay">
-<span class="material-icons-outlined text-secondary text-5xl mb-4">shopping_cart</span>
-<h3 class="text-white text-2xl font-bold mb-2">Commercial Trading</h3>
-<p class="text-slate-200 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            Import and supply of heavy machinery, equipment, and medical tools.
-                        </p>
-</div>
-</div>
-</div>
-</div>
+
+
+
+
+<section class="bg-white dark:bg-background-dark py-32" id="services">
+    <div class="mx-auto max-w-7xl px-6">
+        <div class="mb-20 text-center space-y-4 reveal-hidden" data-reveal>
+            <h2 class="text-primary dark:text-secondary text-sm font-bold uppercase tracking-[0.4em]">Our Expertise</h2>
+            <h3 class="text-5xl font-black tracking-tight text-slate-900 dark:text-white">Premium Services</h3>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-6 h-auto lg:h-[480px]">
+            
+            <div class="service-card flex-1 bg-slate-50 dark:bg-neutral-dark border border-slate-100 dark:border-white/5 p-10 rounded-2xl flex flex-col justify-between hover:bg-primary group overflow-hidden relative transition-all duration-500">
+                <div>
+                    <span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary transition-colors duration-500">engineering</span>
+                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500">Engineering</h4>
+                    <div class="sub-services space-y-2 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-500 mt-0 group-hover:mt-6">
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Civil Construction</p>
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Infrastructure Works</p>
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Road & Bridges</p>
+                    </div>
+                </div>
+                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500">Precision engineering solutions for complex infrastructure projects.</p>
+            </div>
+
+            <div class="service-card flex-1 bg-slate-50 dark:bg-neutral-dark border border-slate-100 dark:border-white/5 p-10 rounded-2xl flex flex-col justify-between hover:bg-primary group overflow-hidden relative transition-all duration-500">
+                <div>
+                    <span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary transition-colors duration-500">energy_savings_leaf</span>
+                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500">Renewable Energy</h4>
+                    <div class="sub-services space-y-2 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-500 mt-0 group-hover:mt-6">
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Solar Power Systems</p>
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Energy Audits</p>
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Sustainable Consulting</p>
+                    </div>
+                </div>
+                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500">Leading the transition to clean and sustainable energy sources.</p>
+            </div>
+
+            <div class="service-card flex-1 bg-slate-50 dark:bg-neutral-dark border border-slate-100 dark:border-white/5 p-10 rounded-2xl flex flex-col justify-between hover:bg-primary group overflow-hidden relative transition-all duration-500">
+                <div>
+                    <span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary transition-colors duration-500">oil_barrel</span>
+                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500">Oil Field Services</h4>
+                    <div class="sub-services space-y-2 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-500 mt-0 group-hover:mt-6">
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Logistical Support</p>
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Equipment Leasing</p>
+                    </div>
+                </div>
+                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500">Highly specialized support for upstream and downstream operations.</p>
+            </div>
+
+            <div class="service-card flex-1 bg-slate-50 dark:bg-neutral-dark border border-slate-100 dark:border-white/5 p-10 rounded-2xl flex flex-col justify-between hover:bg-primary group overflow-hidden relative transition-all duration-500">
+                <div>
+                    <span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary transition-colors duration-500">payments</span>
+                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500">Commercial Trading</h4>
+                    <div class="sub-services space-y-2 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-500 mt-0 group-hover:mt-6">
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Medical Equipment</p>
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Heavy Machinery</p>
+                        <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> Industrial Supplies</p>
+                    </div>
+                </div>
+                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500">Connecting global markets with local industrial needs.</p>
+            </div>
+
+        </div>
+    </div>
 </section>
-<section class="py-16 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800">
-<div class="container mx-auto px-6">
-<h5 class="text-center text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest mb-10 text-xs">Our Trusted Partners</h5>
-<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60">
-<img alt="UNICEF Partner" class="h-10 grayscale hover:grayscale-0 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7nru0BAKO79PV6vtywgMI7kKsNsg5PrxJXno1AR95ewvytFZnYw__lDdxrC68wtLcHyNJjPdlXpiqNf6j7dbnC1DK8AScxsOe6p3j05jlts7RozVH7mhoOtNcjKhzGYzkB16IFEFcKSr78Ffj-oFWItlAhwvPAFb8gCzr6npY97GD8-crg-IT1EPkjS3XFf5wBHPQaVGfmcP677O_sPWglsE-ensmKNfHSeEEr7pUQBI016dZQz8oFJ5r71rFl-VWTyhSTlhKFDU"/>
-<img alt="SyrianTel Partner" class="h-10 grayscale hover:grayscale-0 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIqn4q8s0hMEotSaELhQUKvee0DymerZCcsG22R5TGpI1ulyQLC0xIjAT_EATjfUxK8KwEKdGfyvXsq0yAKuCCN9zyodkUrKLLZolAMiEblQafnugrI4ido4DQKHA3apylhs7iYHDQv6k1GWl9WGI7_DnZhqsAY2gJ08qEfKr1Ucx6108Cp7eH6eanjPdJB2dbGvuwUl6GfrfWGFfvnz71ApBYmp7CqM85bn5donZb0bmUNUMV0CKON6v-Ev8s2hvmpjlTsisTUcY"/>
-<img alt="Ministry of Oil Partner" class="h-10 grayscale hover:grayscale-0 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC874DgYzQ593fvIUSD848TTyzOjG2cQcCfudZJEPwgatElnlb9uEmLTuq8BC8oc4DXKJSHO-YtBFqt836GaxRlbebhyQwDvWJr-lg2GVh25ZC_n1chwOwjrGiaqDqN6Dq0ppN8n74lRstJy74RfDPDUb9PzaTY2Ce1Z1QBOdtqpiPfcqJc4Kdz86vFIIjVmRJpBpK5C2DSbwRaoVj8MV6-iiSRijbJXvAPeHjVfBO4mZc0xOZEt2iS8PB3nqpuMufKBRwNa47trW0"/>
-<img alt="Global Const Partner" class="h-10 grayscale hover:grayscale-0 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxBMc8RcTrDinLaUB4zQm-s-uAa7m_jFu2KP--RQWpqCEdMQ5QKv7gkI1K__SGxQBZqnQl4g05OeyWE1bpAYmvgvTsSPCb9BsgGI4KZlL4jJMOQywicS2bQ9elEenL9oXlIBcTawQz6_RbfqrBE7HMKqBLPcUg_wcm79BlO5ZvdcoTTLFwaMaaK41dfjppGDpUMm_5-sy-jajfDnQYGnxpYGlwlObzzxogO9LvlPkA_K30rLG_AgYlUMH86LTUwjGJqkf6DtvmVzA"/>
-<img alt="UNDP Partner" class="h-10 grayscale hover:grayscale-0 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARMK1Ej6DYFePTjRVVK6lKKHZFiApl1Rdyt8cpy8B5xgznrDt6iiFkx1_RziainjX_Vw6QJ4ObTK8jN9nrQArLlWC-_kK_JzVtNFnUwFUiIv9o2kgXEg6QMkwz5NXa5JQnmDP8lq0ZFaynRLus647u70u2C0a2remQgMe9oXM91DlslV7DnaUbyzq9HQUd2LL-FaxebygvdyS9fct1K6Wu_uMPbZQ9zkfIH9lxI9WBJOfHKj18suPUJQJkbb4sFa_LR2wVE9z8caU"/>
-</div>
-</div>
+{% comment %} </main> {% endcomment %}
+
+
+
+<section class="py-20 bg-white dark:bg-background-dark border-t border-slate-100 dark:border-white/5 overflow-hidden">
+    <div class="text-center mb-12 px-6">
+        <h4 class="text-primary dark:text-secondary font-bold uppercase tracking-widest text-sm mb-2">Our Trusted Partners</h4>
+        <h2 class="text-slate-900 dark:text-white text-3xl font-bold">Trusted by World-Class Organizations</h2>
+        <div class="h-1 w-20 bg-secondary mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <div class="relative w-full overflow-hidden py-10">
+        <div class="flex animate-infiniteScroll gap-12 items-center w-max">
+            
+            <div class="flex items-center gap-12 md:gap-24">
+                <img class="h-10 w-auto grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7nru0BAKO79PV6vtywgMI7kKsNsg5PrxJXno1AR95ewvytFZnYw__lDdxrC68wtLcHyNJjPdlXpiqNf6j7dbnC1DK8AScxsOe6p3j05jlts7RozVH7mhoOtNcjKhzGYzkB16IFEFcKSr78Ffj-oFWItlAhwvPAFb8gCzr6npY97GD8-crg-IT1EPkjS3XFf5wBHPQaVGfmcP677O_sPWglsE-ensmKNfHSeEEr7pUQBI016dZQz8oFJ5r71rFl-VWTyhSTlhKFDU" alt="Partner 1">
+                <img class="h-10 w-auto grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIqn4q8s0hMEotSaELhQUKvee0DymerZCcsG22R5TGpI1ulyQLC0xIjAT_EATjfUxK8KwEKdGfyvXsq0yAKuCCN9zyodkUrKLLZolAMiEblQafnugrI4ido4DQKHA3apylhs7iYHDQv6k1GWl9WGI7_DnZhqsAY2gJ08qEfKr1Ucx6108Cp7eH6eanjPdJB2dbGvuwUl6GfrfWGFfvnz71ApBYmp7CqM85bn5donZb0bmUNUMV0CKON6v-Ev8s2hvmpjlTsisTUcY" alt="Partner 2">
+                <img class="h-10 w-auto grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC874DgYzQ593fvIUSD848TTyzOjG2cQcCfudZJEPwgatElnlb9uEmLTuq8BC8oc4DXKJSHO-YtBFqt836GaxRlbebhyQwDvWJr-lg2GVh25ZC_n1chwOwjrGiaqDqN6Dq0ppN8n74lRstJy74RfDPDUb9PzaTY2Ce1Z1QBOdtqpiPfcqJc4Kdz86vFIIjVmRJpBpK5C2DSbwRaoVj8MV6-iiSRijbJXvAPeHjVfBO4mZc0xOZEt2iS8PB3nqpuMufKBRwNa47trW0" alt="Partner 3">
+                <img class="h-10 w-auto grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxBMc8RcTrDinLaUB4zQm-s-uAa7m_jFu2KP--RQWpqCEdMQ5QKv7gkI1K__SGxQBZqnQl4g05OeyWE1bpAYmvgvTsSPCb9BsgGI4KZlL4jJMOQywicS2bQ9elEenL9oXlIBcTawQz6_RbfqrBE7HMKqBLPcUg_wcm79BlO5ZvdcoTTLFwaMaaK41dfjppGDpUMm_5-sy-jajfDnQYGnxpYGlwlObzzxogO9LvlPkA_K30rLG_AgYlUMH86LTUwjGJqkf6DtvmVzA" alt="Partner 4">
+                <img class="h-10 w-auto grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARMK1Ej6DYFePTjRVVK6lKKHZFiApl1Rdyt8cpy8B5xgznrDt6iiFkx1_RziainjX_Vw6QJ4ObTK8jN9nrQArLlWC-_kK_JzVtNFnUwFUiIv9o2kgXEg6QMkwz5NXa5JQnmDP8lq0ZFaynRLus647u70u2C0a2remQgMe9oXM91DlslV7DnaUbyzq9HQUd2LL-FaxebygvdyS9fct1K6Wu_uMPbZQ9zkfIH9lxI9WBJOfHKj18suPUJQJkbb4sFa_LR2wVE9z8caU" alt="Partner 5">
+            </div>
+            
+            <div class="flex items-center gap-12 md:gap-24">
+                <img class="h-10 w-auto grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7nru0BAKO79PV6vtywgMI7kKsNsg5PrxJXno1AR95ewvytFZnYw__lDdxrC68wtLcHyNJjPdlXpiqNf6j7dbnC1DK8AScxsOe6p3j05jlts7RozVH7mhoOtNcjKhzGYzkB16IFEFcKSr78Ffj-oFWItlAhwvPAFb8gCzr6npY97GD8-crg-IT1EPkjS3XFf5wBHPQaVGfmcP677O_sPWglsE-ensmKNfHSeEEr7pUQBI016dZQz8oFJ5r71rFl-VWTyhSTlhKFDU" alt="Partner 1">
+                <img class="h-10 w-auto grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIqn4q8s0hMEotSaELhQUKvee0DymerZCcsG22R5TGpI1ulyQLC0xIjAT_EATjfUxK8KwEKdGfyvXsq0yAKuCCN9zyodkUrKLLZolAMiEblQafnugrI4ido4DQKHA3apylhs7iYHDQv6k1GWl9WGI7_DnZhqsAY2gJ08qEfKr1Ucx6108Cp7eH6eanjPdJB2dbGvuwUl6GfrfWGFfvnz71ApBYmp7CqM85bn5donZb0bmUNUMV0CKON6v-Ev8s2hvmpjlTsisTUcY" alt="Partner 2">
+                <img class="h-10 w-auto grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC874DgYzQ593fvIUSD848TTyzOjG2cQcCfudZJEPwgatElnlb9uEmLTuq8BC8oc4DXKJSHO-YtBFqt836GaxRlbebhyQwDvWJr-lg2GVh25ZC_n1chwOwjrGiaqDqN6Dq0ppN8n74lRstJy74RfDPDUb9PzaTY2Ce1Z1QBOdtqpiPfcqJc4Kdz86vFIIjVmRJpBpK5C2DSbwRaoVj8MV6-iiSRijbJXvAPeHjVfBO4mZc0xOZEt2iS8PB3nqpuMufKBRwNa47trW0" alt="Partner 3">
+                <img class="h-10 w-auto grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxBMc8RcTrDinLaUB4zQm-s-uAa7m_jFu2KP--RQWpqCEdMQ5QKv7gkI1K__SGxQBZqnQl4g05OeyWE1bpAYmvgvTsSPCb9BsgGI4KZlL4jJMOQywicS2bQ9elEenL9oXlIBcTawQz6_RbfqrBE7HMKqBLPcUg_wcm79BlO5ZvdcoTTLFwaMaaK41dfjppGDpUMm_5-sy-jajfDnQYGnxpYGlwlObzzxogO9LvlPkA_K30rLG_AgYlUMH86LTUwjGJqkf6DtvmVzA" alt="Partner 4">
+                <img class="h-10 w-auto grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-300 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARMK1Ej6DYFePTjRVVK6lKKHZFiApl1Rdyt8cpy8B5xgznrDt6iiFkx1_RziainjX_Vw6QJ4ObTK8jN9nrQArLlWC-_kK_JzVtNFnUwFUiIv9o2kgXEg6QMkwz5NXa5JQnmDP8lq0ZFaynRLus647u70u2C0a2remQgMe9oXM91DlslV7DnaUbyzq9HQUd2LL-FaxebygvdyS9fct1K6Wu_uMPbZQ9zkfIH9lxI9WBJOfHKj18suPUJQJkbb4sFa_LR2wVE9z8caU" alt="Partner 5">
+            </div>
+        </div>
+        
+        <div class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white dark:from-background-dark to-transparent"></div>
+        <div class="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white dark:from-background-dark to-transparent"></div>
+    </div>
 </section>
+
+
+
+
 <footer class="bg-primary text-white pt-20 pb-10 px-6 md:px-12" id="contact">
 <div class="container mx-auto max-w-7xl">
 <div class="grid md:grid-cols-4 gap-12 mb-16">
 <div class="col-span-1 md:col-span-2 space-y-6">
-<img alt="Shlash Footer Logo" class="h-14 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy7JXItmh5cx64e80aIALJLWTqo_KxS7QlTualhgsVifatyaF1e0UsFkhKGcL6EIe8DKUL6pRp5rmf1fokwPGan6vOvE6UTEdx3kEgdhmyl8mKycyYem-F9KzvDrRED85cxIa1xCfcpkgkx_-P_lIx7JPNBF3zXCWyfmLilFOdrsO3OztdzXemi8Ce4eF7Ku8XcEpUFKuKKhqSUxsC78QVKeyedmMHkOtGr0cNeF6jhC8PZmLn4UsoTcLZBm-6P1FoGi2RTujV4hE"/>
+<img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
+ 
 <p class="text-slate-300 max-w-md leading-relaxed">
-                        A leader in Syria's trading and contracting landscape. We are committed to excellence, safety, and innovation in every project we undertake.
-                    </p>
+                    A leader in Syria's trading and contracting landscape. We are committed to excellence, safety, and innovation in every project we undertake.
+                </p>
 <div class="flex gap-4">
 <a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors" href="#">
-<span class="material-icons-outlined text-sm">facebook</span>
+<span class="material-symbols-outlined text-sm">social_leaderboard</span>
 </a>
 <a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors" href="#">
-<span class="material-icons-outlined text-sm">language</span>
+<span class="material-symbols-outlined text-sm">language</span>
 </a>
 <a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors" href="#">
-<span class="material-icons-outlined text-sm">alternate_email</span>
+<span class="material-symbols-outlined text-sm">alternate_email</span>
 </a>
 </div>
 </div>
 <div>
 <h5 class="text-xl font-bold mb-6 text-secondary uppercase tracking-wider">Quick Links</h5>
 <ul class="space-y-4 text-slate-300">
-<li><a class="hover:text-white transition-colors" href={% url "home" %}>Home</a></li>
+<li><a class="hover:text-white transition-colors" href="{% url 'home' %}">Home</a></li>
 <li><a class="hover:text-white transition-colors" href="#about">About Us</a></li>
-<li><a class="hover:text-white transition-colors" href={% url "services" %}>Our Services</a></li>
-<li><a class="hover:text-white transition-colors" href={% url "projects" %}>Major Projects</a></li>
+<li><a class="hover:text-white transition-colors" href="#services">Our Services</a></li>
+<li><a class="hover:text-white transition-colors" href="#projects">Major Projects</a></li>
 <li><a class="hover:text-white transition-colors" href="#fleet">Our Fleet</a></li>
 </ul>
 </div>
@@ -279,15 +406,15 @@
 <h5 class="text-xl font-bold mb-6 text-secondary uppercase tracking-wider">Contact Info</h5>
 <ul class="space-y-4 text-slate-300">
 <li class="flex items-start gap-3">
-<span class="material-icons-outlined text-secondary">location_on</span>
+<span class="material-symbols-outlined text-secondary">location_on</span>
 <span>Deir ez-Zor, Syria<br/>Main Commercial District</span>
 </li>
 <li class="flex items-center gap-3">
-<span class="material-icons-outlined text-secondary">phone</span>
+<span class="material-symbols-outlined text-secondary">phone</span>
 <span>+963 (XX) XXX XXX</span>
 </li>
 <li class="flex items-center gap-3">
-<span class="material-icons-outlined text-secondary">email</span>
+<span class="material-symbols-outlined text-secondary">email</span>
 <span>info@shlash-trading.com</span>
 </li>
 </ul>
@@ -303,65 +430,100 @@
 </div>
 </footer>
 <script>
-        // Navbar scroll effect
-        window.onscroll = function() {
-            const nav = document.getElementById('navbar');
-            if (window.pageYOffset > 50) {
-                nav.classList.add('nav-scrolled');
-                nav.classList.remove('py-4');
-                nav.classList.add('py-2');
-            } else {
-                nav.classList.remove('nav-scrolled');
-                nav.classList.add('py-4');
-                nav.classList.remove('py-2');
-            }
-        };
-        // Dark mode toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        themeToggle.addEventListener('click', () => {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                themeToggle.innerHTML = '<span class="material-icons-outlined">dark_mode</span>';
-            } else {
-                html.classList.add('dark');
-                themeToggle.innerHTML = '<span class="material-icons-outlined">light_mode</span>';
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+        }
+    });
+    // Dark mode toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            themeToggle.innerHTML = '<span class="material-symbols-outlined">dark_mode</span>';
+        } else {
+            html.classList.add('dark');
+            themeToggle.innerHTML = '<span class="material-symbols-outlined">light_mode</span>';
+        }
+    });
+    // Intersection Observer for Scroll Reveals
+    const revealOptions = {
+        threshold: 0.15
+    };
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
             }
         });
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-const closeMenuButton = document.getElementById('close-menu');
-const mobileMenu = document.getElementById('mobile-menu');
-const navLinks = mobileMenu.querySelectorAll('a');
+    }, revealOptions);
+    document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+    // Counter Animation Logic
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.stat-counter');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const startTime = performance.now();
+                    function update(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeOutQuad = (t) => t * (2 - t);
+                        const currentVal = Math.floor(easeOutQuad(progress) * target);
+                        counter.innerText = currentVal;
+                        if (progress < 1) {
+                            requestAnimationFrame(update);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    }
+                    requestAnimationFrame(update);
+                });
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    const statsSection = document.querySelector('.bg-white.dark\\:bg-slate-800.shadow-2xl');
+    if (statsSection) counterObserver.observe(statsSection);
 
-// فتح القائمة
-mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.remove('translate-x-full');
+
+
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileSidebar = document.getElementById('mobile-sidebar');
+const menuIcon = document.getElementById('menu-icon');
+
+if (mobileMenuBtn && mobileSidebar) {
+    mobileMenuBtn.addEventListener('click', () => {
+        // تبديل الكلاس الذي يظهر القائمة
+        mobileSidebar.classList.toggle('translate-x-full');
+        mobileSidebar.classList.toggle('mobile-menu-open');
+        
+        // تغيير شكل الأيقونة من menu إلى close
+        if (mobileSidebar.classList.contains('mobile-menu-open')) {
+            menuIcon.innerText = 'close';
+            document.body.style.overflow = 'hidden'; // منع التمرير خلف القائمة
+        } else {
+            menuIcon.innerText = 'menu';
+            document.body.style.overflow = ''; // إعادة التمرير
+        }
+    });
+}
+
+// إغلاق القائمة عند الضغط على أي رابط بداخلها
+document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileSidebar.classList.add('translate-x-full');
+        mobileSidebar.classList.remove('mobile-menu-open');
+        menuIcon.innerText = 'menu';
+        document.body.style.overflow = '';
+    });
 });
-
-// إغلاق القائمة
-const closeMenu = () => {
-    mobileMenu.classList.add('translate-x-full');
-};
-
-closeMenuButton.addEventListener('click', closeMenu);
-
-// إغلاق القائمة عند الضغط على أي رابط
-navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
-});
-
-// تعديل بسيط لسكربت الـ Scroll ليعمل بشكل أفضل مع الهواتف
-window.onscroll = function() {
-    const nav = document.getElementById('navbar');
-    if (window.pageYOffset > 20) {
-        nav.classList.add('nav-scrolled', 'py-2');
-        nav.classList.remove('py-4');
-    } else {
-        nav.classList.remove('nav-scrolled', 'py-2');
-        nav.classList.add('py-4');
-    }
-};
-
-    </script>
-
+</script>
 </body></html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unified Vision &amp; Values | Shlash Al-Sulaiman</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#cfa44f", // Gold
+                        "secondary": "#800000", // Maroon
+                        "background-light": "#ffffff",
+                        "background-dark": "#1f1b13",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+      
+        .value-card {
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px -5px rgba(207, 164, 79, 0.3);
+        }
+        /* تأثير البطاقات المتقلبة 3D */
+        .flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            position: absolute;
+            inset: 0;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        
+    </style>
+    <style>
+        /* تأثير التمرير للـ Navbar */
+        @layer utilities {
+            /* تأثير تغير لون الناف بار عند السكرول */
+            .nav-scrolled { 
+                background-color: #800000 !important; /* اللون الماروني */
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+                padding-top: 0.6rem !important;
+                padding-bottom: 0.6rem !important;
+            }
+
+            /* تأثير اللمعان (Shimmer) لزر الـ PDF */
+            .shimmer-effect { 
+                @apply relative overflow-hidden; 
+            }
+            .shimmer-effect::after {
+                content: '';
+                @apply absolute top-0 -left-[75%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] pointer-events-none;
+                animation: shimmer 3s infinite;
+            }
+
+            /* التحكم في حركة قائمة الموبايل الجانبية */
+            #mobile-sidebar {
+                transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                will-change: transform;
+            }
+
+            /* الكلاس الذي يظهر القائمة عند الضغط على الزر */
+            .mobile-menu-open {
+                transform: translateX(0) !important;
+            }
+        }
+</style>
+        
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-secondary">
+<!-- Top Navigation -->
+
+{% comment %} <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-secondary/10 px-6 md:px-20 py-4">
+
+
+
+
+</header> {% endcomment %}
+
+ <nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
+    <div class="flex items-center gap-3">
+        <div class="bg-white p-1 rounded">
+            <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
+        </div>
+        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">Shlash Al-Sulaiman</span>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
+        <a class="hover:text-primary transition-colors" href="{% url 'home' %}">Home</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'about' %}">About</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'courses' %}">Courses</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'projects' %}">Projects</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'machine' %}">Machine</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'vision' %}">Vision </a>
+        <a class="hover:text-primary transition-colors" href="{% url 'contact' %}">Contact Us</a>
+    </div>
+
+    <div class="flex items-center gap-2 md:gap-4">
+        <button class="shimmer-effect hidden lg:flex items-center gap-2 bg-primary hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
+            <span class="material-symbols-outlined text-sm">download</span> Profile PDF
+        </button>
+        
+        <button class="p-2 rounded-full hover:bg-white/10 transition-colors" id="theme-toggle">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+
+        <button class="md:hidden p-2 text-white" id="mobile-menu-btn">
+            <span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
+        </button>
+    </div>
+
+    <div class="fixed inset-0 bg-secondary/95 backdrop-blur-lg z-[-1] flex flex-col items-center justify-center space-y-8 text-2xl font-bold uppercase tracking-widest transition-all duration-500 translate-x-full md:hidden" id="mobile-sidebar">
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'home' %}">Home</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'about' %}">About</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'courses' %}">Courses</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'projects' %}">Projects</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'machine' %}">Machine</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'vision' %}">Vision </a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'contact' %}">Contact Us</a>
+        <button class="bg-primary text-white px-8 py-3 rounded-full text-lg font-bold">PDF Profile</button>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-6 pt-32 py-12">
+<!-- Hero Section -->
+<section class="mb-20">
+<div class="relative h-[400px] w-full rounded-xl overflow-hidden mb-12 shadow-2xl">
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent z-10"></div>
+<img alt="Corporate skyscraper reflecting modern vision" class="w-full h-full object-cover" data-alt="Modern architectural glass building reflecting the blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXDHPnSs4X9n6pj0La5AMCDQij34lY5x4It9ZJ83Qhdet2-NNLXZZq5JbMoSEot_cis2fU-YvPYw4P5e96KJYG0DBQrdsZhyINgHsUcvOcWN-CFTcsaAw6kMTEn5cBmbsycXwVRyikJe_HCYVNNL5RmE6t08dy973Jz4Ime4NX6mueIjPuZBqzN6liD4sb5DkPBxqGF21-6Bu8DF5DQekjXUljt14BU7htKpXEyMLtUD10waF_XmLB077sCNHvEIRthh6SzKFy-PI"/>
+<div class="absolute bottom-10 left-10 z-20">
+<h2 class="text-white text-5xl font-bold mb-2">Unified Vision &amp; Values</h2>
+<p class="text-primary font-medium text-lg">Architecting the future through excellence and integrity</p>
+</div>
+</div>
+</section>
+<!-- Vision & Mission Grid -->
+
+<section class="grid md:grid-cols-2 gap-16 mb-24 items-start">
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-4xl">visibility</span>
+<h2 class="text-primary text-4xl font-bold tracking-tight">Our Vision</h2>
+</div>
+<div class="h-1 w-20 bg-primary rounded-full"></div>
+<p class="text-secondary text-lg leading-relaxed font-light italic border-l-4 border-primary/20 pl-6">
+                    To be the leading force in the trading and contracting industry, setting benchmarks for quality, innovation, and sustainable growth across the region. We aspire to transform urban landscapes through engineering excellence.
+                </p>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-4xl">rocket_launch</span>
+<h2 class="text-primary text-4xl font-bold tracking-tight">Our Mission</h2>
+</div>
+<div class="h-1 w-20 bg-primary rounded-full"></div>
+<p class="text-secondary text-lg leading-relaxed">
+                    Our mission is to deliver superior construction and trading services by employing state-of-the-art technologies and maintaining the highest safety standards. We are dedicated to building long-term relationships based on transparency, reliability, and unparalleled value.
+                </p>
+</div>
+</section>
+
+<!-- Values Section (3D Flip Cards) -->
+<section class="py-24 px-6 md:px-20 bg-background-light dark:bg-background-dark">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-display font-bold mb-4">Core Values</h2>
+<p class="text-accent tracking-widest font-bold uppercase text-sm">The pillars of our organization</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Value 1: Team Spirit -->
+<div class="flip-card h-64 w-full">
+<div class="flip-card-inner relative w-full h-full text-center">
+<div class="flip-card-front absolute inset-0 bg-primary rounded-xl flex flex-col items-center justify-center p-6 text-white shadow-xl border border-accent/20">
+<span class="material-symbols-outlined text-5xl mb-4 text-accent">diversity_3</span>
+<h3 class="text-xl font-bold font-display">Team Spirit</h3>
+</div>
+<div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
+<h3 class="text-xl font-bold mb-4 font-display">Team Spirit</h3>
+<p class="text-sm font-medium leading-relaxed">Working together across boundaries to meet the needs of our customers and to help our company win.</p>
+</div>
+</div>
+</div>
+<!-- Value 2: Excellence -->
+<div class="flip-card h-64 w-full">
+<div class="flip-card-inner relative w-full h-full text-center">
+<div class="flip-card-front absolute inset-0 bg-primary rounded-xl flex flex-col items-center justify-center p-6 text-white shadow-xl border border-accent/20">
+<span class="material-symbols-outlined text-5xl mb-4 text-accent">workspace_premium</span>
+<h3 class="text-xl font-bold font-display">Excellence</h3>
+</div>
+<div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
+<h3 class="text-xl font-bold mb-4 font-display">Excellence</h3>
+<p class="text-sm font-medium leading-relaxed">Delivering what we promise and adding value that goes beyond what is expected.</p>
+</div>
+</div>
+</div>
+<!-- Value 3: Resilience -->
+<div class="flip-card h-64 w-full">
+<div class="flip-card-inner relative w-full h-full text-center">
+<div class="flip-card-front absolute inset-0 bg-primary rounded-xl flex flex-col items-center justify-center p-6 text-white shadow-xl border border-accent/20">
+<span class="material-symbols-outlined text-5xl mb-4 text-accent">fitness_center</span>
+<h3 class="text-xl font-bold font-display">Resilience</h3>
+</div>
+<div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
+<h3 class="text-xl font-bold mb-4 font-display">Resilience</h3>
+<p class="text-sm font-medium leading-relaxed">Adapting to changing environments while maintaining our focus on core objectives.</p>
+</div>
+</div>
+</div>
+<!-- Value 4: Commitment -->
+<div class="flip-card h-64 w-full">
+<div class="flip-card-inner relative w-full h-full text-center">
+<div class="flip-card-front absolute inset-0 bg-primary rounded-xl flex flex-col items-center justify-center p-6 text-white shadow-xl border border-accent/20">
+<span class="material-symbols-outlined text-5xl mb-4 text-accent">task_alt</span>
+<h3 class="text-xl font-bold font-display">Commitment</h3>
+</div>
+<div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
+<h3 class="text-xl font-bold mb-4 font-display">Commitment</h3>
+<p class="text-sm font-medium leading-relaxed">Dedicated to the success of our projects, clients, and people.</p>
+</div>
+</div>
+</div>
+<!-- Value 5: Innovation -->
+<div class="flip-card h-64 w-full">
+<div class="flip-card-inner relative w-full h-full text-center">
+<div class="flip-card-front absolute inset-0 bg-primary rounded-xl flex flex-col items-center justify-center p-6 text-white shadow-xl border border-accent/20">
+<span class="material-symbols-outlined text-5xl mb-4 text-accent">lightbulb</span>
+<h3 class="text-xl font-bold font-display">Innovation</h3>
+</div>
+<div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
+<h3 class="text-xl font-bold mb-4 font-display">Innovation</h3>
+<p class="text-sm font-medium leading-relaxed">Finding new and better ways to solve problems and serve our clients.</p>
+</div>
+</div>
+</div>
+<!-- Value 6: Integrity -->
+<div class="flip-card h-64 w-full">
+<div class="flip-card-inner relative w-full h-full text-center">
+<div class="flip-card-front absolute inset-0 bg-primary rounded-xl flex flex-col items-center justify-center p-6 text-white shadow-xl border border-accent/20">
+<span class="material-symbols-outlined text-5xl mb-4 text-accent">verified_user</span>
+<h3 class="text-xl font-bold font-display">Integrity</h3>
+</div>
+<div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
+<h3 class="text-xl font-bold mb-4 font-display">Integrity</h3>
+<p class="text-sm font-medium leading-relaxed">We act with honesty and maintain the highest ethical standards in all we do.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- Strategic Goals CTA -->
+<section class="bg-secondary text-white rounded-2xl p-12 overflow-hidden relative">
+<div class="absolute right-0 top-0 h-full w-1/3 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[300px] leading-none select-none">architecture</span>
+</div>
+<div class="relative z-10">
+<h2 class="text-primary text-3xl font-bold mb-6">Ready to build your future?</h2>
+<p class="text-slate-200 max-w-xl mb-8">
+                    Discover how our vision and values translate into high-quality infrastructure and trading solutions tailored for your growth.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg">
+                        View Our Projects
+                    </button>
+<button class="border border-primary text-primary hover:bg-primary/10 font-bold py-3 px-8 rounded-lg transition-all">
+                        Contact Us
+                    </button>
+</div>
+</div>
+</section>
+
+
+
+</main>
+<!-- Simple Footer -->
+<footer class="bg-white border-t border-secondary/10 py-12 px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">architecture</span>
+<div class="text-secondary font-bold">Shlash Al-Sulaiman</div>
+</div>
+<div class="text-secondary/60 text-sm">
+                © 2024 Shlash Al-Sulaiman Trading and Contracting. All rights reserved.
+            </div>
+<div class="flex gap-4">
+<a class="text-secondary/40 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-secondary/40 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+<a class="text-secondary/40 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">call</span></a>
+</div>
+</div>
+</footer>
+</body>
+
+
+<script>
+    // 1. مراقبة التمرير لتغيير خلفية الـ Navbar
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+        }
+    });
+
+    // 2. التحكم في تبديل الوضع الليلي (Dark Mode) وتغيير الأيقونة
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            themeToggle.innerHTML = '<span class="material-symbols-outlined">dark_mode</span>';
+        } else {
+            html.classList.add('dark');
+            themeToggle.innerHTML = '<span class="material-symbols-outlined">light_mode</span>';
+        }
+    });
+
+    // 3. التحكم في قائمة الموبايل (فتح/إغلاق وتغيير الأيقونة)
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileSidebar = document.getElementById('mobile-sidebar');
+    const menuIcon = document.getElementById('menu-icon');
+
+    if (mobileMenuBtn && mobileSidebar) {
+        mobileMenuBtn.addEventListener('click', () => {
+            // تبديل حالة القائمة
+            mobileSidebar.classList.toggle('translate-x-full');
+            mobileSidebar.classList.toggle('mobile-menu-open');
+            
+            // تغيير أيقونة القائمة ومنع التمرير عند الفتح
+            if (mobileSidebar.classList.contains('mobile-menu-open')) {
+                menuIcon.innerText = 'close';
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                menuIcon.innerText = 'menu';
+                document.body.style.overflow = ''; 
+            }
+        });
+    }
+
+    // 4. إغلاق القائمة تلقائياً عند النقر على أي رابط بداخلها
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileSidebar.classList.add('translate-x-full');
+            mobileSidebar.classList.remove('mobile-menu-open');
+            menuIcon.innerText = 'menu';
+            document.body.style.overflow = '';
+        });
+    });
+</script>
+</html>

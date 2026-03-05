@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#C5A059", // Gold as requested
+                        "maroon": "#800000", // Maroon as requested
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#211c11",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .maroon-wave {
+            background-color: #800000;
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23800000' fill-opacity='1' d='M0,192L48,176C96,160,192,128,288,128C384,128,480,160,576,186.7C672,213,768,235,864,213.3C960,192,1056,128,1152,117.3C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            mask-repeat: no-repeat;
+            mask-size: cover;
+        }
+    </style>
+<style>
+        /* تأثير التمرير للـ Navbar */
+        @layer utilities {
+            /* تأثير تغير لون الناف بار عند السكرول */
+            .nav-scrolled { 
+                background-color: #800000 !important; /* اللون الماروني */
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+                padding-top: 0.6rem !important;
+                padding-bottom: 0.6rem !important;
+            }
+
+            /* تأثير اللمعان (Shimmer) لزر الـ PDF */
+            .shimmer-effect { 
+                @apply relative overflow-hidden; 
+            }
+            .shimmer-effect::after {
+                content: '';
+                @apply absolute top-0 -left-[75%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] pointer-events-none;
+                animation: shimmer 3s infinite;
+            }
+
+            /* التحكم في حركة قائمة الموبايل الجانبية */
+            #mobile-sidebar {
+                transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                will-change: transform;
+            }
+
+            /* الكلاس الذي يظهر القائمة عند الضغط على الزر */
+            .mobile-menu-open {
+                transform: translateX(0) !important;
+            }
+        }
+</style>
+
+
+</head>
+<body class="bg-background-light font-display text-slate-900">
+<div class="relative flex h-auto min-screen w-full flex-col bg-white">
+<!-- Top Navigation -->
+
+<nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
+    <div class="flex items-center gap-3">
+        <div class="bg-white p-1 rounded">
+            <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
+        </div>
+        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">Shlash Al-Sulaiman</span>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
+        <a class="hover:text-primary transition-colors" href="{% url 'home' %}">Home</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'about' %}">About</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'courses' %}">Courses</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'projects' %}">Projects</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'machine' %}">Machine</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'vision' %}">Vision </a>
+        <a class="hover:text-primary transition-colors" href="{% url 'contact' %}">Contact Us</a>
+    </div>
+
+    <div class="flex items-center gap-2 md:gap-4">
+        <button class="shimmer-effect hidden lg:flex items-center gap-2 bg-primary hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
+            <span class="material-symbols-outlined text-sm">download</span> Profile PDF
+        </button>
+        
+        <button class="p-2 rounded-full hover:bg-white/10 transition-colors" id="theme-toggle">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+
+        <button class="md:hidden p-2 text-white" id="mobile-menu-btn">
+            <span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
+        </button>
+    </div>
+
+    <div class="fixed inset-0 bg-maroon/95 backdrop-blur-lg z-[-1] flex flex-col items-center justify-center space-y-8 text-2xl font-bold uppercase tracking-widest transition-all duration-500 translate-x-full md:hidden" id="mobile-sidebar">
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'home' %}">Home</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'about' %}">About</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'courses' %}">Courses</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'projects' %}">Projects</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'machine' %}">Machine</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'vision' %}">Vision </a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'contact' %}">Contact Us</a>
+        <button class="bg-primary text-white px-8 py-3 rounded-full text-lg font-bold">PDF Profile</button>
+    </div>
+</nav>
+
+
+<main class="flex-1">
+<!-- Hero Section -->
+<div class="max-w-7xl mx-auto px-10 py-16">
+<div class="flex flex-col gap-4 text-center mb-16">
+<h1 class="text-maroon text-5xl font-black tracking-tight">Contact Us</h1>
+<p class="text-slate-500 text-lg max-w-2xl mx-auto">Connecting vision with reality. Reach out to Shlash Al-Sulaiman Trading and Contracting for world-class construction solutions.</p>
+</div>
+<!-- Contact Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+<div class="flex flex-col items-center p-8 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="size-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+</div>
+<h3 class="text-primary text-xl font-bold mb-2">Our Address</h3>
+<p class="text-slate-600 text-center leading-relaxed">Olaya Street, Business District<br/>Riyadh, Saudi Arabia</p>
+</div>
+<div class="flex flex-col items-center p-8 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="size-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">phone_in_talk</span>
+</div>
+<h3 class="text-primary text-xl font-bold mb-2">Phone Number</h3>
+<p class="text-slate-600 text-center leading-relaxed">+966 11 456 7890<br/>Sun-Thu: 8am - 5pm</p>
+</div>
+<div class="flex flex-col items-center p-8 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="size-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">mail</span>
+</div>
+<h3 class="text-primary text-xl font-bold mb-2">Email Address</h3>
+<p class="text-slate-600 text-center leading-relaxed">info@shlashalsulaiman.com<br/>support@shlashalsulaiman.com</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+<!-- Contact Form -->
+<div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+<h2 class="text-maroon text-2xl font-bold mb-8">Send an Inquiry</h2>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 text-sm font-semibold">First Name</label>
+<input class="w-full rounded-lg border-maroon focus:ring-maroon focus:border-maroon p-3 text-slate-900 bg-white" placeholder="John" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 text-sm font-semibold">Last Name</label>
+<input class="w-full rounded-lg border-maroon focus:ring-maroon focus:border-maroon p-3 text-slate-900 bg-white" placeholder="Doe" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 text-sm font-semibold">Email Address</label>
+<input class="w-full rounded-lg border-maroon focus:ring-maroon focus:border-maroon p-3 text-slate-900 bg-white" placeholder="john@company.com" type="email"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 text-sm font-semibold">Subject</label>
+<select class="w-full rounded-lg border-maroon focus:ring-maroon focus:border-maroon p-3 text-slate-900 bg-white">
+<option>General Inquiry</option>
+<option>Project Proposal</option>
+<option>Contracting Services</option>
+<option>Careers</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 text-sm font-semibold">Message</label>
+<textarea class="w-full rounded-lg border-maroon focus:ring-maroon focus:border-maroon p-3 text-slate-900 bg-white" placeholder="How can we help you?" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-xl transition-all relative overflow-hidden group" type="submit">
+<span class="relative z-10">Submit Inquiry</span>
+<div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out skew-x-12"></div>
+</button>
+</form>
+</div>
+<!-- Map Section -->
+<div class="h-full min-h-[500px] flex flex-col gap-6">
+<div class="relative w-full h-full rounded-2xl overflow-hidden border border-slate-100 shadow-sm min-h-[500px]">
+<div class="absolute inset-0 bg-slate-200" data-location="Riyadh, Saudi Arabia" style="">
+<img class="w-full h-full object-cover grayscale opacity-50" data-alt="Modern satellite map view of Riyadh city center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRQyNJ63oT6hRh8Wup0bhqREhil2khnAcVHnoBv9oqdgkvsxKOT66dvLkgbf1YDIzsF6GBrDYhQHIOQpSCFumkOkGvuJdPkNybVl5SoJR9Y5jaDtpxj4FIcIUdf_TZhw8rB9QSShcIViA75WhEMRQYPla6LWqecTH9fUtiLQYczIfVDEQryJqb1XDL3CV7i-wHd6-Sf7l_WAw3UvdgkZJ8JfSaP-EoXbwDkoWKtOnyc9ZJTiG6e_FLCMmm0fCjNMqGs5XbiPzeSzU"/>
+</div>
+<!-- Custom Gold Pin -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="size-10 bg-primary rounded-full flex items-center justify-center border-4 border-white shadow-xl">
+<span class="material-symbols-outlined text-white text-xl">corporate_fare</span>
+</div>
+<div class="w-0.5 h-6 bg-primary"></div>
+<div class="bg-white px-3 py-1 rounded shadow-md border border-slate-100 text-xs font-bold text-maroon whitespace-nowrap">
+                                Shlash Al-Sulaiman HQ
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer with Wavy Design -->
+<footer class="relative mt-20">
+<div class="h-32 w-full bg-maroon maroon-wave"></div>
+<div class="bg-maroon pb-12 pt-4 px-10">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-2">
+<div class="flex items-center gap-3 mb-6 text-white">
+<span class="material-symbols-outlined text-4xl">architecture</span>
+<h2 class="text-2xl font-bold">Shlash Al-Sulaiman</h2>
+</div>
+<p class="text-white/70 max-w-sm mb-6">Leading the way in innovative contracting and sustainable trading solutions across the Kingdom of Saudi Arabia since 1998.</p>
+<div class="flex gap-4">
+<a class="size-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-maroon transition-all" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="size-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-maroon transition-all" href="#">
+<span class="material-symbols-outlined">language</span>
+</a>
+<a class="size-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-maroon transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-primary font-bold mb-6">Quick Links</h4>
+<ul class="flex flex-col gap-4">
+<li><a class="text-white/70 hover:text-white text-sm transition-colors" href="#">Our Projects</a></li>
+<li><a class="text-white/70 hover:text-white text-sm transition-colors" href="#">Service Overview</a></li>
+<li><a class="text-white/70 hover:text-white text-sm transition-colors" href="#">Quality Policy</a></li>
+<li><a class="text-white/70 hover:text-white text-sm transition-colors" href="#">Safety Standards</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-primary font-bold mb-6">Contact Info</h4>
+<ul class="flex flex-col gap-4 text-sm text-white/70">
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Riyadh, KSA</span>
+</li>
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-sm">phone</span>
+<span>+966 11 000 0000</span>
+</li>
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-sm">mail</span>
+<span>info@shlash.com</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto border-t border-white/10 mt-12 pt-8 text-center text-white/50 text-xs">
+                © 2024 Shlash Al-Sulaiman Trading and Contracting. All rights reserved.
+            </div>
+</div>
+</footer>
+</div>
+</body>
+
+<script>
+    // 1. مراقبة التمرير لتغيير خلفية الـ Navbar
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+        }
+    });
+
+    // 2. التحكم في تبديل الوضع الليلي (Dark Mode) وتغيير الأيقونة
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            themeToggle.innerHTML = '<span class="material-symbols-outlined">dark_mode</span>';
+        } else {
+            html.classList.add('dark');
+            themeToggle.innerHTML = '<span class="material-symbols-outlined">light_mode</span>';
+        }
+    });
+
+    // 3. التحكم في قائمة الموبايل (فتح/إغلاق وتغيير الأيقونة)
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileSidebar = document.getElementById('mobile-sidebar');
+    const menuIcon = document.getElementById('menu-icon');
+
+    if (mobileMenuBtn && mobileSidebar) {
+        mobileMenuBtn.addEventListener('click', () => {
+            // تبديل حالة القائمة
+            mobileSidebar.classList.toggle('translate-x-full');
+            mobileSidebar.classList.toggle('mobile-menu-open');
+            
+            // تغيير أيقونة القائمة ومنع التمرير عند الفتح
+            if (mobileSidebar.classList.contains('mobile-menu-open')) {
+                menuIcon.innerText = 'close';
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                menuIcon.innerText = 'menu';
+                document.body.style.overflow = ''; 
+            }
+        });
+    }
+
+    // 4. إغلاق القائمة تلقائياً عند النقر على أي رابط بداخلها
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileSidebar.classList.add('translate-x-full');
+            mobileSidebar.classList.remove('mobile-menu-open');
+            menuIcon.innerText = 'menu';
+            document.body.style.overflow = '';
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unified Fleet &amp; Trading Gallery | Shlash Al-Sulaiman</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#800000",   // اللون البرغندي لخلفية الناف بار عند السكرول والقائمة الجانبية
+                            secondary: "#C5A059", // اللون الذهبي للأزرار والروابط عند تمرير الماوس
+                            
+                             
+                        },
+                        fontFamily: {
+                            display: ["Montserrat", "Cairo", "sans-serif"],
+                            body: ["Montserrat", "Cairo", "sans-serif"],
+                        },
+
+                        
+                        keyframes: {
+                            // تأثير حركة اللمعان لزر الـ PDF
+                            shimmer: {
+                                '100%': { left: '125%' },
+                            }
+                        },
+                        animation: {
+                            // تشغيل حركة اللمعان بشكل مستمر
+                            shimmer: 'shimmer 2.5s infinite',
+                        }
+                    },
+                },
+            };
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .gold-glow:hover { box-shadow: 0 0 20px rgba(197, 159, 89, 0.4); border-color: #c59f59; }
+
+        @layer utilities {
+            /* تأثير تغير لون الناف بار عند السكرول */
+            .nav-scrolled { 
+                @apply bg-primary shadow-lg py-2; 
+            }
+
+            /* تأثير اللمعان (Shimmer) لزر الـ PDF */
+            .shimmer-effect { 
+                @apply relative overflow-hidden; 
+            }
+            .shimmer-effect::after {
+                content: '';
+                @apply absolute top-0 -left-[75%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] pointer-events-none;
+                animation: shimmer 3s infinite;
+            }
+
+            /* التحكم في حركة قائمة الموبايل الجانبية */
+            #mobile-sidebar {
+                transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                will-change: transform;
+            }
+
+            /* الكلاس الذي يظهر القائمة عند الضغط على الزر */
+            .mobile-menu-open {
+                transform: translateX(0) !important;
+            }
+        }
+
+    </style>
+    <style>
+    /* أضف هذا لضمان ظهور الناف بار عند السكرول */
+    .nav-scrolled {
+        background-color: #800000 !important; /* Maroon color */
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* لضمان رؤية النص إذا كانت خلفية الصفحة بيضاء في البداية */
+    #navbar:not(.nav-scrolled) {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
+    }
+    
+    /* بقية تنسيقاتك */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    /* ... */
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen flex-col">
+
+    
+<nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
+    <div class="flex items-center gap-3">
+        <div class="bg-white p-1 rounded">
+            <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
+        </div>
+        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">Shlash Al-Sulaiman</span>
+    </div>
+
+    <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
+        <a class="hover:text-secondary transition-colors" href="{% url 'home' %}">Home</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'about' %}">About</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'courses' %}">Courses</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'projects' %}">Projects</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'machine' %}">Machine</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'vision' %}">Vision </a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'contact' %}">Contact Us</a>
+    </div>
+
+    <div class="flex items-center gap-2 md:gap-4">
+        <button class="shimmer-effect hidden lg:flex items-center gap-2 bg-secondary hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
+            <span class="material-symbols-outlined text-sm">download</span> Profile PDF
+        </button>
+        
+        <button class="p-2 rounded-full hover:bg-white/10 transition-colors" id="theme-toggle">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+
+        <button class="md:hidden p-2 text-white" id="mobile-menu-btn">
+            <span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
+        </button>
+    </div>
+
+    <div class="fixed inset-0 bg-primary/95 backdrop-blur-lg z-[-1] flex flex-col items-center justify-center space-y-8 text-2xl font-bold uppercase tracking-widest transition-all duration-500 translate-x-full md:hidden" id="mobile-sidebar">
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'home' %}">Home</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'about' %}">About</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'courses' %}">Courses</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'projects' %}">Projects</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'machine' %}">Machine</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'vision' %}">Vision </a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'contact' %}">Contact Us</a>
+        <button class="bg-secondary text-white px-8 py-3 rounded-full text-lg font-bold">PDF Profile</button>
+    </div>
+</nav>
+
+
+
+
+
+
+<main class="flex-1">
+<!-- Hero Section -->
+<section class="px-6 lg:px-20 py-12 lg:py-20 bg-slate-50 dark:bg-slate-900/50">
+<div class="mx-auto max-w-7xl">
+<div class="max-w-3xl">
+<span class="inline-block rounded-full bg-accent/10 px-4 py-1 text-xs font-bold uppercase tracking-wider text-accent mb-4">Unified Fleet &amp; Trading Gallery</span>
+<h2 class="text-4xl lg:text-6xl font-black leading-tight text-slate-900 dark:text-white mb-6">
+                            Precision Machinery for <span class="text-primary">Industrial Excellence.</span>
+</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                            A comprehensive fleet of heavy equipment and specialized supply services including fuel, chemicals, and specialized tankers for oil rig operations.
+                        </p>
+<div class="flex flex-wrap gap-4">
+<button class="flex items-center gap-2 rounded-lg bg-accent px-8 py-3 text-sm font-bold text-white hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">download</span>
+                                Download Catalog
+                            </button>
+<button class="flex items-center gap-2 rounded-lg border-2 border-slate-200 px-8 py-3 text-sm font-bold hover:bg-slate-50 dark:border-slate-700">
+                                View Services
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Horizontal Category Scroll -->
+<section class="border-y border-slate-100 dark:border-slate-800 bg-white dark:bg-background-dark overflow-hidden">
+<div class="mx-auto max-w-7xl px-6 lg:px-20">
+<div class="flex items-center gap-8 overflow-x-auto no-scrollbar py-6">
+<button class="whitespace-nowrap rounded-full bg-primary px-6 py-2 text-sm font-bold text-white">All Equipment</button>
+</div>
+</div>
+</section>
+<!-- Fleet Gallery Grid -->
+<section class="px-6 lg:px-20 py-16">
+<div class="mx-auto max-w-7xl">
+<div class="flex items-end justify-between mb-12">
+<div>
+<h3 class="text-2xl font-bold text-primary">Heavy Machinery Fleet</h3>
+<div class="h-1 w-20 bg-accent mt-2"></div>
+</div>
+<p class="text-sm font-medium text-slate-400 uppercase tracking-widest">32 Units Available</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Machinery Card 1 -->
+<div class="group relative flex flex-col rounded-xl border border-slate-100 bg-white p-4 transition-all gold-glow dark:border-slate-800 dark:bg-slate-900 shadow-sm">
+<div class="relative mb-4 aspect-video overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Yellow hydraulic excavator working at construction site" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJrJyGLrS6wbhP8hcrWst-QN1OXwZml1hfYADI1ScnywOjPwMvypgbYkK0tvnly77P6p6d3uYabgkhTh1aDcW4GeT46rHSNEGkH9440uFVufcblSI2oiKRdVBFhcdj-irVur7_C1-LMDDRwvZIfDxU5XXqo6RIRL2Nt1DI4dXlrAFbXvKipdqqQImhTO4Y4qzB0-9msu0y7mSkgJD26HOl-H7XLoJy7wqkPR39xozdNxP7XeQqgShMCBC_1C-ZUjkb-RBi_v8IBpU"/>
+<div class="absolute right-2 top-2 rounded bg-accent px-2 py-1 text-[10px] font-bold text-white uppercase">In Stock</div>
+</div>
+<h4 class="text-xl font-bold text-primary mb-2">CAT 336 Hydraulic Excavator</h4>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">36 TON CAPACITY</span>
+<span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">POWER: 234KW</span>
+</div>
+<p class="text-sm text-slate-500 mb-6 line-clamp-2">High-performance excavation unit designed for massive earthmoving projects and mining applications.</p>
+<button class="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 py-3 text-sm font-bold text-slate-900 group-hover:bg-primary group-hover:text-white transition-all">
+                                Technical Specs
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Machinery Card 2 -->
+<div class="group relative flex flex-col rounded-xl border border-slate-100 bg-white p-4 transition-all gold-glow dark:border-slate-800 dark:bg-slate-900 shadow-sm">
+<div class="relative mb-4 aspect-video overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Heavy duty wheel loader in industrial setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1EIDdYg_FCuyFWn6A-jPZjyF13ufTjBWNXnfMuBFlHojH4adBjW_DTNKKoRpwPL6qxQJZADZDtcEW7Axpm53Toj_H1-Gti5hEyPuH1OMn_Pjg3C0uwOZ6rgmcJu5TRyUA5-Zqbc6L9kH0_eT1iZQBmQphmgyn-5VOUWVNugKwpgzy7MHd1_sXVQl-6sVFV6q31PfCcr1zqrgSVW83ZhpEjMlyA9hrLKXqEfrCjbXTQfaj4RHt6FRwAsZgGos1_Nu8yklhHO34Cn8"/>
+<div class="absolute right-2 top-2 rounded bg-accent px-2 py-1 text-[10px] font-bold text-white uppercase">In Stock</div>
+</div>
+<h4 class="text-xl font-bold text-primary mb-2">Komatsu WA500 Wheel Loader</h4>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">BUCKET: 5.6 m³</span>
+<span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">25 TON PAYLOAD</span>
+</div>
+<p class="text-sm text-slate-500 mb-6 line-clamp-2">Optimized for rapid loading and transport of industrial aggregates with superior fuel efficiency.</p>
+<button class="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 py-3 text-sm font-bold text-slate-900 group-hover:bg-primary group-hover:text-white transition-all">
+                                Technical Specs
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Machinery Card 3 -->
+<div class="group relative flex flex-col rounded-xl border border-slate-100 bg-white p-4 transition-all gold-glow dark:border-slate-800 dark:bg-slate-900 shadow-sm">
+<div class="relative mb-4 aspect-video overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern white heavy duty truck on road" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGy212bGlce5cK4lZdZOEoagjqW6vDr_nLt7wfLXv5Rroqvtdb7ykGll9-zJ-wRfKIXozWQwfuRO2CoLF-PAhw2ABbmHPsMyY14ndZ0tQqbZtnR9N7ysmPOV5KIik-mSQyKl_PHD5I6Q0fzWzdxtNbB0pHd1A9EhydPVXiu4gj-a-o_ZiCbL0wJxXzs8f6aQTLaG0r4jL3WevQ2yZHOJl5OdBNv3_o0nhcPmPakt8UT7LgAW2po2Llob6W-nC6hYGfsO9_t_8j-vc"/>
+<div class="absolute right-2 top-2 rounded bg-accent px-2 py-1 text-[10px] font-bold text-white uppercase">Available</div>
+</div>
+<h4 class="text-xl font-bold text-primary mb-2">Mercedes Actros 6x4 Dump Truck</h4>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">EURO 5 ENGINE</span>
+<span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">32 CBM CAPACITY</span>
+</div>
+<p class="text-sm text-slate-500 mb-6 line-clamp-2">Reliable heavy-duty transport solution for long-distance logistics and construction site hauling.</p>
+<button class="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 py-3 text-sm font-bold text-slate-900 group-hover:bg-primary group-hover:text-white transition-all">
+                                Technical Specs
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Specialized Services Section -->
+<div class="mt-20">
+<div class="flex items-end justify-between mb-12">
+<div>
+<h3 class="text-2xl font-bold text-primary uppercase tracking-tighter">Specialized Fleet &amp; Trading</h3>
+<div class="h-1 w-20 bg-accent mt-2"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Oil Rig Service Card -->
+<div class="flex overflow-hidden rounded-xl border border-slate-100 bg-white dark:border-slate-800 dark:bg-slate-900 shadow-sm transition-all gold-glow group">
+<div class="w-1/3 overflow-hidden">
+<img class="h-full w-full object-cover transition-transform group-hover:scale-105" data-alt="Industrial water tanker truck for oil field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKUbSmNpoGboBxQirkMZZS0fPl7sMXmrqGJIYWmxNIDUcRpNc5G7rkUgAmCqxFAsO0LBufKVqDD7ZTD_91pgjP-yy3pRL2rJcegr1DwsZEMLemQCMjDH8X-2gHKsh-dNMW_gZMbqT1rXog3rw93yMPD65zipz-2GuUG_tOoEIZHm5JKanfb1_T5xTf8RqbT63dvnOGPSoZKhrGT18FhanPuOHlQ_Mj0_cosc2bsjoQrDVWXHi-jqApczvjnjHTygVMQH2TnAZH1M"/>
+</div>
+<div class="flex flex-1 flex-col p-6">
+<div class="mb-2 text-xs font-bold text-accent uppercase">Oil &amp; Gas Support</div>
+<h4 class="text-xl font-bold text-primary mb-3">Oil Rig Water Tanker Fleet</h4>
+<p class="text-sm text-slate-500 mb-4">Dedicated potable and industrial water supply services specifically configured for remote oil rig sites.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-xs font-bold text-slate-400">24/7 Logistics Support</span>
+<button class="text-sm font-bold text-primary flex items-center gap-1">Details <span class="material-symbols-outlined text-sm">arrow_right_alt</span></button>
+</div>
+</div>
+</div>
+<!-- Industrial Supply Card -->
+<div class="flex overflow-hidden rounded-xl border border-slate-100 bg-white dark:border-slate-800 dark:bg-slate-900 shadow-sm transition-all gold-glow group">
+<div class="w-1/3 overflow-hidden">
+<img class="h-full w-full object-cover transition-transform group-hover:scale-105" data-alt="Industrial chemical storage containers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ6g_qUJ6MWqKJG2bi4SLILmtGAhgazNJocjXh9zoJ50NonDJPQaNyeXAmRKshO8il_7VcKTPGZnoHzRqvIdccDYco4Gs5Kh27INe0D6j4Nw5rhlO6dPHc7joSwmnjRJZyQTMSsd8cji4939yQfBylsUh7T8zsn1BQoBJhIkMH_r-EICRbsKNMxT7cNBDm3nMjH6uah0xamCpqYksBtfQgj4SFEmNYPKcVKZ7qHhPQQk-q2eqWBg2UEQP532_YNXcuTd3X9bbJfFE"/>
+</div>
+<div class="flex flex-1 flex-col p-6">
+<div class="mb-2 text-xs font-bold text-accent uppercase">Supply Chain</div>
+<h4 class="text-xl font-bold text-primary mb-3">Fuel &amp; Chemical Trading</h4>
+<p class="text-sm text-slate-500 mb-4">Official supply partner for industrial-grade fuels and specialized chemical compounds for construction.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-xs font-bold text-slate-400">Certified Supply Grade</span>
+<button class="text-sm font-bold text-primary flex items-center gap-1">Inventory <span class="material-symbols-outlined text-sm">arrow_right_alt</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Spec Sheet (Interactive Element Placeholder) -->
+<section class="bg-slate-50 dark:bg-slate-900/50 py-16">
+<div class="mx-auto max-w-5xl px-6">
+<div class="rounded-2xl bg-white p-8 shadow-xl dark:bg-slate-900 border-2 border-primary/20">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="w-full md:w-1/2">
+<div class="rounded-lg bg-slate-100 p-2 dark:bg-slate-800">
+<img class="w-full rounded-md shadow-inner" data-alt="Top view of industrial crane equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIpXiKgXZkznlgq-AVS094bdGPtkJreD-gmVQmbEbi6imiV7eGDwXGksyJwPvdvGWnKT_tj9fMHlhZPmdNCxoo_Fz_UKUythTR1D0FQwh_i55UB680cz94kCohrNb-kGiC9YRoYXZjbwjhfmlHJb_2fe5fvbKBU-QFuLRGwEbiE8PVdXMX8wvbCdjXJAj66dmxfl5G5rKz4oTABWDgpFwH_JwYd-SRH18YHMBdH87MYTHM5Wo3Op_S_cNRHu2YtWxkMT8LCo20d88"/>
+</div>
+</div>
+<div class="w-full md:w-1/2">
+<div class="flex items-center gap-3 mb-4">
+<div class="h-8 w-2 bg-primary"></div>
+<h3 class="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Technical Data Sheet</h3>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between border-b border-slate-100 py-2 dark:border-slate-800">
+<span class="text-sm font-bold text-accent">MODEL IDENTIFICATION</span>
+<span class="text-sm font-medium">SS-740-TRX v.2024</span>
+</div>
+<div class="flex justify-between border-b border-slate-100 py-2 dark:border-slate-800">
+<span class="text-sm font-bold text-accent">ENGINE SPECIFICATION</span>
+<span class="text-sm font-medium">Turbo-Diesel 12.8L</span>
+</div>
+<div class="flex justify-between border-b border-slate-100 py-2 dark:border-slate-800">
+<span class="text-sm font-bold text-accent">MAX OPERATING WEIGHT</span>
+<span class="text-sm font-medium">42,500 KG</span>
+</div>
+<div class="flex justify-between border-b border-slate-100 py-2 dark:border-slate-800">
+<span class="text-sm font-bold text-accent">GRADEABILITY</span>
+<span class="text-sm font-medium">70% (35°)</span>
+</div>
+<div class="flex justify-between border-b border-slate-100 py-2 dark:border-slate-800">
+<span class="text-sm font-bold text-accent">HYDRAULIC PRESSURE</span>
+<span class="text-sm font-medium">35,000 kPa</span>
+</div>
+</div>
+<button class="mt-8 w-full rounded-lg bg-primary py-4 text-center font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-[1.02]">
+                                    Request Technical Quotation
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-900 px-6 lg:px-20 py-12 text-white">
+<div class="mx-auto max-w-7xl">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-4 mb-6">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">construction</span>
+</div>
+<h2 class="text-2xl font-bold">Shlash Al-Sulaiman</h2>
+</div>
+<p class="text-slate-400 max-w-md leading-relaxed mb-6">
+                            Kingdom's leading partner in heavy machinery rental, trading, and contracting services. Providing unified solutions for the industrial sector since 1998.
+                        </p>
+<div class="flex gap-4">
+<a class="h-10 w-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined">language</span>
+</a>
+<a class="h-10 w-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined">mail</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-6">Fleet Categories</h4>
+<ul class="space-y-4 text-sm text-slate-400">
+<li><a class="hover:text-white transition-colors" href="#">Earthmoving Equipment</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Transport &amp; Hauling</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Water &amp; Fuel Tankers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Lifting Solutions</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-primary font-bold uppercase tracking-widest text-xs mb-6">Contact</h4>
+<ul class="space-y-4 text-sm text-slate-400">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+                                Al-Khobar, Saudi Arabia
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">phone</span>
+                                +966 13 888 0000
+                            </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">alternate_email</span>
+                                info@shlash-sulaiman.com
+                            </li>
+</ul>
+</div>
+</div>
+<div class="mt-12 border-t border-slate-800 pt-8 text-center text-xs text-slate-500 uppercase tracking-widest">
+                    © 2024 Shlash Al-Sulaiman Trading and Contracting. All Rights Reserved.
+                </div>
+</div>
+</footer>
+</div>
+
+<script>
+    // 1. مراقبة التمرير لتغيير خلفية الـ Navbar
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+        }
+    });
+
+    // 2. التحكم في تبديل الوضع الليلي (Dark Mode) وتغيير الأيقونة
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            themeToggle.innerHTML = '<span class="material-symbols-outlined">dark_mode</span>';
+        } else {
+            html.classList.add('dark');
+            themeToggle.innerHTML = '<span class="material-symbols-outlined">light_mode</span>';
+        }
+    });
+
+    // 3. التحكم في قائمة الموبايل (فتح/إغلاق وتغيير الأيقونة)
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileSidebar = document.getElementById('mobile-sidebar');
+    const menuIcon = document.getElementById('menu-icon');
+
+    if (mobileMenuBtn && mobileSidebar) {
+        mobileMenuBtn.addEventListener('click', () => {
+            // تبديل حالة القائمة
+            mobileSidebar.classList.toggle('translate-x-full');
+            mobileSidebar.classList.toggle('mobile-menu-open');
+            
+            // تغيير أيقونة القائمة ومنع التمرير عند الفتح
+            if (mobileSidebar.classList.contains('mobile-menu-open')) {
+                menuIcon.innerText = 'close';
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                menuIcon.innerText = 'menu';
+                document.body.style.overflow = ''; 
+            }
+        });
+    }
+
+    // 4. إغلاق القائمة تلقائياً عند النقر على أي رابط بداخلها
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileSidebar.classList.add('translate-x-full');
+            mobileSidebar.classList.remove('mobile-menu-open');
+            menuIcon.innerText = 'menu';
+            document.body.style.overflow = '';
+        });
+    });
+</script>
+
+</body></html>
