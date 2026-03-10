@@ -1,5 +1,8 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-<html class="scroll-smooth" dir="ltr" lang="en"><head>
+<html class="scroll-smooth {% if LANGUAGE_CODE == 'ar' %}lang-ar{% else %}lang-en{% endif %}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}" lang="{{ LANGUAGE_CODE }}">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>About Us - Shalash Al-Sulaiman Trading &amp; Contracting</title>
@@ -18,6 +21,7 @@
                     primary: '#800000',
                     gold: '#C5A059',
                 }
+              
             }
         }
     }
@@ -29,7 +33,34 @@
         --dark: #121212;
         --slate: #475569;
     }
+    .lang-en {
+        font-family: 'Montserrat', 'Cairo', sans-serif;
+    }
+    .lang-ar {
+        font-family: 'Cairo', 'Montserrat', sans-serif;
+    }
+    /* shimmer direction: flip for RTL (Arabic) */
+    .shimmer-effect { position: relative; overflow: hidden; }
+    .shimmer-effect::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transform: skewX(-25deg);
+        animation: shimmer 3s infinite;
+        pointer-events: none;
+    }
+    /* flip shimmer when Arabic (RTL) */
+    .lang-ar .shimmer-effect::after {
+        left: auto;
+        right: -75%;
+        transform: skewX(25deg);
+    }
 
+    
     @layer base {
         body {
             @apply bg-white text-slate-900 font-['Montserrat'] transition-colors duration-300;
@@ -131,23 +162,41 @@
     </div>
 
     <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
-        <a class="hover:text-secondary transition-colors" href="{% url 'home' %}">Home</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'about' %}">About</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'courses' %}">Courses</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'projects' %}">Projects</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'machine' %}">Machine</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'vision' %}">Vision </a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'contact' %}">Contact Us</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
+        <a class="hover:text-secondary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
     </div>
 
     <div class="flex items-center gap-2 md:gap-4">
         <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" target="_blank" class="shimmer-effect hidden lg:flex items-center gap-2 bg-secondary hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
-            <span class="material-symbols-outlined text-sm">download</span> Profile PDF
+            <span class="material-symbols-outlined text-sm">download</span> {% trans "Profile PDF" %}
         </a>
         
         <button class="p-2 rounded-full hover:bg-white/10 transition-colors" id="theme-toggle">
             <span class="material-symbols-outlined">dark_mode</span>
         </button>
+
+        <div class="flex items-center">
+            {% get_current_language as CURRENT_LANG %}
+            <form action="{% url 'set_language' %}" method="post" id="lang-form">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                
+                {% if CURRENT_LANG == 'ar' %}
+                    <button type="submit" name="language" value="en" class="text-sm font-bold hover:text-gold transition-colors">
+                        EN
+                    </button>
+                {% else %}
+                    <button type="submit" name="language" value="ar" class="text-sm font-bold hover:text-gold transition-colors font-['Cairo']">
+                        العربية
+                    </button>
+                {% endif %}
+            </form>
+        </div>
 
         <button class="md:hidden p-2 text-white" id="mobile-menu-btn">
             <span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
@@ -155,14 +204,14 @@
     </div>
 
     <div class="fixed inset-0 bg-primary/95 backdrop-blur-lg z-[-1] flex flex-col items-center justify-center space-y-8 text-2xl font-bold uppercase tracking-widest transition-all duration-500 translate-x-full md:hidden" id="mobile-sidebar">
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'home' %}">Home</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'about' %}">About</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'courses' %}">Courses</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'projects' %}">Projects</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'machine' %}">Machine</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'vision' %}">Vision </a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'contact' %}">Contact Us</a>
-        <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" target="_blank" class="bg-secondary text-white px-8 py-3 rounded-full text-lg font-bold">PDF Profile</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
+        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
+        <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" target="_blank" class="bg-secondary text-white px-8 py-3 rounded-full text-lg font-bold">{% trans "PDF Profile" %}</a>
     </div>
 </nav>
 
@@ -170,21 +219,21 @@
 
 <section class="relative h-[70vh] flex items-center pt-20 overflow-hidden">
 <div class="absolute inset-0">
-<img alt="Engineering Hub" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnWiXdLPzf91QOvjr9aN9ZQbQpEScJH4K-c_ZgTqR-wGO-EDkzy0yioN1SpcKoYIwNmKBmgxriJUsU23nBaWzgM4KZICQVVoM2lQCf5-lctbjC7sMOv5ml8q_m4owMSpahV7uTVTYMBP-LU31EgqjJitBVmJP8URdrB6-fSgXVZf_jbAwA64eeToHO6hz_KY3nQNQ2a4gg2gto_QtIJ4kWi1u5up4tm1jI9-zyQ36hfJpRD3pazoM7BdnFB83hAR-U64zMheLyrw"/>
+<img alt="Engineering Hub" class="w-full h-full object-cover" src="{{MEDIA_URL}}img/about.png"/>
 <div class="absolute inset-0 hero-gradient"></div>
 </div>
 <div class="container mx-auto px-6 relative z-10">
 <div class="max-w-3xl animate-fade-up">
 <div class="flex items-center gap-3 mb-6">
 <div class="h-[1px] w-12 bg-gold"></div>
-<span class="text-gold font-bold tracking-[0.3em] uppercase text-xs">Excellence Since 2011</span>
+<span class="text-gold font-bold tracking-[0.3em] uppercase text-xs">{%trans "Excellence Since 2011"%}</span>
 </div>
 <h1 class="text-5xl md:text-7xl text-white leading-none mb-8">
-                    Pioneering <br/>
-<span class="text-gold italic">Engineering</span> Solutions
+                    {%trans "Pioneering"%} <br/>
+<span class="text-gold italic">{%trans "Engineering"%}</span>{%trans " Solutions"%}
                 </h1>
 <p class="text-xl text-white/80 font-light leading-relaxed max-w-xl">
-                    A legacy of precision and reliability in trading and contracting across the region's most demanding sectors.
+                   {%trans " A legacy of precision and reliability in trading and contracting across the region's most demanding sectors."%}
                 </p>
 </div>
 </div>
@@ -195,38 +244,38 @@
 <div class="grid lg:grid-cols-2 gap-20 items-center">
 <div class="relative animate-scale">
 <div class="absolute -top-10 -left-10 w-40 h-40 border-t-2 border-l-2 border-gold/30"></div>
-<img alt="Our Expertise" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChAIpyYOMzQjGA6ReoJpo3DFGaSbWyxsOCWTTmbHBaGhYDY0TiNSWyeilRYhQG9ggIOsRY22di8TRmKN36eu6FqRtdwZll-u4K1roCR-M-BFHd215Q-UnAWSuwJe2Ba-A2iFf4Ui3DAgeOQQUQVQSmN1r98TbeZskWiTlLN7r2NKBLdMSk-hrOptrDCWCsQhTtBX_57djaKzhZivFhkIZh795t5deJGjv35MG7ZkCOF0botFdZ1NDg1xa87-mMVHh5zLb8xU4Uaw"/>
+<img alt="Our Expertise" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" src="{{MEDIA_URL}}img/uncif.png"/>
 <div class="absolute -bottom-10 -right-10 bg-burgundy p-12 hidden md:block">
 <div class="text-6xl font-bold text-gold mb-2">13+</div>
-<div class="text-white text-xs uppercase tracking-[0.2em] font-semibold">Years of Industry Leadership</div>
+<div class="text-white text-xs uppercase tracking-[0.2em] font-semibold">{%trans "Years of Industry Leadership"%}</div>
 </div>
 </div>
 <div class="space-y-8 animate-fade-up delay-1">
 <div>
-<span class="text-gold font-bold tracking-[0.2em] uppercase text-xs">Corporate Profile</span>
-<h2 class="text-4xl md:text-5xl text-burgundy dark:text-white  mt-4 leading-tight">Who We Are</h2>
+<span class="text-gold font-bold tracking-[0.2em] uppercase text-xs">{%trans "Corporate Profile"%}</span>
+<h2 class="text-4xl md:text-5xl text-burgundy dark:text-white  mt-4 leading-tight">{%trans "About Us"%}</h2>
 </div>
 <div class="space-y-6 text-slate-600 leading-relaxed text-lg">
 <p>
-<strong class="text-burgundy dark:text-gold ">Shalash Al-Sulaiman Trading and Contracting</strong> is a premier engineering services provider, established in 2011 to bridge the gap between complex industrial requirements and sophisticated technical execution.
+<strong class="text-burgundy dark:text-gold ">{%trans "Shalash Sulaiman Trading and Contracting"%}</strong> {%trans "is a premier engineering services provider, established in 2011 to bridge the gap between complex industrial requirements and sophisticated technical execution."%}
                         </p>
 <p>
-                            We specialize in multi-disciplinary engineering services with a particular focus on high-stakes sectors like oil and gas infrastructure. Our reputation is built on a foundation of technical excellence, rigorous safety standards, and a commitment to delivering projects that stand the test of time.
+                            {%trans "We specialize in multi-disciplinary engineering services with a particular focus on high-stakes sectors like oil and gas infrastructure. Our reputation is built on a foundation of technical excellence, rigorous safety standards, and a commitment to delivering projects that stand the test of time."%}
                         </p>
 </div>
 <div class="grid grid-cols-2 gap-8 pt-8 border-t border-gray-100">
 <div class="flex items-start gap-4">
 <span class="material-symbols-outlined text-gold text-4xl">verified_user</span>
 <div>
-<h4 class="font-bold text-burgundy dark:text-gold">Quality First</h4>
-<p class="text-sm text-slate-500 ">Adhering to ISO global standards.</p>
+<h4 class="font-bold text-burgundy dark:text-gold">{%trans "Quality First"%}</h4>
+<p class="text-sm text-slate-500 ">{%trans "Adhering to ISO global standards."%}</p>
 </div>
 </div>
 <div class="flex items-start gap-4">
 <span class="material-symbols-outlined text-gold text-4xl">engineering</span>
 <div>
-<h4 class="font-bold text-burgundy dark:text-gold">Expert Team</h4>
-<p class="text-sm text-slate-500">Certified senior engineers.</p>
+<h4 class="font-bold text-burgundy dark:text-gold">{%trans "Expert Team"%}</h4>
+<p class="text-sm text-slate-500">{%trans "Certified senior engineers."%}</p>
 </div>
 </div>
 </div>
@@ -238,8 +287,8 @@
 <section class="py-32 bg-slate-50 dark:bg-slate-900 overflow-hidden" id="services">
     <div class="container mx-auto px-6">
         <div class="text-center mb-20 animate-fade-up">
-            <span class="text-gold font-bold tracking-[0.2em] uppercase text-xs">What We Do</span>
-            <h2 class="text-4xl md:text-5xl text-burgundy dark:text-white mt-4 font-bold">Diversified Solutions</h2>
+            <span class="text-gold font-bold tracking-[0.2em] uppercase text-xs">{%trans "What We Do"%}</span>
+            <h2 class="text-4xl md:text-5xl text-burgundy dark:text-white mt-4 font-bold">{%trans "Diversified Solutions"%}</h2>
             <div class="w-24 h-1 bg-gold mx-auto mt-8"></div>
         </div>
 
@@ -250,15 +299,15 @@
                     <span class="material-symbols-outlined text-gold group-hover:text-burgundy text-3xl">foundation</span>
                 </div>
                 
-                <h3 class="text-2xl font-bold text-burgundy dark:text-white group-hover:text-gold transition-colors mb-4">Civil Contracting</h3>
+                <h3 class="text-2xl font-bold text-burgundy dark:text-white group-hover:text-gold transition-colors mb-4">{%trans "Civil Contracting"%}</h3>
                 
                 <p class="text-slate-600 dark:text-slate-400 group-hover:text-gold transition-colors leading-relaxed mb-8">
-                    Execution of large-scale infrastructure, high-rise buildings, and industrial facilities with precision engineering and global safety standards.
+                    {%trans "Execution of large-scale infrastructure, high-rise buildings, and industrial facilities with precision engineering and global safety standards."%}
                 </p>
 
                 <div class="pt-6 border-t border-slate-100 dark:border-slate-700 group-hover:border-white/20 mt-auto">
                     <p class="text-burgundy dark:text-gold group-hover:text-gold text-lg font-bold leading-relaxed" dir="rtl">
-                        المقاولات المدنية والإنشائية والبنية التحتية والمباني العالية والمرافق الصناعية.
+                        {%trans "المقاولات المدنية والإنشائية والبنية التحتية والمباني العالية والمرافق الصناعية."%}
                     </p>
                 </div>
             </div>
@@ -268,15 +317,15 @@
                     <span class="material-symbols-outlined text-gold group-hover:text-burgundy text-3xl">shopping_cart</span>
                 </div>
                 
-                <h3 class="text-2xl font-bold text-burgundy dark:text-white group-hover:text-gold transition-colors mb-4">Trading Divisions</h3>
+                <h3 class="text-2xl font-bold text-burgundy dark:text-white group-hover:text-gold transition-colors mb-4">{%trans "Trading Divisions"%}</h3>
                 
                 <p class="text-slate-600 dark:text-slate-400 group-hover:text-gold transition-colors leading-relaxed mb-8">
-                    Global supply chain management for construction materials, heavy machinery, and specialized industrial hardware for various sectors.
+                    {%trans "Global supply chain management for construction materials, heavy machinery, and specialized industrial hardware for various sectors."%}
                 </p>
 
                 <div class="pt-6 border-t border-slate-100 dark:border-slate-700 group-hover:border-white/20 mt-auto">
                     <p class="text-burgundy dark:text-gold group-hover:text-gold text-lg font-bold leading-relaxed" dir="rtl">
-                        قطاع التجارة وتوريد مواد البناء والمعدات الثقيلة والأجهزة الصناعية المتخصصة.
+                        {%trans "قطاع التجارة وتوريد مواد البناء والمعدات الثقيلة والأجهزة الصناعية المتخصصة."%}
                     </p>
                 </div>
             </div>
@@ -286,15 +335,15 @@
                     <span class="material-symbols-outlined text-gold group-hover:text-burgundy text-3xl">bolt</span>
                 </div>
                 
-                <h3 class="text-2xl font-bold text-burgundy dark:text-white group-hover:text-gold transition-colors mb-4">MEP Services</h3>
+                <h3 class="text-2xl font-bold text-burgundy dark:text-white group-hover:text-gold transition-colors mb-4">{%trans "MEP Services"%}</h3>
                 
                 <p class="text-slate-600 dark:text-slate-400 group-hover:text-gold transition-colors leading-relaxed mb-8 ">
-                    Expert Mechanical, Electrical, and Plumbing services integrated with smart building technologies and sustainable power systems.
+                    {%trans "Expert Mechanical, Electrical, and Plumbing services integrated with smart building technologies and sustainable power systems."%}
                 </p>
 
                 <div class="pt-6 border-t border-slate-100 dark:border-slate-700 group-hover:border-white/20 mt-auto">
                     <p class="text-burgundy dark:text-gold group-hover:text-gold text-lg font-bold leading-relaxed" dir="rtl">
-                        خدمات الميكانيك والكهرباء والسباكة المتكاملة مع تقنيات المباني الذكية.
+                        {%trans "خدمات الميكانيك والكهرباء والسباكة المتكاملة مع تقنيات المباني الذكية."%}
                     </p>
                 </div>
             </div>
@@ -307,8 +356,8 @@
 <div class="absolute top-0 right-0 w-1/3 h-full bg-gold/5 -skew-x-12 transform origin-top translate-x-20"></div>
 <div class="container mx-auto px-6 relative z-10">
 <div class="text-center mb-20 animate-fade-up">
-<span class="text-gold font-bold tracking-[0.2em] uppercase text-xs">Internal Hierarchy</span>
-<h2 class="text-4xl md:text-5xl text-white mt-4">Management Structure</h2>
+<span class="text-gold font-bold tracking-[0.2em] uppercase text-xs">{%trans "Internal Hierarchy"%}</span>
+<h2 class="text-4xl md:text-5xl text-white mt-4">{%trans "Management Structure"%}</h2>
 <div class="w-24 h-1 bg-gold mx-auto mt-8"></div>
 </div>
 
@@ -316,9 +365,9 @@
 <div class="flex flex-col items-center mb-20 animate-scale">
 
 <div class="bg-white dark:bg-slate-800 p-8 border-b-4 border-gold shadow-2xl text-center min-w-[300px]">
-    <span class="text-gold font-bold text-xs uppercase tracking-widest mb-2 block">Executive Board</span>
-    <h3 class="text-burgundy dark:text-white text-2xl font-black">Senior Management</h3>
-    <p class="text-slate-500 dark:text-slate-400 font-medium">GM & CFO</p>
+    <span class="text-gold font-bold text-xs uppercase tracking-widest mb-2 block">{%trans "Executive Board"%}</span>
+    <h3 class="text-burgundy dark:text-white text-2xl font-black">{%trans "Senior Management"%}</h3>
+    <p class="text-slate-500 dark:text-slate-400 font-medium">{%trans "GM & CFO"%}</p>
 </div>
 
 </div>
@@ -326,15 +375,15 @@
 <div class="relative">
 <div class="hidden md:block absolute -top-10 left-1/2 w-1/2 h-10 border-t-2 border-l-2 border-gold/30 -translate-x-full"></div>
 <div class="bg-burgundy border-2 border-gold/30 p-8 hover:border-gold transition-colors">
-<h4 class="text-gold text-lg font-bold mb-4">Project Department</h4>
+<h4 class="text-gold text-lg font-bold mb-4">{%trans "Project Department"%}</h4>
 <div class="space-y-4">
 <div class="flex items-center gap-3 text-white/90">
 <span class="material-symbols-outlined text-gold">apartment</span>
-<span>Civil Sector Operations</span>
+<span>{%trans "Civil Sector Operations"%}</span>
 </div>
 <div class="flex items-center gap-3 text-white/90">
 <span class="material-symbols-outlined text-gold">oil_barrel</span>
-<span>Oil Sector Services</span>
+<span>{%trans "Oil Sector Services"%}</span>
 </div>
 </div>
 </div>
@@ -342,15 +391,15 @@
 <div class="relative">
 <div class="hidden md:block absolute -top-10 right-1/2 w-1/2 h-10 border-t-2 border-r-2 border-gold/30 translate-x-full"></div>
 <div class="bg-burgundy border-2 border-gold/30 p-8 hover:border-gold transition-colors">
-<h4 class="text-gold text-lg font-bold mb-4">Operations &amp; HR</h4>
+<h4 class="text-gold text-lg font-bold mb-4">{%trans "Operations &amp; HR"%}</h4>
 <div class="space-y-4">
 <div class="flex items-center gap-3 text-white/90">
 <span class="material-symbols-outlined text-gold">groups</span>
-<span>Human Resources</span>
+<span>{%trans "Human Resources"%}</span>
 </div>
 <div class="flex items-center gap-3 text-white/90">
 <span class="material-symbols-outlined text-gold">diversity_3</span>
-<span>Strategic Recruitment</span>
+<span>{%trans "Strategic Recruitment"%}</span>
 </div>
 </div>
 </div>
@@ -358,12 +407,12 @@
 </div>
 <div class="grid md:grid-cols-2 gap-20 mt-12 animate-fade-up delay-2">
 <div class="bg-burgundy/50 border border-gold/20 p-8">
-<h4 class="text-gold text-lg font-bold mb-4 uppercase tracking-tighter">Finance &amp; Accounting</h4>
-<p class="text-white/70 text-sm italic">Managing fiscal integrity and strategic investment across all active project sites.</p>
+<h4 class="text-gold text-lg font-bold mb-4 uppercase tracking-tighter">{%trans "Finance &amp; Accounting"%}</h4>
+<p class="text-white/70 text-sm italic">{%trans "Managing fiscal integrity and strategic investment across all active project sites."%}</p>
 </div>
 <div class="bg-burgundy/50 border border-gold/20 p-8">
-<h4 class="text-gold text-lg font-bold mb-4 uppercase tracking-tighter">Logistics &amp; Supply</h4>
-<p class="text-white/70 text-sm italic">Coordinating heavy machinery movement and global material procurement chains.</p>
+<h4 class="text-gold text-lg font-bold mb-4 uppercase tracking-tighter">{%trans "Logistics &amp; Supply"%}</h4>
+<p class="text-white/70 text-sm italic">{%trans "Coordinating heavy machinery movement and global material procurement chains."%}</p>
 </div>
 </div>
 </div>
@@ -374,17 +423,17 @@
 <div class="container mx-auto px-6">
 <div class="grid lg:grid-cols-2 gap-16 items-center">
 <div class="animate-fade-up">
-<span class="text-gold font-bold tracking-[0.2em] uppercase text-xs">Core Values</span>
-<h2 class="text-4xl md:text-5xl text-burgundy dark:text-white mt-4 mb-8">Engineering with Integrity</h2>
-<p class="text-slate-600 text-lg mb-10">Our strength lies in a synchronized ecosystem of talent, technology, and transparency.</p>
+  <span class="text-gold font-bold  uppercase text-large">{% trans "Our Principle" %}</span>
+<h2 class="text-4xl md:text-5xl text-burgundy dark:text-white mt-4 mb-8">{% trans "Engineering with Integrity" %}</h2>
+<p class="text-slate-600 text-lg mb-10">{% trans "Our strength lies in a synchronized ecosystem of talent, technology, and transparency." %}</p>
 <ul class="space-y-6">
 <li class="flex items-start gap-4 group">
 <div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all">
 <span class="material-symbols-outlined text-sm">done_all</span>
 </div>
 <div>
-<h4 class="font-bold text-burgundy">Rigorous Quality Protocols</h4>
-<p class="text-slate-500 text-sm">Triple-stage verification for every engineering milestone.</p>
+<h4 class="font-bold text-burgundy">{% trans "Rigorous Quality Protocols" %}</h4>
+<p class="text-slate-500 text-sm">{% trans "Triple-stage verification for every engineering milestone." %}</p>
 </div>
 </li>
 <li class="flex items-start gap-4 group">
@@ -392,8 +441,8 @@
 <span class="material-symbols-outlined text-sm">done_all</span>
 </div>
 <div>
-<h4 class="font-bold text-burgundy">Workplace Safety First</h4>
-<p class="text-slate-500 text-sm">Zero-incident goal-driven safety culture at every site.</p>
+<h4 class="font-bold text-burgundy">{% trans "Workplace Safety First" %}</h4>
+<p class="text-slate-500 text-sm">{% trans "Zero-incident goal-driven safety culture at every site." %}</p>
 </div>
 </li>
 <li class="flex items-start gap-4 group">
@@ -401,77 +450,81 @@
 <span class="material-symbols-outlined text-sm">done_all</span>
 </div>
 <div>
-<h4 class="font-bold text-burgundy">Adaptive Management</h4>
-<p class="text-slate-500 text-sm">Agile responses to complex geological and site challenges.</p>
+<h4 class="font-bold text-burgundy">{% trans "Adaptive Management" %}</h4>
+<p class="text-slate-500 text-sm">{% trans "Agile responses to complex geological and site challenges." %}</p>
 </div>
 </li>
 </ul>
 </div>
 <div class="relative animate-scale">
-<img alt="Project Site" class="w-full h-[500px] object-cover shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCutxWqcsv7yULueyIQ9QRMQSCiqYYsdqTxldlqvMVv1lS8ZpBKzDgiwWTw6HG9Mw8hbEWlXjX7bIBuCmB7iRbLFFpebBhbtO7rK8KuOu8b6wsKAl1qxIgLNiYvOOpKfcN7fHHezBuInYSXzT25NI-t2y4k0L_TuB_kkL5_Fn2cLNYy5X5tcLxS-Bv28KUAlvmXfJu0CWMScNltQIeOtpKyc-T34-ZOCkl2AiqipXA5khftdWXNueL41AlonCi5B4GkO1B1hjvqOg"/>
+<img alt="Project Site" class="w-full h-[500px] object-cover shadow-2xl" src="{{MEDIA_URL}}img/1.png"/>
 <div class="absolute -top-6 -right-6 w-32 h-32 bg-gold/10 -z-10"></div>
 </div>
 </div>
 </div>
 </section>
-<footer class="bg-burgundy text-white pt-24 pb-12">
-<div class="container mx-auto px-6">
-<div class="grid md:grid-cols-4 gap-12 mb-20">
-<div class="col-span-2 space-y-8">
-<div class="flex items-center gap-4">
-<div class="w-14 h-14 flex items-center justify-center bg-white rounded-sm">
-<span class="material-symbols-outlined text-burgundy text-4xl font-bold">architecture</span>
+
+
+
+<footer class="bg-primary text-white pt-20 pb-10 px-6 md:px-12" id="contact">
+<div class="container mx-auto max-w-7xl">
+<div class="grid md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-2 space-y-6">
+<img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
+ 
+<p class="text-slate-300 max-w-md leading-relaxed">
+                   <span class="text-accent text-xl">{%trans "Shlash Sulaiman Trading & Contracting." %}</span> <br>  {%trans " is a leading company in Syria's trading and contracting landscape. We are committed to excellence, safety, and innovation in every project we undertake." %}
+                </p>
+
+
+
+{% comment %} <div class="flex gap-4">
+<a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">social_leaderboard</span>
+</a>
+<a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">language</span>
+</a>
+<a class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+</div> {% endcomment %}
+
 </div>
 <div>
-<span class="text-2xl font-black uppercase tracking-tighter">Shalash Al-Sulaiman</span>
-<span class="block text-gold text-xs font-bold tracking-[0.2em] uppercase">Trading &amp; Contracting</span>
-</div>
-</div>
-<p class="text-white/70 max-w-md leading-relaxed">
-                        Setting benchmarks in the construction and trading industry through unwavering commitment to quality and ethical business practices since 2011.
-                    </p>
-<div class="flex gap-4">
-<a class="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold transition-all" href="#">
-<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
-</a>
-<a class="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold transition-all" href="#">
-<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-</a>
-</div>
-</div>
-<div>
-<h4 class="text-gold font-bold uppercase tracking-widest mb-8 text-sm">Services</h4>
-<ul class="space-y-4 text-white/60 text-sm">
-<li><a class="hover:text-gold transition-colors" href="#">Oil Field Engineering</a></li>
-<li><a class="hover:text-gold transition-colors" href="#">Civil Projects</a></li>
-<li><a class="hover:text-gold transition-colors" href="#">Structural Works</a></li>
-<li><a class="hover:text-gold transition-colors" href="#">Energy Solutions</a></li>
+<h5 class="text-xl font-bold mb-6 text-gold uppercase tracking-wider">{%trans "Quick Links"%}</h5>
+<ul class="space-y-4 text-slate-300">
+<li><a class="hover:text-white transition-colors" href="{% url 'home' %}">{%trans "Home"%}</a></li>
+<li><a class="hover:text-white transition-colors" href="{% url 'about' %}">{%trans "About Us"%}</a></li>
+<li><a class="hover:text-white transition-colors" href="#services">{%trans "Our Services"%}</a></li>
+<li><a class="hover:text-white transition-colors" href="{% url 'projects' %}">{%trans "Major Projects"%}</a></li>
+<li><a class="hover:text-white transition-colors" href="{% url 'machine' %}">{%trans "Our Machines"%}</a></li>
 </ul>
 </div>
 <div>
-<h4 class="text-gold font-bold uppercase tracking-widest mb-8 text-sm">Headquarters</h4>
-<ul class="space-y-6 text-white/60 text-sm">
-<li class="flex items-start gap-4">
+<h5 class="text-xl font-bold mb-6 text-gold uppercase tracking-wider">{%trans "Contact Info"%}</h5>
+<ul class="space-y-4 text-slate-300">
+<li class="flex items-start gap-3">
 <span class="material-symbols-outlined text-gold">location_on</span>
-<span>Al-Olaya District, Riyadh 12211, Kingdom of Saudi Arabia</span>
+<span>{%trans "Deir ez-Zor, Syria"%}<br/>{%trans "Next to the Agricultural Bank"%}</span>
 </li>
-<li class="flex items-center gap-4">
+<li class="flex items-center gap-3">
 <span class="material-symbols-outlined text-gold">phone</span>
-<span>+966 11 456 7890</span>
+<span>0097430075675</span>
+<span>+963998493378</span>
 </li>
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-gold">mail</span>
-<span>info@shalash-sulaiman.com</span>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gold">email</span>
+<span>alshlashcompany@gmail.com</span>
 </li>
 </ul>
 </div>
 </div>
-<div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-<p class="text-white/40 text-xs">© 2024 Shalash Al-Sulaiman Trading &amp; Contracting. CR No: 2764.</p>
-<div class="flex gap-8 text-white/40 text-xs">
-<a class="hover:text-gold" href="#">Privacy Policy</a>
-<a class="hover:text-gold" href="#">Safety Manual</a>
-<a class="hover:text-gold" href="#">Terms of Service</a>
+<div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
+<p> {%trans "© 2024 Shlash Sulaiman Trading &amp; Contracting. All Rights Reserved."%}</p>
+<div class="flex gap-6">
+{% comment %} <a class="hover:text-white transition-colors" href="#">{%trans "Privacy Policy"%}</a>
+<a class="hover:text-white transition-colors" href="#">{%trans "Terms of Service"%}</a> {% endcomment %}
 </div>
 </div>
 </div>
