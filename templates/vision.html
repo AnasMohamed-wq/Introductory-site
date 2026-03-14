@@ -51,25 +51,78 @@
             transform: translateY(-8px);
             box-shadow: 0 10px 30px -5px rgba(207, 164, 79, 0.3);
         }
-        /* تأثير البطاقات المتقلبة 3D */
+        /* --- الكود الكامل للبطاقات المتقلبة --- */
+
+        /* 1. الحاوية الرئيسية للبطاقة */
         .flip-card {
             perspective: 1000px;
+            background-color: transparent;
         }
+
+        /* 2. الحاوية الداخلية التي تدور */
         .flip-card-inner {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
         }
+
+        /* الدوران عند الـ Hover */
         .flip-card:hover .flip-card-inner {
             transform: rotateY(180deg);
         }
+
+        /* 3. تنسيق الوجهين (الأمامي والخلفي) */
         .flip-card-front, .flip-card-back {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
             position: absolute;
             inset: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* ضروري لمتصفحات سفاري */
+            backface-visibility: hidden;
+            border-radius: 0.75rem; /* rounded-xl */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
         }
+
+        /* 4. الوجه الأمامي */
+        .flip-card-front {
+            background-color: #cfa44f; /* Gold - primary */
+            color: white;
+            z-index: 2; /* يضمن بقاء الوجه الأمامي في الأعلى */
+            transform: rotateY(0deg);
+        }
+
+        /* 5. الوجه الخلفي */
         .flip-card-back {
+            background-color: #C5A059; /* Matte Gold - accent */
+            color: #800000; /* Maroon - secondary/primary */
             transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        /* 6. الحل الحاسم: إخفاء المحتوى تماماً عند الدوران لمنع الظهور في الخلف */
+        .flip-card:hover .flip-card-front > * {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s 0.2s, opacity 0.2s linear;
+        }
+
+        /* إعادة المحتوى عند العودة للحالة الطبيعية */
+        .flip-card-front > * {
+            transition: opacity 0.4s ease;
+        }
+
+        /* 7. تحسين إضافي للوضع الليلي (اختياري) */
+        .dark .flip-card-back {
+            background-color: #800000; /* تغيير لون الخلفية في الليل لراحة العين */
+            color: #ffffff;
+            border: 1px solid #cfa44f;
         }
         
     </style>
@@ -118,21 +171,21 @@
 
 </header> {% endcomment %}
 
- <nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
+ <nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white bg-secondary/95" id="navbar">
     <div class="flex items-center gap-3">
         <div class="bg-white p-1 rounded">
             <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
         </div>
-        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">{% trans "Shlash Sulaiman" %}</span>
+        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">{% trans "Shlash Al-Sulaiman" %}</span>
     </div>
 
-    <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
+    <div class="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-wide">
         <a class="hover:text-primary transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
         <a class="hover:text-primary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
         <a class="hover:text-primary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
         <a class="hover:text-primary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
         <a class="hover:text-primary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
-        <a class="hover:text-primary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
+        <a class="px-3 py-2 bg-white/10 rounded-lg text-primary border-b-2 border-primary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
         <a class="hover:text-primary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
     </div>
 
@@ -174,13 +227,11 @@
         <a class="mobile-link hover:text-primary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
         <a class="mobile-link hover:text-primary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
         <a class="mobile-link hover:text-primary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
-        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
+        <a class="mobile-link px-3 py-2 bg-white/10 rounded-lg text-primary border-b-2 border-primary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
         <a class="mobile-link hover:text-primary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
         <button class="bg-primary text-white px-8 py-3 rounded-full text-lg font-bold">{% trans "PDF Profile" %}</button>
     </div>
 </nav>
-
-<main class="max-w-7xl mx-auto px-6 pt-32 py-12">
 <!-- Hero Section -->
 <section class="mb-20">
 <div class="relative h-[400px] w-full rounded-xl overflow-hidden mb-12 shadow-2xl">
@@ -192,7 +243,14 @@
 <p class="text-primary font-medium text-lg">{% trans "Architecting the future through excellence and integrity" %}</p>
 </div>
 </div>
-</section>
+</section> 
+
+
+<main class="max-w-7xl mx-auto px-6 pt-32 py-12">
+
+
+
+
 <!-- Vision & Mission Grid -->
 
 <section class="grid md:grid-cols-2 gap-16 mb-24 items-start">
@@ -202,7 +260,7 @@
 <h2 class="text-primary text-4xl font-bold tracking-tight">{% trans "Our Vision" %}</h2>
 </div>
 <div class="h-1 w-20 bg-primary rounded-full"></div>
-<p class="text-secondary text-lg leading-relaxed font-light italic border-l-4 border-primary/20 pl-6">
+<p class="text-secondary text-lg leading-relaxed font-light  border-l-4 border-primary/20 pl-6 dark:text-white transition-colors">
                   {% trans "To be among the leading companies in the contracting and general trading sector, achieving sustainable and distinguished growth by providing innovative and comprehensive solutions that meet client needs. We specialize in general contracting, trading in air conditioning and cooling systems, solar energy, real estate, building materials, heavy machinery, and engineering equipment. We strive to enhance the local and regional economy while adhering to the highest standards of quality and professionalism." %}  
                           </p>
 </div>
@@ -212,7 +270,7 @@
 <h2 class="text-primary text-4xl font-bold tracking-tight">{% trans "Our Mission" %}</h2>
 </div>
 <div class="h-1 w-20 bg-primary rounded-full"></div>
-<p class="text-secondary text-lg leading-relaxed">
+<p class="text-secondary text-lg leading-relaxed dark:text-white transition-colors">
                     {% trans "Our company is committed to delivering high-quality services based on innovation and dedication. We believe that our success is tied to the satisfaction of our clients and partners. We aspire to be their first choice for all projects while delivering added value in everything we offer." %}
                 </p>
 </div>
@@ -222,20 +280,20 @@
 <section class="py-24 px-6 md:px-20 bg-background-light dark:bg-background-dark">
 <div class="max-w-6xl mx-auto">
 <div class="text-center mb-20">
-<h2 class="text-4xl font-display font-bold mb-4">{% trans "Core Values" %}</h2>
-<p class="text-accent tracking-widest font-bold uppercase text-sm">{% trans "The pillars of our organization" %}</p>
+<h2 class="text-4xl font-display font-bold mb-4 dark:text-primary transition-colors">{% trans "Core Values" %}</h2>
+<p class="text-accent tracking-widest font-bold uppercase text-sm dark:text-white transition-colors">{% trans "The pillars of our organization" %}</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 <!-- Value 1: Team Spirit -->
 <div class="flip-card h-64 w-full">
 <div class="flip-card-inner relative w-full h-full text-center">
 <div class="flip-card-front absolute inset-0 bg-primary rounded-xl flex flex-col items-center justify-center p-6 text-white shadow-xl border border-accent/20">
-<span class="material-symbols-outlined text-5xl mb-4 text-accent">diversity_3</span>
+<span class="material-symbols-outlined text-5xl mb-4 text-accent ">diversity_3</span>
 <h3 class="text-xl font-bold font-display">{% trans "Team Spirit" %}</h3>
 </div>
 <div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
-<h3 class="text-xl font-bold mb-4 font-display">{% trans "Team Spirit" %}</h3>
-<p class="text-sm font-medium leading-relaxed">{% trans "Working together across boundaries to meet the needs of our customers and to help our company win." %}</p>
+<h3 class="text-xl font-bold mb-4 font-display text-white">{% trans "Team Spirit" %}</h3>
+<p class="text-sm font-medium leading-relaxed font-bold text-white">{% trans "Working together across boundaries to meet the needs of our customers and to help our company win." %}</p>
 </div>
 </div>
 </div>
@@ -247,8 +305,8 @@
 <h3 class="text-xl font-bold font-display">{% trans "Excellence" %}</h3>
 </div>
 <div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
-<h3 class="text-xl font-bold mb-4 font-display">{% trans "Excellence" %}</h3>
-<p class="text-sm font-medium leading-relaxed">{% trans "Delivering what we promise and adding value that goes beyond what is expected." %}</p>
+<h3 class="text-xl font-bold text-white mb-4 font-display">{% trans "Excellence" %}</h3>
+<p class="text-sm font-medium leading-relaxed font-bold text-white">{% trans "Delivering what we promise and adding value that goes beyond what is expected." %}</p>
 </div>
 </div>
 </div>
@@ -260,8 +318,8 @@
 <h3 class="text-xl font-bold font-display">{% trans "Resilience" %}</h3>
 </div>
 <div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
-<h3 class="text-xl font-bold mb-4 font-display">{% trans "Resilience" %}</h3>
-<p class="text-sm font-medium leading-relaxed">{% trans "Adapting to changing environments while maintaining our focus on core objectives." %}</p>
+<h3 class="text-xl font-bold text-white mb-4 font-display">{% trans "Resilience" %}</h3>
+<p class="text-sm font-medium leading-relaxed font-bold text-white">{% trans "Adapting to changing environments while maintaining our focus on core objectives." %}</p>
 </div>
 </div>
 </div>
@@ -273,8 +331,8 @@
 <h3 class="text-xl font-bold font-display">{% trans "Commitment" %}</h3>
 </div>
 <div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
-<h3 class="text-xl font-bold mb-4 font-display">{% trans "Commitment" %}</h3>
-<p class="text-sm font-medium leading-relaxed">{% trans "Adhering to timelines and standards in service delivery." %}</p>
+<h3 class="text-xl font-bold text-white mb-4 font-display">{% trans "Commitment" %}</h3>
+<p class="text-sm font-medium leading-relaxed font-bold text-white">{% trans "Adhering to timelines and standards in service delivery." %}</p>
 </div>
 </div>
 </div>
@@ -286,8 +344,8 @@
 <h3 class="text-xl font-bold font-display">{% trans "Innovation" %}</h3>
 </div>
 <div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
-<h3 class="text-xl font-bold mb-4 font-display">{% trans "Innovation" %}</h3>
-<p class="text-sm font-medium leading-relaxed">{% trans "Finding new and better ways to solve problems and serve our clients." %}</p>
+<h3 class="text-xl font-bold text-white mb-4 font-display">{% trans "Innovation" %}</h3>
+<p class="text-sm font-medium leading-relaxed font-bold text-white">{% trans "Finding new and better ways to solve problems and serve our clients." %}</p>
 </div>
 </div>
 </div>
@@ -299,8 +357,8 @@
 <h3 class="text-xl font-bold font-display">{% trans "Integrity" %}</h3>
 </div>
 <div class="flip-card-back absolute inset-0 bg-accent rounded-xl flex flex-col items-center justify-center p-8 text-primary shadow-xl">
-<h3 class="text-xl font-bold mb-4 font-display">{% trans "Integrity" %}</h3>
-<p class="text-sm font-medium leading-relaxed">{% trans "We act with honesty and maintain the highest ethical standards in all we do." %}</p>
+<h3 class="text-xl font-bold text-white mb-4 font-display">{% trans "Integrity" %}</h3>
+<p class="text-sm font-medium leading-relaxed font-bold text-white">{% trans "We act with honesty and maintain the highest ethical standards in all we do." %}</p>
 </div>
 </div>
 </div>

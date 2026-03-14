@@ -95,7 +95,7 @@
     #navbar {
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         /* تدرج ظلي خفيف في الأعلى لضمان ظهور النصوص فوق الصور الفاتحة */
-        background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%);
+        {% comment %} background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%); {% endcomment %}
     }
 
     /* تحسين روابط الموبايل لتظهر فوق الخلفية الداكنة */
@@ -110,26 +110,26 @@
 <!-- Sticky Navigation -->
  
 
-<nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
+<nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white bg-primary" id="navbar">
     <div class="flex items-center gap-3">
         <div class="bg-white p-1 rounded">
             <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
         </div>
-        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">Shlash Sulaiman</span>
+        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">{% trans "Shlash Al-Sulaiman" %}</span>
     </div>
 
-    <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
-        <a class="hover:text-secondary transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
+    <div class="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-wide">
+        <a class="hover:text-accent transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
+        <a class="hover:text-accent transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
+        <a class="px-3 py-2 bg-white/10 rounded-lg text-accent border-b-2 border-accent transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
+        <a class="hover:text-accent transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
+        <a class="hover:text-accent transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
+        <a class="hover:text-accent transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
+        <a class="hover:text-accent transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
     </div>
 
     <div class="flex items-center gap-2 md:gap-4">
-        <button class="shimmer-effect hidden lg:flex items-center gap-2 bg-secondary hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
+        <button class="shimmer-effect hidden lg:flex items-center gap-2 bg-accent hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
             <span class="material-symbols-outlined text-sm">download</span> {% trans "Profile PDF" %}
         </button>
         
@@ -161,28 +161,28 @@
     </div>
 
     <div class="fixed inset-0 bg-primary/95 backdrop-blur-lg z-[-1] flex flex-col items-center justify-center space-y-8 text-2xl font-bold uppercase tracking-widest transition-all duration-500 translate-x-full md:hidden" id="mobile-sidebar">
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
-        <button class="bg-secondary text-white px-8 py-3 rounded-full text-lg font-bold">{% trans "PDF Profile" %}</button>
+        <a class="mobile-link hover:text-accent transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
+        <a class="mobile-link hover:text-accent transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
+        <a class="mobile-link px-3 py-2 bg-white/10 rounded-lg text-accent border-b-2 border-accent hover:text-accent transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
+        <a class="mobile-link hover:text-accent transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
+        <a class="mobile-link hover:text-accent transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
+        <a class="mobile-link hover:text-accent transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
+        <a class="mobile-link hover:text-accent transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
+        <button class="bg-accent text-white px-8 py-3 rounded-full text-lg font-bold">{% trans "PDF Profile" %}</button>
     </div>
 </nav>
 
 
 
 <!-- Hero Section -->
-<section class="relative h-[60vh] lg:h-[70vh] w-full overflow-hidden flex items-center justify-center">
+<section class="relative h-[60vh] lg:h-[70vh] w-full overflow-hidden flex items-center justify-start">
 <div class="absolute inset-0 z-0">
 <div class="absolute inset-0 bg-black/60 z-10"></div>
 <div class="w-full h-full ken-burns bg-cover bg-center" data-alt="Professional corporate training room with modern equipment" style="background-image: url('{{MEDIA_URL}}img/courses1.png')">
 </div>
 </div>
-<div class="relative z-20 text-center px-6 max-w-4xl">
-<span class="text-accent font-bold tracking-[0.2em] uppercase text-sm mb-4 block">{% trans "Excellence in Learning" %}</span>
+<div class="relative z-20 text-start px-6 md:px-12 lg:px-24 max-w-4xl">
+<span class="text-accent font-bold  uppercase text-sm mb-4 block">{% trans "Excellence in Learning" %}</span>
 <h1 class="text-white text-5xl lg:text-7xl font-black mb-6 leading-tight">
                {% trans " Training & Development" %} <br/> <span class="text-accent">{% trans "Programs"%}</span>
 </h1>
@@ -199,6 +199,8 @@
 </div> {% endcomment %}
 </div>
 </section>
+
+
 <!-- Introduction Section -->
 <section class="py-24 px-6 lg:px-20 max-w-7xl mx-auto">
 <div class="text-center mb-20">
@@ -256,7 +258,7 @@
 <div class="group relative bg-white dark:bg-background-dark/50 border border-slate-200 dark:border-accent/10 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
 <div class="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
 <div class="aspect-video overflow-hidden">
-<img alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Diverse team shaking hands in professional environment" src="{{MEDIA_URL}}img/coureses5.png"/>
+<img alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Diverse team shaking hands in professional environment" src="{{MEDIA_URL}}img/soft_skills.png"/>
 </div>
 <div class="p-8">
 <div class="flex items-center justify-between mb-4">

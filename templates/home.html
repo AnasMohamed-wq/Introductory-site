@@ -5,13 +5,28 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>{% trans "شركة شلاش الس��يمان للتجارة والمقاولات" %}</title>
+<title>{% trans "Shlash Al-Sulaiman Co | Engineering & General Trading Syria" %}</title>
+<meta name="description" content="{% trans 'Shlash Al-Sulaiman Co. - Leading infrastructure and oil field development since 2011. Expert solutions in engineering, renewable energy, contracting, and trading.' %}">
+<meta name="keywords" content="{% trans 'Shlash Al-Sulaiman Company, a Syrian engineering company, general contracting, innovative engineering solutions, general trading, engineering, oilfield services, solar energy, Shlash Al-Sulaiman.' %}">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+<meta property="og:title" content="{% trans 'Shlash Al-Sulaiman Trading & Contracting Co' %}">
+<meta property="og:description" content="{% trans 'Building the Future with Expertise Since 2011.' %}">
+<meta property="og:image" content="{{ MEDIA_URL }}img/hero.png">
+
+<meta name="geo.region" content="SY" />
+<meta name="geo.placename" content="Deir ez-Zor" />
+
+
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <!-- Arabic-friendly font + English font -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+
+<link rel="alternate" hreflang="ar" href="/ar{{ request.path }}">
+<link rel="alternate" hreflang="en" href="/en{{ request.path }}">
 
 <script>
     tailwind.config = {
@@ -27,8 +42,8 @@
                     "background-dark": "#121212",
                 },
                 fontFamily: {
-                    display: ["Montserrat", "Cairo", "sans-serif"],
-                    body: ["Montserrat", "Cairo", "sans-serif"],
+                    display: ["'IBM Plex Sans Arabic'","Montserrat", "Cairo", "sans-serif"],
+                    body: ["'IBM Plex Sans Arabic'","Montserrat", "Cairo", "sans-serif"],
                 },
                 borderRadius: { DEFAULT: "0.5rem" },
                 keyframes: {
@@ -61,13 +76,17 @@
     --color-primary: #800000; /* Indigo for English */
     --color-secondary: #C5A059; /* Matte gold */
     font-family: 'Montserrat', 'Cairo', sans-serif;
+
   }
   /* Arabic theme */
   .lang-ar {
     --color-primary: #800000; /* Maroon */
     --color-secondary: #C5A059; /* Matte gold */
     font-family: 'Cairo', 'Montserrat', sans-serif;
+    letter-spacing: 0.01em;
   }
+
+  
 
   /* Override a few semantic Tailwind classes to use the variables (language-aware via parent class) */
   {% comment %} .lang-en .text-primary, .lang-ar .text-primary { color: var(--color-primary) !important; } {% endcomment %}
@@ -116,20 +135,43 @@
   }
 </style>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Shlash Al-Sulaiman Trading & Contracting",
+  "alternateName": "شركة شلاش سليمان للتجارة والمقاولات",
+  "url": "https://www.shlash-co.com", 
+  "logo": "{{ request.scheme }}://{{ request.get_host }}{{ MEDIA_URL }}logo/1.jpeg",
+  "foundingDate": "2011",
+  "description": "{% trans 'Leading infrastructure and oil field development since 2011. Expert solutions in engineering, renewable energy, and trading.' %}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Deir ez-Zor",
+    "addressCountry": "SY"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+963998493378", 
+    "contactType": "customer service"
+  }
+}
+</script>
+
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
 
 
-<nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
+<nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between bg-primary text-white" id="navbar">
     <div class="flex items-center gap-3">
         <div class="bg-white p-1 rounded">
             <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
         </div>
-        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">Shlash Sulaiman</span>
+        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">{% trans "Shlash Al-Sulaiman" %}</span>
     </div>
 
-    <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
-        <a class="hover:text-secondary transition-colors" href="{% url 'home' %}">{%trans "Home" %}</a>
+    <div class="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-wide ">
+        <a class="px-3 py-2 bg-white/10 rounded-lg text-secondary border-b-2 border-secondary transition-colors" href="{% url 'home' %}">{%trans "Home" %}</a>
         <a class="hover:text-secondary transition-colors" href="{% url 'about' %}">{%trans "About Us" %}</a>
         <a class="hover:text-secondary transition-colors" href="{% url 'courses' %}">{%trans "Courses" %}</a>
         <a class="hover:text-secondary transition-colors" href="{% url 'projects' %}">{%trans "Projects" %}</a>
@@ -171,7 +213,7 @@
     </div>
 
     <div class="fixed inset-0 bg-primary/95 backdrop-blur-lg z-[-1] flex flex-col items-center justify-center space-y-8 text-2xl font-bold uppercase tracking-widest transition-all duration-500 translate-x-full md:hidden" id="mobile-sidebar">
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'home' %}">{%trans "Home"%}</a>
+        <a class="mobile-link px-3 py-2 bg-white/10 rounded-lg text-secondary border-b-2 border-secondary transition-colors" href="{% url 'home' %}">{%trans "Home"%}</a>
         <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'about' %}">{%trans "About Us"%}</a>
         <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'courses' %}">{%trans "Courses"%}</a>
         <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'projects' %}">{%trans "Projects"%}</a>
@@ -213,6 +255,7 @@
 </svg>
 </div>
 </section>
+
 <div class="relative z-20 -mt-10 container mx-auto px-6 max-w-6xl">
 <div class="bg-white dark:bg-slate-800 shadow-2xl rounded-xl p-8 md:p-12 flex flex-col md:flex-row justify-around items-center gap-8 border-b-4 border-secondary">
 <div class="text-center group">
@@ -295,8 +338,8 @@
 <section class="bg-white dark:bg-background-dark py-32" id="services">
     <div class="mx-auto max-w-7xl px-6">
         <div class="mb-20 text-center space-y-4 reveal-hidden" data-reveal>
-            <h2 class="text-primary dark:text-secondary text-sm font-bold uppercase tracking-[0.4em]">{%trans "Our Expertise"%}</h2>
-            <h3 class="text-5xl font-black tracking-tight text-slate-900 dark:text-white">{%trans "Premium Services"%}</h3>
+            <h3 class="text-primary dark:text-secondary text-2xl font-bold uppercase ">{%trans "Our Expertise"%}</h3>
+            <h2 class="text-5xl font-black tracking-tight text-slate-900 dark:text-white">{%trans "Premium Services"%}</h2>
         </div>
 
         <div class="flex flex-col lg:flex-row gap-6 h-auto lg:h-[480px]">
@@ -304,33 +347,33 @@
             <div class="service-card flex-1 bg-slate-50 dark:bg-neutral-dark border border-slate-100 dark:border-white/5 p-10 rounded-2xl flex flex-col justify-between hover:bg-primary group overflow-hidden relative transition-all duration-500">
                 <div>
                     <span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary transition-colors duration-500">engineering</span>
-                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500">{%trans "Engineering"%}</h4>
+                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500 dark:text-white ">{%trans "Engineering"%}</h4>
                     <div class="sub-services space-y-2 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-500 mt-0 group-hover:mt-6">
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Civil Construction"%}</p>
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Infrastructure Works"%}</p>
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Road & Bridges"%}</p>
                     </div>
                 </div>
-                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500"> {%trans "Precision engineering solutions for complex infrastructure projects."%}</p>
+                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500 dark:text-white"> {%trans "Precision engineering solutions for complex infrastructure projects."%}</p>
             </div>
 
             <div class="service-card flex-1 bg-slate-50 dark:bg-neutral-dark border border-slate-100 dark:border-white/5 p-10 rounded-2xl flex flex-col justify-between hover:bg-primary group overflow-hidden relative transition-all duration-500">
                 <div>
                     <span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary transition-colors duration-500">energy_savings_leaf</span>
-                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500">{%trans "Renewable Energy"%}</h4>
+                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500 dark:text-white">{%trans "Renewable Energy"%}</h4>
                     <div class="sub-services space-y-2 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-500 mt-0 group-hover:mt-6">
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Solar Power Systems"%}</p>
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Energy Audits"%}</p>
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Sustainable Consulting"%}</p>
                     </div>
                 </div>
-                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500"> {%trans "Leading the transition to clean and sustainable energy sources."%}</p>
+                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500 dark:text-white"> {%trans "Leading the transition to clean and sustainable energy sources."%}</p>
             </div>
 
             <div class="service-card flex-1 bg-slate-50 dark:bg-neutral-dark border border-slate-100 dark:border-white/5 p-10 rounded-2xl flex flex-col justify-between hover:bg-primary group overflow-hidden relative transition-all duration-500">
                 <div>
                     <span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary transition-colors duration-500">oil_barrel</span>
-                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500">{%trans "Oil Field Services"%}</h4>
+                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500 dark:text-white ">{%trans "Oil Field Services"%}</h4>
                     <div class="sub-services space-y-2 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-500 mt-0 group-hover:mt-6">
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Water supply tankers for drilling rigs."%}</p>
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Chemicals for oil well services"%}</p>
@@ -338,20 +381,20 @@
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Oilfield catering food, beverages and accommodation facilities"%}</p>
                     </div>
                 </div>
-                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500"> {%trans "Our company provides oilfield manpower (drilling rigs, well- services, oil and gas pipeline crews)."%}</p>
+                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500 dark:text-white "> {%trans "Our company provides oilfield manpower (drilling rigs, well- services, oil and gas pipeline crews)."%}</p>
             </div>
 
             <div class="service-card flex-1 bg-slate-50 dark:bg-neutral-dark border border-slate-100 dark:border-white/5 p-10 rounded-2xl flex flex-col justify-between hover:bg-primary group overflow-hidden relative transition-all duration-500">
                 <div>
                     <span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary transition-colors duration-500">payments</span>
-                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500">{%trans "Commercial Trading"%}</h4>
+                    <h4 class="mt-6 text-2xl font-black text-slate-900 group-hover:text-white transition-colors duration-500 dark:text-white ">{%trans "Commercial Trading"%}</h4>
                     <div class="sub-services space-y-2 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-500 mt-0 group-hover:mt-6">
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Medical Equipment"%}</p>
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Heavy Machinery"%}</p>
                         <p class="text-white/70 text-sm flex items-center gap-2"><span class="h-1 w-1 bg-secondary rounded-full"></span> {%trans "Industrial Supplies"%}</p>
                     </div>
                 </div>
-                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500"> {%trans "Connecting global markets with local industrial needs."%}</p>
+                <p class="mt-4 text-slate-500 group-hover:text-white/60 transition-colors duration-500 dark:text-white "> {%trans "Connecting global markets with local industrial needs."%}</p>
             </div>
 
         </div>
@@ -363,7 +406,7 @@
 
 <section class="py-20 bg-white dark:bg-background-dark border-t border-slate-100 dark:border-white/5 overflow-hidden">
     <div class="text-center mb-12 px-6">
-        <h4 class="text-primary dark:text-secondary font-bold uppercase tracking-widest text-sm mb-2">{% trans "Our Trusted Partners" %}</h4>
+        <h4 class="text-primary dark:text-secondary font-bold uppercase text-2xl mb-2">{% trans "Our Trusted Partners" %}</h4>
         <h2 class="text-slate-900 dark:text-white text-3xl font-bold">{% trans "Trusted by World-Class Organizations" %}</h2>
         <div class="h-1 w-20 bg-secondary mx-auto mt-4 rounded-full"></div>
     </div>
@@ -403,7 +446,7 @@
 <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
  
 <p class="text-slate-300 max-w-md leading-relaxed">
-                   <span class="text-accent text-xl">{%trans "Shlash Sulaiman Trading & Contracting." %}</span> <br>  {%trans " is a leading company in Syria's trading and contracting landscape. We are committed to excellence, safety, and innovation in every project we undertake." %}
+                   <span class="text-accent text-xl">{%trans "Shlash Al-Sulaiman Trading & Contracting." %}</span> <br>  {%trans " is a leading company in Syria's trading and contracting landscape. We are committed to excellence, safety, and innovation in every project we undertake." %}
                 </p>
 
 
@@ -451,7 +494,7 @@
 </div>
 </div>
 <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
-<p> {%trans "© 2024 Shlash Sulaiman Trading &amp; Contracting. All Rights Reserved."%}</p>
+<p> {%trans "© 2024 Shlash Al-Sulaiman Trading &amp; Contracting. All Rights Reserved."%}</p>
 <div class="flex gap-6">
 {% comment %} <a class="hover:text-white transition-colors" href="#">{%trans "Privacy Policy"%}</a>
 <a class="hover:text-white transition-colors" href="#">{%trans "Terms of Service"%}</a> {% endcomment %}

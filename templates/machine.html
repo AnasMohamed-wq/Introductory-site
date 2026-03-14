@@ -18,7 +18,7 @@
                         colors: {
                             primary: "#800000",   // اللون البرغندي لخلفية الناف بار عند السكرول والقائمة الجانبية
                             secondary: "#C5A059", // اللون الذهبي للأزرار والروابط عند تمرير الماوس
-                            
+                            "background-dark": "#121212",
                              
                         },
                         fontFamily: {
@@ -105,10 +105,10 @@
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
 
-    /* لضمان رؤية النص إذا كانت خلفية الصفحة بيضاء في البداية */
+    {% comment %} /* لضمان رؤية النص إذا كانت خلفية الصفحة بيضاء في البداية */
     #navbar:not(.nav-scrolled) {
         background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 100%);
-    }
+    } {% endcomment %}
     
     /* بقية تنسيقاتك */
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -119,20 +119,20 @@
 <div class="relative flex min-h-screen flex-col">
 
     
-<nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
+<nav class="fixed w-full z-50 transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white bg-primary/95" id="navbar">
     <div class="flex items-center gap-3">
         <div class="bg-white p-1 rounded">
             <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
         </div>
-        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">Shlash Sulaiman</span>
+        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">{% trans "Shlash Al-Sulaiman" %}</span>
     </div>
 
-    <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
+    <div class="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-wide">
         <a class="hover:text-secondary transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
         <a class="hover:text-secondary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
         <a class="hover:text-secondary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
         <a class="hover:text-secondary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
+        <a class="px-3 py-2 bg-white/10 rounded-lg text-secondary border-b-2 border-secondary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
         <a class="hover:text-secondary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
         <a class="hover:text-secondary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
     </div>
@@ -173,7 +173,7 @@
         <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
         <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
         <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
+        <a class="mobile-link px-3 py-2 bg-white/10 rounded-lg text-secondary border-b-2 border-secondary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
         <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %} </a>
         <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
         <button class="bg-secondary text-white px-8 py-3 rounded-full text-lg font-bold">{% trans "PDF Profile" %}</button>
@@ -218,12 +218,12 @@
 
     <div class="relative z-10 mx-auto max-w-7xl">
         <div class="max-w-3xl">
-            <span class="inline-block rounded-full bg-accent/20 px-4 py-1 text-xs font-bold uppercase tracking-wider text-white mb-4 border border-accent/30">
+            <span class="inline-block rounded-full bg-secondary/20 px-4 py-1 text-xs font-bold uppercase tracking-wider text-white mb-4 border border-accent/30">
                 {% trans "Unified Fleet & Trading Gallery" %}
             </span>
             
             <h2 class="text-4xl lg:text-6xl font-black leading-tight text-white mb-6">
-                {% trans "Precision Machinery for" %} <span class="text-primary">{% trans "Industrial Excellence." %}</span>
+                {% trans "Precision Machinery for" %} <span class="text-secondary">{% trans "Industrial Excellence." %}</span>
             </h2>
             
             <p class="text-lg text-slate-200 mb-8 leading-relaxed">
@@ -262,7 +262,7 @@
 <h3 class="text-2xl font-bold text-primary">{%trans "Heavy Machinery Fleet" %}</h3>
 <div class="h-1 w-20 bg-accent mt-2"></div>
 </div>
-<p class="text-sm font-medium text-slate-400 uppercase tracking-widest">{%trans "15 Units Available" %}</p>
+<p class="text-sm font-medium text-slate-400 uppercase dark:text-white">{%trans "15 Units Available" %}</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 <!-- Machinery Card 1 -->
@@ -277,7 +277,7 @@
 <span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">{%trans " Lifting capacity, along  5,900 kg" %}</span>
 <span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10"> {%trans "POWER: 123KW" %}</span>
 </div>
-<p class="text-sm text-slate-500 mb-6 line-clamp-2">{%trans "High-performance excavation unit designed for massive earthmoving projects and mining applications." %}</p>
+<p class="text-sm text-slate-500 mb-6 line-clamp-2 dark:text-white">{%trans "High-performance excavation unit designed for massive earthmoving projects and mining applications." %}</p>
 {% comment %} <button class="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 py-3 text-sm font-bold text-slate-900 group-hover:bg-primary group-hover:text-white transition-all">
                                 Technical Specs
                                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
@@ -294,7 +294,7 @@
 <span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">BUCKET: 5.6 m³</span>
 <span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">25 TON PAYLOAD</span>
 </div>
-<p class="text-sm text-slate-500 mb-6 line-clamp-2">{%trans "Optimized for rapid loading and transport of industrial aggregates with superior fuel efficiency." %}</p>
+<p class="text-sm text-slate-500 mb-6 line-clamp-2 dark:text-white">{%trans "Optimized for rapid loading and transport of industrial aggregates with superior fuel efficiency." %}</p>
 {% comment %} <button class="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 py-3 text-sm font-bold text-slate-900 group-hover:bg-primary group-hover:text-white transition-all">
                                 Technical Specs
                                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
@@ -312,7 +312,7 @@
 <span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">EURO 5 ENGINE</span>
 <span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">32 CBM CAPACITY</span>
 </div>
-<p class="text-sm text-slate-500 mb-6 line-clamp-2">{%trans "Reliable heavy-duty transport solution for long-distance logistics and construction site hauling." %}</p>
+<p class="text-sm text-slate-500 mb-6 line-clamp-2 dark:text-white">{%trans "Reliable heavy-duty transport solution for long-distance logistics and construction site hauling." %}</p>
 {% comment %} <button class="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 py-3 text-sm font-bold text-slate-900 group-hover:bg-primary group-hover:text-white transition-all">
                                 Technical Specs
                                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
@@ -336,9 +336,9 @@
 <div class="flex flex-1 flex-col p-6">
 <div class="mb-2 text-xs font-bold text-accent uppercase">{%trans "Oil & Gas Support" %}</div>
 <h4 class="text-xl font-bold text-primary mb-3">{%trans "Oil Rig Water Tanker Fleet" %}</h4>
-<p class="text-sm text-slate-500 mb-4">{%trans "Dedicated potable and industrial water supply services specifically configured for remote oil rig sites." %}</p>
+<p class="text-sm text-slate-500 mb-4 dark:text-white">{%trans "Dedicated potable and industrial water supply services specifically configured for remote oil rig sites." %}</p>
 <div class="mt-auto flex items-center justify-between">
-<span class="text-xs font-bold text-slate-400">{%trans "24/7 Logistics Support" %}</span>
+<span class="text-xs font-bold text-slate-400 dark:text-white">{%trans "24/7 Logistics Support" %}</span>
 {% comment %} <button class="text-sm font-bold text-primary flex items-center gap-1">Details <span class="material-symbols-outlined text-sm">arrow_right_alt</span></button> {% endcomment %}
 </div>
 </div>
@@ -351,9 +351,9 @@
 <div class="flex flex-1 flex-col p-6">
 <div class="mb-2 text-xs font-bold text-accent uppercase">{%trans "Supply Chain" %}</div>
 <h4 class="text-xl font-bold text-primary mb-3">{%trans "Fuel & Chemical Trading" %}</h4>
-<p class="text-sm text-slate-500 mb-4">{%trans "Official supply partner for industrial-grade fuels and specialized chemical compounds for construction." %}</p>
+<p class="text-sm text-slate-500 mb-4 dark:text-white">{%trans "Official supply partner for industrial-grade fuels and specialized chemical compounds for construction." %}</p>
 <div class="mt-auto flex items-center justify-between">
-<span class="text-xs font-bold text-slate-400">{%trans "Certified Supply Grade" %}</span>
+<span class="text-xs font-bold text-slate-400 dark:text-white">{%trans "Certified Supply Grade" %}</span>
 {% comment %} <button class="text-sm font-bold text-primary flex items-center gap-1">{%trans "Inventory" %} <span class="material-symbols-outlined text-sm">arrow_right_alt</span></button> {% endcomment %}
 </div>
 </div>

@@ -17,8 +17,8 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#C59434", // Matte Gold
-                        burgundy: "#5A151A", // Dark Burgundy from Logo
+                        primary: "#C5A059", // Matte Gold
+                        burgundy: "#800000", // Dark Burgundy from Logo
                         "background-light": "#FDFCFB",
                         "background-dark": "#120506",
                     },
@@ -60,9 +60,9 @@
     box-shadow: 0 10px 15px rgba(0,0,0,0.3);
 }
 
-#navbar:not(.nav-scrolled) {
+{% comment %} #navbar:not(.nav-scrolled) {
     background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-}
+} {% endcomment %}
 
 /* MOBILE MENU */
 
@@ -108,29 +108,29 @@
 
 </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 ">
 
 
- <nav class="fixed w-full z-[200]  transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white" id="navbar">
+ <nav class="fixed w-full z-[200]  transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between text-white bg-burgundy" id="navbar">
     <div class="flex items-center gap-3">
         <div class="bg-white p-1 rounded">
             <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
         </div>
-        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">Shlash Sulaiman</span>
+        <span class="hidden lg:block font-bold text-lg tracking-wider uppercase">{% trans "Shlash Al-Sulaiman" %}</span>
     </div>
 
-    <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-wide">
-        <a class="hover:text-secondary transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %}</a>
-        <a class="hover:text-secondary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
+    <div class="hidden md:flex items-center gap-8 font-medium text-sm uppercase  tracking-wide">
+        <a class="hover:text-primary transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
+        <a class="px-3 py-2 bg-white/10 rounded-lg text-primary border-b-2 border-primary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %}</a>
+        <a class="hover:text-primary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
     </div>
 
     <div class="flex items-center gap-2 md:gap-4">
-        <button class="shimmer-effect hidden lg:flex items-center gap-2 bg-secondary hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
+        <button class="shimmer-effect hidden lg:flex items-center gap-2 bg-primary hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
             <span class="material-symbols-outlined text-sm">download</span> {% trans "Profile PDF" %}
         </button>
         
@@ -167,14 +167,14 @@ flex flex-col items-center justify-center
 space-y-8 text-2xl font-bold uppercase tracking-widest 
 transition-all duration-500 translate-x-full md:hidden"
 >
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %}</a>
-        <a class="mobile-link hover:text-secondary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
-        <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" target="_blank" class="bg-secondary text-white px-8 py-3 rounded-full text-lg font-bold">{% trans "PDF Profile" %}</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'home' %}">{% trans "Home" %}</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'about' %}">{% trans "About Us" %}</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'courses' %}">{% trans "Courses" %}</a>
+        <a class="mobile-link px-3 py-2 bg-white/10 rounded-lg text-primary border-b-2 border-primary transition-colors" href="{% url 'projects' %}">{% trans "Projects" %}</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'machine' %}">{% trans "Machinery" %}</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'vision' %}">{% trans "Vision and Plans" %}</a>
+        <a class="mobile-link hover:text-primary transition-colors" href="{% url 'contact' %}">{% trans "Contact Us" %}</a>
+        <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID" target="_blank" class="bg-primary text-white px-8 py-3 rounded-full text-lg font-bold">{% trans "PDF Profile" %}</a>
     </div>
 </nav> 
      
