@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-dkd^q&q$(+-%k5ng#(yhc$s96odw_b8(#*@rukyy(4wkmf6u!v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['introductory-site.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['introductory-site.onrender.com', 'localhost', '127.0.0.1' , '0.0.0.0']
 
 
 # Application definition
@@ -146,3 +146,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 default_auto_field = 'django.db.models.BigAutoField'
+
+
+# أضف هذه الإعدادات في نهاية الملف لتعطيل التحويل لـ HTTPS
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_HSTS_SECONDS = 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_PRELOAD = False

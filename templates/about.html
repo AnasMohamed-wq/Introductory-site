@@ -7,10 +7,9 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>About Us - Shalash Al-Sulaiman Trading &amp; Contracting</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
 
 <script>
     tailwind.config = {
@@ -189,9 +188,6 @@
             <span class="material-symbols-outlined text-sm">download</span> {% trans "Profile PDF" %}
         </a>
         
-        <button class="p-2 rounded-full hover:bg-white/10 transition-colors" id="theme-toggle">
-            <span class="material-symbols-outlined">dark_mode</span>
-        </button>
 
         <div class="flex items-center">
             {% get_current_language as CURRENT_LANG %}
@@ -238,8 +234,8 @@
 <div class="container mx-auto px-6 relative z-10">
 <div class="max-w-3xl animate-fade-up">
 <div class="flex items-center gap-3 mb-6">
-<div class="h-[1px] w-12 bg-gold"></div>
-<span class="text-gold font-bold  uppercase text-sm ">{%trans "Excellence Since 2011"%}</span>
+
+
 </div>
 <h1 class="text-5xl md:text-7xl text-white leading-none mb-8 ">
                     {%trans "Pioneering"%} <br/>
@@ -257,7 +253,7 @@
 <div class="grid lg:grid-cols-2 gap-20 items-center">
 <div class="relative animate-scale">
 <div class="absolute -top-10 -left-10 w-40 h-40 border-t-2 border-l-2 border-gold/30"></div>
-<img alt="Our Expertise" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" src="{{MEDIA_URL}}img/uncif.png"/>
+<img alt="Our Expertise" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl rounded-3xl" src="{{MEDIA_URL}}img/uncif.png"/>
 <div class="absolute -bottom-10 -right-10 bg-burgundy p-12 hidden md:block">
 <div class="text-6xl font-bold text-gold mb-2">13+</div>
 <div class="text-white text-xs uppercase  font-semibold">{%trans "Years of Industry Leadership"%}</div>
@@ -265,12 +261,16 @@
 </div>
 <div class="space-y-8 animate-fade-up delay-1">
 <div>
-<span class="text-gold font-bold  uppercase text-xl">{%trans "Corporate Profile"%}</span>
-<h2 class="text-4xl md:text-5xl text-burgundy dark:text-white  mt-4 leading-tight">{%trans "About Us"%}</h2>
+
+<div class="flex items-center gap-4 mb-8">
+    <div class="h-10 w-2 bg-gold"></div>
+    
+<h2 class="text-3xl font-bold font-display text-primary dark:text-white">{%trans "About Us"%}</h2>
+</div>
 </div>
 <div class="space-y-6 text-slate-600 leading-relaxed text-lg">
 <p>
-<strong class="text-burgundy dark:text-gold ">{%trans "Shalash Sulaiman Trading and Contracting"%}</strong> {%trans "is a premier engineering services provider, established in 2011 to bridge the gap between complex industrial requirements and sophisticated technical execution."%}
+<strong class="text-primary dark:text-gold ">{%trans "Shalash Sulaiman Trading and Contracting"%}</strong> {%trans "is a premier engineering services provider, established in 2011 to bridge the gap between complex industrial requirements and sophisticated technical execution."%}
                         </p>
 <p>
                             {%trans "We specialize in multi-disciplinary engineering services with a particular focus on high-stakes sectors like oil and gas infrastructure. Our reputation is built on a foundation of technical excellence, rigorous safety standards, and a commitment to delivering projects that stand the test of time."%}
@@ -280,14 +280,14 @@
 <div class="flex items-start gap-4">
 <span class="material-symbols-outlined text-gold text-4xl">verified_user</span>
 <div>
-<h4 class="font-bold text-burgundy dark:text-gold">{%trans "Quality First"%}</h4>
+<h4 class="font-bold text-primary dark:text-gold">{%trans "Quality First"%}</h4>
 <p class="text-sm text-slate-500 ">{%trans "Adhering to ISO global standards."%}</p>
 </div>
 </div>
 <div class="flex items-start gap-4">
 <span class="material-symbols-outlined text-gold text-4xl">engineering</span>
 <div>
-<h4 class="font-bold text-burgundy dark:text-gold">{%trans "Expert Team"%}</h4>
+<h4 class="font-bold text-primary dark:text-gold">{%trans "Expert Team"%}</h4>
 <p class="text-sm text-slate-500">{%trans "Certified senior engineers."%}</p>
 </div>
 </div>
@@ -297,67 +297,76 @@
 </div>
 </section>
 
-<section class="py-32 bg-slate-50 dark:bg-slate-900 overflow-hidden" id="services">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-20 animate-fade-up">
-            <span class="text-gold font-bold  uppercase text-sm">{%trans "What We Do"%}</span>
-            <h2 class="text-4xl md:text-5xl text-burgundy dark:text-white mt-4 font-bold">{%trans "Diversified Solutions"%}</h2>
-            <div class="w-24 h-1 bg-gold mx-auto mt-8"></div>
+
+
+
+<section class="py-24 px-6 lg:px-20 bg-slate-50 dark:bg-slate-900 overflow-hidden" id="services">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <span class="text-primary font-bold uppercase text-sm tracking-widest">{% trans "What We Do" %}</span>
+            <h2 class="text-slate-90 dark:text-white text-4xl md:text-5xl font-bold mt-4 mb-6">{% trans "Diversified Solutions" %}</h2>
+            <div class="w-24 h-1 bg-gold mx-auto mb-8"></div>
         </div>
 
-        <div class="flex flex-col lg:flex-row gap-6 items-stretch">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div class="service-card bg-white dark:bg-slate-800 p-10 rounded-2xl border-b-4 border-transparent hover:border-gold hover:bg-burgundy group shadow-sm">
-                <div class="w-16 h-16 bg-burgundy rounded-xl flex items-center justify-center mb-8 group-hover:bg-white transition-all duration-500 shadow-lg shrink-0">
-                    <span class="material-symbols-outlined text-gold group-hover:text-burgundy text-3xl">foundation</span>
+            <div class="group relative bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/5 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                <div class="aspect-video overflow-hidden">
+                    <img alt="Civil Contracting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{MEDIA_URL}}img/project.png"/>
                 </div>
-                
-                <h3 class="text-2xl font-bold text-burgundy dark:text-white group-hover:text-gold transition-colors mb-4">{%trans "Civil Contracting"%}</h3>
-                
-                <p class="text-slate-600 dark:text-slate-400 group-hover:text-gold transition-colors leading-relaxed mb-8">
-                    {%trans "Execution of large-scale infrastructure, high-rise buildings, and industrial facilities with precision engineering and global safety standards."%}
-                </p>
-
-                <div class="pt-6 border-t border-slate-100 dark:border-slate-700 group-hover:border-white/20 mt-auto">
-                    <p class="text-burgundy dark:text-gold group-hover:text-gold text-lg font-bold leading-relaxed" dir="rtl">
-                        {%trans "المقاولات المدنية والإنشائية والبنية التحتية والمباني العالية والمرافق الصناعية."%}
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-primary/10 text-primary dark:text-secondary dark:bg-secondary/10 text-xs font-bold px-3 py-1 rounded-full uppercase">{% trans "Construction" %}</span>
+                        <span class="material-symbols-outlined text-secondary">foundation</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-secondary transition-colors">{% trans "Civil Contracting" %}</h3>
+                    <p class="text-slate-600 dark:text-slate-400 group-hover:text-gold transition-colors leading-relaxed mb-8">
+                        {%trans "Execution of large-scale infrastructure, high-rise buildings, and industrial facilities with precision engineering and global safety standards."%}
                     </p>
+                    <a class="inline-flex items-center text-primary dark:text-secondary font-bold text-sm group/link" href="{% url 'contact' %}">
+                        {% trans "Learn More" %}
+                        <span class="material-symbols-outlined ml-2 transition-transform group-hover/link:translate-x-1 rtl:rotate-180 rtl:group-hover/link:-translate-x-1">arrow_forward</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="service-card bg-white dark:bg-slate-800 p-10 rounded-2xl border-b-4 border-transparent hover:border-gold hover:bg-burgundy group shadow-sm">
-                <div class="w-16 h-16 bg-burgundy rounded-xl flex items-center justify-center mb-8 group-hover:bg-white transition-all duration-500 shadow-lg shrink-0">
-                    <span class="material-symbols-outlined text-gold group-hover:text-burgundy text-3xl">shopping_cart</span>
+            <div class="group relative bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/5 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                <div class="aspect-video overflow-hidden">
+                    <img alt="Trading" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{MEDIA_URL}}img/lineroed.png"/>
                 </div>
-                
-                <h3 class="text-2xl font-bold text-burgundy dark:text-white group-hover:text-gold transition-colors mb-4">{%trans "Trading Divisions"%}</h3>
-                
-                <p class="text-slate-600 dark:text-slate-400 group-hover:text-gold transition-colors leading-relaxed mb-8">
-                    {%trans "Global supply chain management for construction materials, heavy machinery, and specialized industrial hardware for various sectors."%}
-                </p>
-
-                <div class="pt-6 border-t border-slate-100 dark:border-slate-700 group-hover:border-white/20 mt-auto">
-                    <p class="text-burgundy dark:text-gold group-hover:text-gold text-lg font-bold leading-relaxed" dir="rtl">
-                        {%trans "قطاع التجارة وتوريد مواد البناء والمعدات الثقيلة والأجهزة الصناعية المتخصصة."%}
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-primary/10 text-primary dark:text-secondary dark:bg-secondary/10 text-xs font-bold px-3 py-1 rounded-full uppercase">{% trans "Trading" %}</span>
+                        <span class="material-symbols-outlined text-secondary">shopping_cart</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-secondary transition-colors">{% trans "Trading Divisions" %}</h3>
+                    <p class="text-slate-600 dark:text-slate-400 group-hover:text-gold transition-colors leading-relaxed mb-8">
+                        {%trans "Global supply chain management for construction materials, heavy machinery, and specialized industrial hardware for various sectors."%}
                     </p>
+                    <a class="inline-flex items-center text-primary dark:text-secondary font-bold text-sm group/link" href="{% url 'contact' %}">
+                        {% trans "Learn More" %}
+                        <span class="material-symbols-outlined ml-2 transition-transform group-hover/link:translate-x-1 rtl:rotate-180 rtl:group-hover/link:-translate-x-1">arrow_forward</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="service-card bg-white dark:bg-slate-800 p-10 rounded-2xl border-b-4 border-transparent hover:border-gold hover:bg-burgundy group shadow-sm">
-                <div class="w-16 h-16 bg-burgundy rounded-xl flex items-center justify-center mb-8 group-hover:bg-white transition-all duration-500 shadow-lg shrink-0">
-                    <span class="material-symbols-outlined text-gold group-hover:text-burgundy text-3xl">bolt</span>
+            <div class="group relative bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/5 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                <div class="aspect-video overflow-hidden">
+                    <img alt="MEP Services" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{MEDIA_URL}}img/sol.png"/>
                 </div>
-                
-                <h3 class="text-2xl font-bold text-burgundy dark:text-white group-hover:text-gold transition-colors mb-4">{%trans "MEP Services"%}</h3>
-                
-                <p class="text-slate-600 dark:text-slate-400 group-hover:text-gold transition-colors leading-relaxed mb-8 ">
-                    {%trans "Expert Mechanical, Electrical, and Plumbing services integrated with smart building technologies and sustainable power systems."%}
-                </p>
-
-                <div class="pt-6 border-t border-slate-100 dark:border-slate-700 group-hover:border-white/20 mt-auto">
-                    <p class="text-burgundy dark:text-gold group-hover:text-gold text-lg font-bold leading-relaxed" dir="rtl">
-                        {%trans "خدمات الميكانيك والكهرباء والسباكة المتكاملة مع تقنيات المباني الذكية."%}
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-primary/10 text-primary dark:text-secondary dark:bg-secondary/10 text-xs font-bold px-3 py-1 rounded-full uppercase">{% trans "Engineering" %}</span>
+                        <span class="material-symbols-outlined text-secondary">bolt</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-secondary transition-colors">{% trans "MEP Services" %}</h3>
+                    <p class="text-slate-600 dark:text-slate-400 group-hover:text-gold transition-colors leading-relaxed mb-8 ">
+                        {%trans "Expert Mechanical, Electrical, and Plumbing services integrated with smart building technologies and sustainable power systems."%}
                     </p>
+                    <a class="inline-flex items-center text-primary dark:text-secondary font-bold text-sm group/link" href="{% url 'contact' %}">
+                        {% trans "Learn More" %}
+                        <span class="material-symbols-outlined ml-2 transition-transform group-hover/link:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-2">arrow_forward</span>
+                    </a>
                 </div>
             </div>
 
@@ -384,97 +393,148 @@
 </div>
 
 </div>
+
 <div class="grid md:grid-cols-2 gap-20 relative animate-fade-up delay-1">
-<div class="relative">
-<div class="hidden md:block absolute -top-10 left-1/2 w-1/2 h-10 border-t-2 border-l-2 border-gold/30 -translate-x-full"></div>
-<div class="bg-burgundy border-2 border-gold/30 p-8 hover:border-gold transition-colors">
-<h4 class="text-gold text-lg font-bold mb-4">{%trans "Project Department"%}</h4>
-<div class="space-y-4">
-<div class="flex items-center gap-3 text-white/90">
-<span class="material-symbols-outlined text-gold">apartment</span>
-<span>{%trans "Civil Sector Operations"%}</span>
+    <div class="relative">
+        <div class="hidden md:block absolute -top-10 left-1/2 w-1/2 h-10 border-t-2 border-l-2 border-gold/30 -translate-x-full"></div>
+        <div class="bg-burgundy border-2 border-gold/30 p-8 hover:border-gold transition-all duration-300 shadow-lg min-h-[220px] flex flex-col justify-center">
+            <h4 class="text-gold text-lg font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined">account_tree</span>
+                {% trans "Project Department" %}
+            </h4>
+            <div class="space-y-4">
+                <div class="flex items-center gap-3 text-white/90 group/item">
+                    <span class="material-symbols-outlined text-gold transition-transform group-hover/item:scale-110">apartment</span>
+                    <span class="text-base">{% trans "Civil Sector Operations" %}</span>
+                </div>
+                <div class="flex items-center gap-3 text-white/90 group/item">
+                    <span class="material-symbols-outlined text-gold transition-transform group-hover/item:scale-110">oil_barrel</span>
+                    <span class="text-base">{% trans "Oil Sector Services" %}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative">
+        <div class="hidden md:block absolute -top-10 right-1/2 w-1/2 h-10 border-t-2 border-r-2 border-gold/30 translate-x-full"></div>
+        <div class="bg-burgundy border-2 border-gold/30 p-8 hover:border-gold transition-all duration-300 shadow-lg min-h-[220px] flex flex-col justify-center">
+            <h4 class="text-gold text-lg font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined">psychology</span>
+                {% trans "Operations & HR" %}
+            </h4>
+            <div class="space-y-4">
+                <div class="flex items-center gap-3 text-white/90 group/item">
+                    <span class="material-symbols-outlined text-gold transition-transform group-hover/item:scale-110">groups</span>
+                    <span class="text-base">{% trans "Human Resources" %}</span>
+                </div>
+                <div class="flex items-center gap-3 text-white/90 group/item">
+                    <span class="material-symbols-outlined text-gold transition-transform group-hover/item:scale-110">diversity_3</span>
+                    <span class="text-base">{% trans "Strategic Recruitment" %}</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="flex items-center gap-3 text-white/90">
-<span class="material-symbols-outlined text-gold">oil_barrel</span>
-<span>{%trans "Oil Sector Services"%}</span>
-</div>
-</div>
-</div>
-</div>
-<div class="relative">
-<div class="hidden md:block absolute -top-10 right-1/2 w-1/2 h-10 border-t-2 border-r-2 border-gold/30 translate-x-full"></div>
-<div class="bg-burgundy border-2 border-gold/30 p-8 hover:border-gold transition-colors">
-<h4 class="text-gold text-lg font-bold mb-4">{%trans "Operations &amp; HR"%}</h4>
-<div class="space-y-4">
-<div class="flex items-center gap-3 text-white/90">
-<span class="material-symbols-outlined text-gold">groups</span>
-<span>{%trans "Human Resources"%}</span>
-</div>
-<div class="flex items-center gap-3 text-white/90">
-<span class="material-symbols-outlined text-gold">diversity_3</span>
-<span>{%trans "Strategic Recruitment"%}</span>
-</div>
-</div>
-</div>
-</div>
-</div>
+
 <div class="grid md:grid-cols-2 gap-20 mt-12 animate-fade-up delay-2">
-<div class="bg-burgundy/50 border border-gold/20 p-8">
-<h4 class="text-gold text-lg font-bold mb-4 uppercase tracking-tighter">{%trans "Finance &amp; Accounting"%}</h4>
-<p class="text-white/70 text-sm ">{%trans "Managing fiscal integrity and strategic investment across all active project sites."%}</p>
+    <div class="bg-burgundy border-2 border-gold/30 p-8 hover:border-gold transition-all duration-300 shadow-lg min-h-[220px] flex flex-col justify-center">
+        <h4 class="text-gold text-lg font-bold mb-6 flex items-center gap-2">
+            <span class="material-symbols-outlined">payments</span>
+            {% trans "Finance & Accounting" %}
+        </h4>
+        <div class="space-y-4">
+            <div class="flex items-center gap-3 text-white/90 group/item">
+                <span class="material-symbols-outlined text-gold transition-transform group-hover/item:scale-110">account_balance</span>
+                <span class="text-base">{% trans "Fiscal Integrity Management" %}</span>
+            </div>
+            <div class="flex items-center gap-3 text-white/90 group/item">
+                <span class="material-symbols-outlined text-gold transition-transform group-hover/item:scale-110">trending_up</span>
+                <span class="text-base">{% trans "Strategic Investment" %}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-burgundy border-2 border-gold/30 p-8 hover:border-gold transition-all duration-300 shadow-lg min-h-[220px] flex flex-col justify-center">
+        <h4 class="text-gold text-lg font-bold mb-6 flex items-center gap-2">
+            <span class="material-symbols-outlined">local_shipping</span>
+            {% trans "Logistics & Supply" %}
+        </h4>
+        <div class="space-y-4">
+            <div class="flex items-center gap-3 text-white/90 group/item">
+                <span class="material-symbols-outlined text-gold transition-transform group-hover/item:scale-110">precision_manufacturing</span>
+                <span class="text-base">{% trans "Heavy Machinery Coordination" %}</span>
+            </div>
+            <div class="flex items-center gap-3 text-white/90 group/item">
+                <span class="material-symbols-outlined text-gold transition-transform group-hover/item:scale-110">inventory_2</span>
+                <span class="text-base">{% trans "Global Procurement Chains" %}</span>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="bg-burgundy/50 border border-gold/20 p-8">
-<h4 class="text-gold text-lg font-bold mb-4 uppercase tracking-tighter">{%trans "Logistics &amp; Supply"%}</h4>
-<p class="text-white/70 text-sm ">{%trans "Coordinating heavy machinery movement and global material procurement chains."%}</p>
-</div>
-</div>
+
 </div>
 </div>
 </section>
 
 <section class="py-24 bg-white dark:bg-transparent overflow-hidden">
-<div class="container mx-auto px-6">
-<div class="grid lg:grid-cols-2 gap-16 items-center">
-<div class="animate-fade-up">
-<span class="text-gold text-sm md:text-sm font-bold  uppercase  ">{% trans "Our Principle" %}</span>
-<h2 class="text-4xl md:text-5xl text-burgundy dark:text-white mt-4 mb-8">{% trans "Engineering with Integrity" %}</h2>
-<p class="text-slate-600 text-lg mb-10">{% trans "Our strength lies in a synchronized ecosystem of talent, technology, and transparency." %}</p>
-<ul class="space-y-6">
-<li class="flex items-start gap-4 group">
-<div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-sm">done_all</span>
-</div>
-<div>
-<h4 class="font-bold text-burgundy">{% trans "Rigorous Quality Protocols" %}</h4>
-<p class="text-slate-500 text-sm">{% trans "Triple-stage verification for every engineering milestone." %}</p>
-</div>
-</li>
-<li class="flex items-start gap-4 group">
-<div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-sm">done_all</span>
-</div>
-<div>
-<h4 class="font-bold text-burgundy">{% trans "Workplace Safety First" %}</h4>
-<p class="text-slate-500 text-sm">{% trans "Zero-incident goal-driven safety culture at every site." %}</p>
-</div>
-</li>
-<li class="flex items-start gap-4 group">
-<div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all">
-<span class="material-symbols-outlined text-sm">done_all</span>
-</div>
-<div>
-<h4 class="font-bold text-burgundy">{% trans "Adaptive Management" %}</h4>
-<p class="text-slate-500 text-sm">{% trans "Agile responses to complex geological and site challenges." %}</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="relative animate-scale">
-<img alt="Project Site" class="w-full h-[500px] object-cover shadow-2xl" src="{{MEDIA_URL}}img/1.png"/>
-<div class="absolute -top-6 -right-6 w-32 h-32 bg-gold/10 -z-10"></div>
-</div>
-</div>
-</div>
+    <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            
+            <div class="animate-fade-up">
+                <span class="text-primary text-lg font-bold uppercase tracking-widest block mb-4">{% trans "Our Principle" %}</span>
+                
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-12 w-2 bg-gold"></div>
+                    <h2 class="text-4xl md:text-5xl font-bold font-display text-burgundy dark:text-white">
+                        {% trans "Engineering with Integrity" %}
+                    </h2>
+                </div>
+
+                <p class="text-slate-600 text-lg mb-10 leading-relaxed">
+                    {% trans "Our strength lies in a synchronized ecosystem of talent, technology, and transparency." %}
+                </p>
+
+                <ul class="space-y-8">
+                    <li class="flex items-start gap-4 group">
+                        <div class="w-12 h-12 rounded-full border-2 border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all duration-300 shadow-sm">
+                            <span class="material-symbols-outlined text-2xl">verified</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl text-burgundy dark:text-white group-hover:text-gold transition-colors">{% trans "Rigorous Quality Protocols" %}</h4>
+                            <p class="text-slate-500 text-sm mt-1">{% trans "Triple-stage verification for every engineering milestone." %}</p>
+                        </div>
+                    </li>
+
+                    <li class="flex items-start gap-4 group">
+                        <div class="w-12 h-12 rounded-full border-2 border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all duration-300 shadow-sm">
+                            <span class="material-symbols-outlined text-2xl">health_and_safety</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl text-burgundy dark:text-white group-hover:text-gold transition-colors">{% trans "Workplace Safety First" %}</h4>
+                            <p class="text-slate-500 text-sm mt-1">{% trans "Zero-incident goal-driven safety culture at every site." %}</p>
+                        </div>
+                    </li>
+
+                    <li class="flex items-start gap-4 group">
+                        <div class="w-12 h-12 rounded-full border-2 border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all duration-300 shadow-sm">
+                            <span class="material-symbols-outlined text-2xl">architecture</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl text-burgundy dark:text-white group-hover:text-gold transition-colors">{% trans "Adaptive Management" %}</h4>
+                            <p class="text-slate-500 text-sm mt-1">{% trans "Agile responses to complex geological and site challenges." %}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="relative animate-scale">
+                <img alt="Project Site" class="w-full h-[550px] object-cover shadow-2xl rounded-2xl" src="{{MEDIA_URL}}img/1.png"/>
+                <div class="absolute -top-6 -right-6 w-32 h-32 bg-gold/10 -z-10 rounded-full"></div>
+                <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-burgundy/5 -z-10 rounded-lg"></div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
 
@@ -483,7 +543,7 @@
 <div class="container mx-auto max-w-7xl">
 <div class="grid md:grid-cols-4 gap-12 mb-16">
 <div class="col-span-1 md:col-span-2 space-y-6">
-<img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
+<img alt="Shlash Logo" class="h-10 rounded-xl" src="{{MEDIA_URL}}logo/1.jpeg"/>
  
 <p class="text-slate-300 max-w-md leading-relaxed">
                    <span class="text-accent text-xl">{%trans "Shlash Sulaiman Trading & Contracting." %}</span> <br>  {%trans " is a leading company in Syria's trading and contracting landscape. We are committed to excellence, safety, and innovation in every project we undertake." %}
@@ -523,12 +583,12 @@
 </li>
 <li class="flex items-center gap-3">
 <span class="material-symbols-outlined text-gold">phone</span>
-<span>0097430075675</span>
+
 <span>+963998493378</span>
 </li>
 <li class="flex items-center gap-3">
 <span class="material-symbols-outlined text-gold">email</span>
-<span>alshlashcompany@gmail.com</span>
+<span>shlashsulaiman@gmail.com</span>
 </li>
 </ul>
 </div>

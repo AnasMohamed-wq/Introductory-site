@@ -7,9 +7,10 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Unified Fleet &amp; Trading Gallery | Shlash Al-Sulaiman</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
 <script id="tailwind-config">
             tailwind.config = {
                 darkMode: "class",
@@ -22,8 +23,8 @@
                              
                         },
                         fontFamily: {
-                            display: ["Montserrat", "Cairo", "sans-serif"],
-                            body: ["Montserrat", "Cairo", "sans-serif"],
+                            display: ["Montserrat", "Cairo"],
+                            body: ["Montserrat", "Cairo"],
                         },
 
                         
@@ -45,10 +46,10 @@
 
 
         .lang-en {
-            font-family: 'Montserrat', 'Cairo', sans-serif;
+            font-family: 'Montserrat', 'Cairo';
         }
         .lang-ar {
-            font-family: 'Cairo', 'Montserrat', sans-serif;
+            font-family: 'Cairo', 'Montserrat';
         }
 
         /* shimmer direction: flip for RTL (Arabic) */
@@ -141,10 +142,7 @@
         <button class="shimmer-effect hidden lg:flex items-center gap-2 bg-secondary hover:bg-opacity-90 text-white px-5 py-2.5 rounded text-sm font-semibold transition-all">
             <span class="material-symbols-outlined text-sm">download</span> {% trans "Profile PDF" %}
         </button>
-        
-        <button class="p-2 rounded-full hover:bg-white/10 transition-colors" id="theme-toggle">
-            <span class="material-symbols-outlined">dark_mode</span>
-        </button>
+
         <div class="flex items-center">
             {% get_current_language as CURRENT_LANG %}
             <form action="{% url 'set_language' %}" method="post" id="lang-form">
@@ -186,31 +184,6 @@
 
 
 <main class="flex-1">
-<!-- Hero Section -->
- {% comment %} <section class="px-6 lg:px-20 py-12 lg:py-20 bg-slate-50 dark:bg-slate-900/50" background-image="{{MEDIA_URL}}img/roed5.png">
-<div class="mx-auto max-w-7xl">
-<div class="max-w-3xl">
-<span class="inline-block rounded-full bg-accent/10 px-4 py-1 text-xs font-bold uppercase tracking-wider text-accent mb-4">{%trans "Unified Fleet &amp; Trading Gallery" %}</span>
-<h2 class="text-4xl lg:text-6xl font-black leading-tight text-slate-900 dark:text-white mb-6">
-                           {%trans " Precision Machinery for"%} <span class="text-primary">{%trans "Industrial Excellence.</span>" %}
-</h2>
-<p class="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-                           {%trans " A comprehensive fleet of heavy equipment and specialized supply services including fuel, chemicals, and specialized tankers for oil rig operations." %}
-                        </p>
-
-<div class="flex flex-wrap gap-4">
-    
-<button class="flex items-center gap-2 rounded-lg bg-accent px-8 py-3 text-sm font-bold text-white hover:opacity-90 transition-all">
- <span class="material-symbols-outlined">download</span>
-                                Download Catalog
-                            </button>
-<button class="flex items-center gap-2 rounded-lg border-2 border-slate-200 px-8 py-3 text-sm font-bold hover:bg-slate-50 dark:border-slate-700">
-                                View Services
-                            </button> 
-</div>
-</div>
-</div>
-</section>   {% endcomment %}
 
 <section class="relative px-6 lg:px-20 py-24 lg:py-32 overflow-hidden bg-slate-900" style="background-image: url('{{ MEDIA_URL }}img/roed5.png'); background-size: cover; background-position: center;">
     
@@ -218,9 +191,7 @@
 
     <div class="relative z-10 mx-auto max-w-7xl">
         <div class="max-w-3xl">
-            <span class="inline-block rounded-full bg-secondary/20 px-4 py-1 text-xs font-bold uppercase tracking-wider text-white mb-4 border border-accent/30">
-                {% trans "Unified Fleet & Trading Gallery" %}
-            </span>
+           
             
             <h2 class="text-4xl lg:text-6xl font-black leading-tight text-white mb-6">
                 {% trans "Precision Machinery for" %} <span class="text-secondary">{% trans "Industrial Excellence." %}</span>
@@ -230,15 +201,7 @@
                 {% trans "A comprehensive fleet of heavy equipment and specialized supply services including fuel, chemicals, and specialized tankers for oil rig operations." %}
             </p>
 
-            {% comment %} <div class="flex flex-wrap gap-4">
-                <button class="flex items-center gap-2 rounded-lg bg-accent px-8 py-3 text-sm font-bold text-white hover:opacity-90 transition-all shadow-lg">
-                    <span class="material-symbols-outlined">download</span>
-                    {% trans "Download Catalog" %}
-                </button>
-                <button class="flex items-center gap-2 rounded-lg border-2 border-white/30 bg-white/10 backdrop-blur-sm px-8 py-3 text-sm font-bold text-white hover:bg-white/20 transition-all">
-                    {% trans "View Services" %}
-                </button>
-            </div> {% endcomment %}
+
         </div>
     </div>
 </section>
@@ -250,7 +213,7 @@
 <section class="border-y border-slate-100 dark:border-slate-800 bg-white dark:bg-background-dark overflow-hidden">
 <div class="mx-auto max-w-7xl px-6 lg:px-20">
 <div class="flex items-center gap-8 overflow-x-auto no-scrollbar py-6">
-<a  class="whitespace-nowrap rounded-full bg-primary px-6 py-2 text-sm font-bold text-white" href="#flt">{%trans "All Equipment" %}</a>
+
 </div>
 </div>
 </section>
@@ -259,7 +222,13 @@
 <div class="mx-auto max-w-7xl">
 <div class="flex items-end justify-between mb-12">
 <div>
-<h3 class="text-2xl font-bold text-primary">{%trans "Heavy Machinery Fleet" %}</h3>
+<div class="flex items-center gap-4 mb-8">
+    <div class="h-10 w-2 bg-secondary"></div>
+    
+    <h2 class="text-3xl font-bold font-display text-primary dark:text-white">
+       {%trans "Heavy Machinery Fleet" %}</h2>
+</div>  
+
 <div class="h-1 w-20 bg-accent mt-2"></div>
 </div>
 <p class="text-sm font-medium text-slate-400 uppercase dark:text-white">{%trans "15 Units Available" %}</p>
@@ -278,10 +247,7 @@
 <span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10"> {%trans "POWER: 123KW" %}</span>
 </div>
 <p class="text-sm text-slate-500 mb-6 line-clamp-2 dark:text-white">{%trans "High-performance excavation unit designed for massive earthmoving projects and mining applications." %}</p>
-{% comment %} <button class="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 py-3 text-sm font-bold text-slate-900 group-hover:bg-primary group-hover:text-white transition-all">
-                                Technical Specs
-                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button> {% endcomment %}
+
 </div>
 <!-- Machinery Card 2 -->
 <div class="group relative flex flex-col rounded-xl border border-slate-100 bg-white p-4 transition-all gold-glow dark:border-slate-800 dark:bg-slate-900 shadow-sm">
@@ -295,10 +261,7 @@
 <span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">25 TON PAYLOAD</span>
 </div>
 <p class="text-sm text-slate-500 mb-6 line-clamp-2 dark:text-white">{%trans "Optimized for rapid loading and transport of industrial aggregates with superior fuel efficiency." %}</p>
-{% comment %} <button class="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 py-3 text-sm font-bold text-slate-900 group-hover:bg-primary group-hover:text-white transition-all">
-                                Technical Specs
-                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button> {% endcomment %}
+
 </div>
 <!-- Machinery Card 3 -->
 <div class="group relative flex flex-col rounded-xl border border-slate-100 bg-white p-4 transition-all gold-glow dark:border-slate-800 dark:bg-slate-900 shadow-sm">
@@ -313,17 +276,19 @@
 <span class="rounded bg-accent/5 px-2 py-1 text-[11px] font-bold text-accent border border-accent/10">32 CBM CAPACITY</span>
 </div>
 <p class="text-sm text-slate-500 mb-6 line-clamp-2 dark:text-white">{%trans "Reliable heavy-duty transport solution for long-distance logistics and construction site hauling." %}</p>
-{% comment %} <button class="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 py-3 text-sm font-bold text-slate-900 group-hover:bg-primary group-hover:text-white transition-all">
-                                Technical Specs
-                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button> {% endcomment %}
+
 </div>
 </div>
 <!-- Specialized Services Section -->
 <div class="mt-20">
 <div class="flex items-end justify-between mb-12">
 <div>
-<h3 class="text-2xl font-bold text-primary uppercase tracking-tighter">{%trans "Specialized Fleet & Trading" %}</h3>
+<div class="flex items-center gap-4 mb-8">
+    <div class="h-10 w-2 bg-secondary"></div>
+    
+    <h2 class="text-3xl font-bold font-display text-primary dark:text-white">
+       {%trans "Specialized Fleet & Trading" %}</h2>
+</div> 
 <div class="h-1 w-20 bg-accent mt-2"></div>
 </div>
 </div>
@@ -401,9 +366,7 @@
 
 </div>
 <br/> <br/>
-<a  class="mt-8 w-full rounded-lg bg-primary py-4 text-center font-bold text-white shadow-lg shadow-primary/30 transition-all hover:scale-[1.02] " href="{% url 'contact' %}">
-                                   {%trans "Contact Us" %}
- </a>
+
 </div>
 </div>
 </div>
@@ -457,12 +420,12 @@
 </li>
 <li class="flex items-center gap-3">
 <span class="material-symbols-outlined text-secondary">phone</span>
-<span>0097430075675</span>
+
 <span>+963998493378</span>
 </li>
 <li class="flex items-center gap-3">
 <span class="material-symbols-outlined text-secondary">email</span>
-<span>alshlashcompany@gmail.com</span>
+<span>shlashsulaiman@gmail.com</span>
 </li>
 </ul>
 </div>

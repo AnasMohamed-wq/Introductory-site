@@ -12,6 +12,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
+    gettext \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # نسخ ملف المتطلبات أولاً لتحسين سرعة البناء
@@ -24,6 +25,7 @@ COPY . .
 
 # تشغيل عمليات الجمع للملفات الساكنة (Static)
 RUN python manage.py collectstatic --noinput
+RUN python manage.py compilemessages
 
 # فتح المنفذ 8000
 EXPOSE 8000
