@@ -615,18 +615,7 @@
         }
     });
 
-    // 2. التحكم في تبديل الوضع الليلي (Dark Mode) وتغيير الأيقونة
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    themeToggle.addEventListener('click', () => {
-        if (html.classList.contains('dark')) {
-            html.classList.remove('dark');
-            themeToggle.innerHTML = '<span class="material-symbols-outlined">dark_mode</span>';
-        } else {
-            html.classList.add('dark');
-            themeToggle.innerHTML = '<span class="material-symbols-outlined">light_mode</span>';
-        }
-    });
+
 
     // 3. التحكم في قائمة الموبايل (فتح/إغلاق وتغيير الأيقونة)
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');

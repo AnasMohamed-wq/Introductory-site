@@ -32,7 +32,7 @@ msgstr "العربية"
 #: templates/machine.html:129 templates/projects.html:121
 #: templates/vision.html:181
 msgid "Shlash Al-Sulaiman"
-msgstr "شلش السليمان"
+msgstr "شلاش السليمان"
 
 #: templates/about.html:179 templates/about.html:218 templates/about.html:573
 #: templates/contact.html:96 templates/contact.html:137
@@ -147,7 +147,7 @@ msgstr "سنوات من القيادة في القطاع"
 
 #: templates/about.html:275
 msgid "Shalash Sulaiman Trading and Contracting"
-msgstr "شركة شلش سليمان للتجارة والمقاولات"
+msgstr "شركة شلاش سليمان للتجارة والمقاولات"
 
 #: templates/about.html:275
 msgid ""
@@ -345,7 +345,7 @@ msgstr "استجابات مرنة للتحديات الجيولوجية والم
 #: templates/courses.html:279 templates/machine.html:390
 #: templates/projects.html:460 templates/vision.html:423
 msgid "Shlash Sulaiman Trading & Contracting."
-msgstr "شركة شلش سليمان للتجارة والمقاولات."
+msgstr "شركة شلاش سليمان للتجارة والمقاولات."
 
 #: templates/about.html:551 templates/contact.html:239
 #: templates/courses.html:279 templates/home.html:475
@@ -409,14 +409,14 @@ msgstr "بجانب المصرف الزراعي"
 #: templates/courses.html:327 templates/machine.html:438
 #: templates/projects.html:496 templates/vision.html:472
 msgid "© 2024 Shlash Sulaiman Trading &amp; Contracting. All Rights Reserved."
-msgstr "© 2024 شركة شلش سليمان للتجارة والمقاولات. جميع الحقوق محفوظة."
+msgstr "© 2024 شركة شلاش سليمان للتجارة والمقاولات. جميع الحقوق محفوظة."
 
 #: templates/contact.html:154
 msgid ""
 "Connecting vision with reality. Reach out to Shlash Sulaiman Trading and "
 "Contracting for world-class construction solutions."
 msgstr ""
-"نربط الرؤية بالواقع. تواصل مع شركة شلش سليمان للتجارة والمقاولات للحصول على حلول إنشائية بمستويات عالمية."
+"نربط الرؤية بالواقع. تواصل مع شركة شلاش سليمان للتجارة والمقاولات للحصول على حلول إنشائية بمستويات عالمية."
 
 #: templates/contact.html:163
 msgid "Our Address"
@@ -532,7 +532,7 @@ msgstr ""
 
 #: templates/home.html:8
 msgid "Shlash Al-Sulaiman Co | Engineering & General Trading Syria"
-msgstr "شركة شلش السليمان | الهندسة والتجارة العامة سوريا"
+msgstr "شركة شلاش السليمان | الهندسة والتجارة العامة سوريا"
 
 #: templates/home.html:9
 msgid ""
@@ -548,11 +548,11 @@ msgid ""
 "contracting, innovative engineering solutions, general trading, engineering, "
 "oilfield services, solar energy, Shlash Al-Sulaiman."
 msgstr ""
-"شركة شلش السليمان، شركة هندسية سورية، مقاولات عامة، حلول هندسية مبتكرة، تجارة عامة، خدمات الحقول النفطية، الطاقة الشمسية."
+"شركة شلاش السليمان، شركة هندسية سورية، مقاولات عامة، حلول هندسية مبتكرة، تجارة عامة، خدمات الحقول النفطية، الطاقة الشمسية."
 
 #: templates/home.html:13
 msgid "Shlash Al-Sulaiman Trading & Contracting Co"
-msgstr "شركة شلش السليمان للتجارة والمقاولات"
+msgstr "شركة شلاش السليمان للتجارة والمقاولات"
 
 #: templates/home.html:14
 msgid "Building the Future with Expertise Since 2011."
@@ -571,7 +571,7 @@ msgstr " ملف الشركة PDF"
 
 #: templates/home.html:235
 msgid "Shlash Sulaiman"
-msgstr "شلش سليمان"
+msgstr "شلاش سليمان"
 
 #: templates/home.html:236
 msgid "Trading & Contracting Co ."
@@ -749,12 +749,12 @@ msgstr "التجارة والتوريد"
 
 #: templates/home.html:475
 msgid "Shlash Al-Sulaiman Trading & Contracting."
-msgstr "شلش السليمان للتجارة والمقاولات."
+msgstr "شلاش السليمان للتجارة والمقاولات."
 
 #: templates/home.html:510
 msgid ""
 "© 2024 Shlash Al-Sulaiman Trading &amp; Contracting. All Rights Reserved."
-msgstr "© 2024 شركة شلش السليمان للتجارة والمقاولات. جميع الحقوق محفوظة."
+msgstr "© 2024 شركة شلاش السليمان للتجارة والمقاولات. جميع الحقوق محفوظة."
 
 #: templates/machine.html:198
 msgid "Precision Machinery for"
