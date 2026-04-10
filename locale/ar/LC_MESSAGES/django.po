@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-08 21:58+0000\n"
+"POT-Creation-Date: 2026-04-10 11:21+0000\n"
 "PO-Revision-Date: 2026-04-08 22:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
@@ -35,13 +35,13 @@ msgid "Shlash Al-Sulaiman"
 msgstr "شلاش السليمان"
 
 #: templates/about.html:179 templates/about.html:218 templates/about.html:573
-#: templates/contact.html:96 templates/contact.html:137
-#: templates/contact.html:260 templates/courses.html:123
+#: templates/contact.html:96 templates/contact.html:135
+#: templates/contact.html:258 templates/courses.html:123
 #: templates/courses.html:162 templates/courses.html:300
 #: templates/home.html:175 templates/home.html:215 templates/home.html:483
 #: templates/machine.html:133 templates/machine.html:171
 #: templates/machine.html:412 templates/projects.html:125
-#: templates/projects.html:169 templates/projects.html:469
+#: templates/projects.html:169 templates/projects.html:470
 #: templates/vision.html:185 templates/vision.html:224
 #: templates/vision.html:445
 msgid "Home"
@@ -49,19 +49,19 @@ msgstr "الرئيسية"
 
 #: templates/about.html:180 templates/about.html:219 templates/about.html:270
 #: templates/about.html:574 templates/contact.html:97
-#: templates/contact.html:138 templates/contact.html:261
+#: templates/contact.html:136 templates/contact.html:259
 #: templates/courses.html:124 templates/courses.html:163
 #: templates/courses.html:301 templates/home.html:176 templates/home.html:216
 #: templates/home.html:484 templates/machine.html:134
 #: templates/machine.html:172 templates/machine.html:413
 #: templates/projects.html:126 templates/projects.html:170
-#: templates/projects.html:470 templates/vision.html:186
+#: templates/projects.html:471 templates/vision.html:186
 #: templates/vision.html:225 templates/vision.html:446
 msgid "About Us"
 msgstr "من نحن"
 
 #: templates/about.html:181 templates/about.html:220 templates/contact.html:98
-#: templates/contact.html:139 templates/courses.html:125
+#: templates/contact.html:137 templates/courses.html:125
 #: templates/courses.html:164 templates/home.html:177 templates/home.html:217
 #: templates/machine.html:135 templates/machine.html:173
 #: templates/projects.html:127 templates/projects.html:171
@@ -70,7 +70,7 @@ msgid "Courses"
 msgstr "الدورات"
 
 #: templates/about.html:182 templates/about.html:221 templates/contact.html:99
-#: templates/contact.html:140 templates/courses.html:126
+#: templates/contact.html:138 templates/courses.html:126
 #: templates/courses.html:165 templates/home.html:178 templates/home.html:218
 #: templates/machine.html:136 templates/machine.html:174
 #: templates/projects.html:128 templates/projects.html:172
@@ -79,7 +79,7 @@ msgid "Projects"
 msgstr "المشاريع"
 
 #: templates/about.html:183 templates/about.html:222 templates/contact.html:100
-#: templates/contact.html:141 templates/courses.html:127
+#: templates/contact.html:139 templates/courses.html:127
 #: templates/courses.html:166 templates/home.html:179 templates/home.html:219
 #: templates/machine.html:137 templates/machine.html:175
 #: templates/machine.html:415 templates/projects.html:129
@@ -89,7 +89,7 @@ msgid "Machinery"
 msgstr "الآليات"
 
 #: templates/about.html:184 templates/about.html:223 templates/contact.html:101
-#: templates/contact.html:142 templates/courses.html:128
+#: templates/contact.html:140 templates/courses.html:128
 #: templates/courses.html:167 templates/home.html:180 templates/home.html:220
 #: templates/machine.html:138 templates/machine.html:176
 #: templates/projects.html:130 templates/projects.html:174
@@ -98,7 +98,7 @@ msgid "Vision and Plans"
 msgstr "الرؤية والخطط"
 
 #: templates/about.html:185 templates/about.html:224 templates/contact.html:102
-#: templates/contact.html:143 templates/contact.html:153
+#: templates/contact.html:141 templates/contact.html:151
 #: templates/courses.html:129 templates/courses.html:168
 #: templates/courses.html:221 templates/courses.html:242
 #: templates/courses.html:263 templates/home.html:181 templates/home.html:221
@@ -115,7 +115,7 @@ msgstr "اتصل بنا"
 msgid "Profile PDF"
 msgstr "ملف الشركة PDF"
 
-#: templates/about.html:225 templates/contact.html:144
+#: templates/about.html:225 templates/contact.html:142
 #: templates/courses.html:169 templates/home.html:222
 #: templates/machine.html:178 templates/projects.html:176
 #: templates/vision.html:231
@@ -139,7 +139,8 @@ msgid ""
 " A legacy of precision and reliability in trading and contracting across the "
 "region's most demanding sectors."
 msgstr ""
-"إرث من الدقة والموثوقية في التجارة والمقاولات عبر القطاعات الأكثر حيوية في المنطقة."
+"إرث من الدقة والموثوقية في التجارة والمقاولات عبر القطاعات الأكثر حيوية في "
+"المنطقة."
 
 #: templates/about.html:261
 msgid "Years of Industry Leadership"
@@ -155,7 +156,8 @@ msgid ""
 "the gap between complex industrial requirements and sophisticated technical "
 "execution."
 msgstr ""
-"هي مزود رائد للخدمات الهندسية، تأسست في عام 2011 لسد الفجوة بين المتطلبات الصناعية المعقدة والتنفيذ التقني المتطور."
+"هي مزود رائد للخدمات الهندسية، تأسست في عام 2011 لسد الفجوة بين المتطلبات "
+"الصناعية المعقدة والتنفيذ التقني المتطور."
 
 #: templates/about.html:278
 msgid ""
@@ -164,7 +166,9 @@ msgid ""
 "is built on a foundation of technical excellence, rigorous safety standards, "
 "and a commitment to delivering projects that stand the test of time."
 msgstr ""
-"نحن متخصصون في الخدمات الهندسية متعددة التخصصات مع تركيز خاص على القطاعات الحيوية مثل البنية التحتية للنفط والغاز. بنيت سمعتنا على أساس التميز التقني، ومعايير السلامة الصارمة، والالتزام بتنفيذ مشاريع تصمد أمام اختبار الزمن."
+"نحن متخصصون في الخدمات الهندسية متعددة التخصصات مع تركيز خاص على القطاعات "
+"الحيوية مثل البنية التحتية للنفط والغاز. بنيت سمعتنا على أساس التميز التقني، "
+"ومعايير السلامة الصارمة، والالتزام بتنفيذ مشاريع تصمد أمام اختبار الزمن."
 
 #: templates/about.html:285
 msgid "Quality First"
@@ -203,7 +207,9 @@ msgid ""
 "Execution of large-scale infrastructure, high-rise buildings, and industrial "
 "facilities with precision engineering and global safety standards."
 msgstr ""
-"تنفيذ البنية التحتية واسعة النطاق، والمباني الشاهقة، والمرافق الصناعية بدقة هندسية ومعايير سلامة عالمية."
+"تنفيذ البنية التحتية واسعة النطاق، والمباني الشاهقة، والمرافق الصناعية بدقة "
+"هندسية ومعايير سلامة عالمية."
+
 #: templates/about.html:329 templates/about.html:349 templates/about.html:369
 msgid "Learn More"
 msgstr "لمعرفة المزيد"
@@ -221,7 +227,8 @@ msgid ""
 "Global supply chain management for construction materials, heavy machinery, "
 "and specialized industrial hardware for various sectors."
 msgstr ""
-"إدارة سلاسل التوريد العالمية لمواد البناء، والآليات الثقيلة، والمعدات الصناعية المتخصصة لمختلف القطاعات."
+"إدارة سلاسل التوريد العالمية لمواد البناء، والآليات الثقيلة، والمعدات "
+"الصناعية المتخصصة لمختلف القطاعات."
 
 #: templates/about.html:364
 msgid "MEP Services"
@@ -232,7 +239,8 @@ msgid ""
 "Expert Mechanical, Electrical, and Plumbing services integrated with smart "
 "building technologies and sustainable power systems."
 msgstr ""
-"خدمات ميكانيكية، كهربائية، وصحية خبيرة مدمجة مع تقنيات المباني الذكية وأنظمة الطاقة المستدامة."
+"خدمات ميكانيكية، كهربائية، وصحية خبيرة مدمجة مع تقنيات المباني الذكية وأنظمة "
+"الطاقة المستدامة."
 
 #: templates/about.html:383
 msgid "Internal Hierarchy"
@@ -314,8 +322,7 @@ msgstr "الهندسة بنزاهة"
 msgid ""
 "Our strength lies in a synchronized ecosystem of talent, technology, and "
 "transparency."
-msgstr ""
-"تكمن قوتنا في منظومة متزامنة من المواهب، والتكنولوجيا، والشفافية."
+msgstr "تكمن قوتنا في منظومة متزامنة من المواهب، والتكنولوجيا، والشفافية."
 
 #: templates/about.html:505
 msgid "Rigorous Quality Protocols"
@@ -341,120 +348,129 @@ msgstr "الإدارة التكيفية"
 msgid "Agile responses to complex geological and site challenges."
 msgstr "استجابات مرنة للتحديات الجيولوجية والموقعية المعقدة."
 
-#: templates/about.html:551 templates/contact.html:239
+#: templates/about.html:551 templates/contact.html:237
 #: templates/courses.html:279 templates/machine.html:390
-#: templates/projects.html:460 templates/vision.html:423
+#: templates/projects.html:461 templates/vision.html:423
 msgid "Shlash Sulaiman Trading & Contracting."
 msgstr "شركة شلاش سليمان للتجارة والمقاولات."
 
-#: templates/about.html:551 templates/contact.html:239
+#: templates/about.html:551 templates/contact.html:237
 #: templates/courses.html:279 templates/home.html:475
-#: templates/machine.html:390 templates/projects.html:460
+#: templates/machine.html:390 templates/projects.html:461
 #: templates/vision.html:423
 msgid ""
 " is a leading company in Syria's trading and contracting landscape. We are "
 "committed to excellence, safety, and innovation in every project we "
 "undertake."
 msgstr ""
-" هي شركة رائدة في مجال التجارة والمقاولات في سوريا. نحن ملتزمون بالتميز، والسلامة، والابتكار في كل مشروع ننفذه."
+" هي شركة رائدة في مجال التجارة والمقاولات في سوريا. نحن ملتزمون بالتميز، "
+"والسلامة، والابتكار في كل مشروع ننفذه."
 
-#: templates/about.html:571 templates/contact.html:258
+#: templates/about.html:571 templates/contact.html:256
 #: templates/courses.html:298 templates/home.html:481
-#: templates/machine.html:410 templates/projects.html:467
+#: templates/machine.html:410 templates/projects.html:468
 #: templates/vision.html:443
 msgid "Quick Links"
 msgstr "روابط سريعة"
 
-#: templates/about.html:575 templates/contact.html:262
+#: templates/about.html:575 templates/contact.html:260
 #: templates/courses.html:302 templates/home.html:246 templates/home.html:485
-#: templates/projects.html:471 templates/vision.html:447
+#: templates/projects.html:472 templates/vision.html:447
 msgid "Our Services"
 msgstr "خدماتنا"
 
-#: templates/about.html:576 templates/contact.html:263
+#: templates/about.html:576 templates/contact.html:261
 #: templates/courses.html:303 templates/home.html:486
-#: templates/machine.html:414 templates/projects.html:472
+#: templates/machine.html:414 templates/projects.html:473
 #: templates/vision.html:448
 msgid "Major Projects"
 msgstr "المشاريع الكبرى"
 
-#: templates/about.html:577 templates/contact.html:264
+#: templates/about.html:577 templates/contact.html:262
 #: templates/courses.html:304 templates/home.html:487
-#: templates/projects.html:473 templates/vision.html:449
+#: templates/projects.html:474 templates/vision.html:449
 msgid "Our Machines"
 msgstr "آلياتنا"
 
-#: templates/about.html:581 templates/contact.html:268
+#: templates/about.html:581 templates/contact.html:266
 #: templates/courses.html:308 templates/home.html:491
-#: templates/machine.html:419 templates/projects.html:477
+#: templates/machine.html:419 templates/projects.html:478
 #: templates/vision.html:453
 msgid "Contact Info"
 msgstr "معلومات الاتصال"
 
-#: templates/about.html:585 templates/contact.html:164
-#: templates/contact.html:272 templates/courses.html:312
+#: templates/about.html:585 templates/contact.html:162
+#: templates/contact.html:270 templates/courses.html:312
 #: templates/home.html:495 templates/machine.html:423
-#: templates/projects.html:481 templates/vision.html:457
+#: templates/projects.html:482 templates/vision.html:457
 msgid "Deir ez-Zor, Syria"
 msgstr "دير الزور، سوريا"
 
-#: templates/about.html:585 templates/contact.html:164
-#: templates/contact.html:272 templates/courses.html:312
+#: templates/about.html:585 templates/contact.html:162
+#: templates/contact.html:270 templates/courses.html:312
 #: templates/home.html:495 templates/machine.html:423
-#: templates/projects.html:481 templates/vision.html:457
+#: templates/projects.html:482 templates/vision.html:457
 msgid "Next to the Agricultural Bank"
 msgstr "بجانب المصرف الزراعي"
 
-#: templates/about.html:600 templates/contact.html:287
+#: templates/about.html:590 templates/contact.html:170
+#: templates/contact.html:275 templates/courses.html:317
+#: templates/home.html:500 templates/machine.html:428
+#: templates/projects.html:487 templates/vision.html:462
+msgid "+963998493378"
+msgstr "+963998493378"
+
+#: templates/about.html:600 templates/contact.html:285
 #: templates/courses.html:327 templates/machine.html:438
-#: templates/projects.html:496 templates/vision.html:472
+#: templates/projects.html:497 templates/vision.html:472
 msgid "© 2024 Shlash Sulaiman Trading &amp; Contracting. All Rights Reserved."
 msgstr "© 2024 شركة شلاش سليمان للتجارة والمقاولات. جميع الحقوق محفوظة."
 
-#: templates/contact.html:154
+#: templates/contact.html:152
 msgid ""
 "Connecting vision with reality. Reach out to Shlash Sulaiman Trading and "
 "Contracting for world-class construction solutions."
 msgstr ""
-"نربط الرؤية بالواقع. تواصل مع شركة شلاش سليمان للتجارة والمقاولات للحصول على حلول إنشائية بمستويات عالمية."
+"نربط الرؤية بالواقع. تواصل مع شركة شلاش سليمان للتجارة والمقاولات للحصول على "
+"حلول إنشائية بمستويات عالمية."
 
-#: templates/contact.html:163
+#: templates/contact.html:161
 msgid "Our Address"
 msgstr "عنواننا"
 
-#: templates/contact.html:171
+#: templates/contact.html:169
 msgid "Phone Number"
 msgstr "رقم الهاتف"
 
-#: templates/contact.html:172
+#: templates/contact.html:170
 msgid "Sun-Thu: 8am - 5pm"
 msgstr "الأحد - الخميس: 8 صباحاً - 5 مساءً"
 
-#: templates/contact.html:178 templates/contact.html:201
+#: templates/contact.html:176 templates/contact.html:199
 msgid "Email Address"
 msgstr "البريد الإلكتروني"
 
-#: templates/contact.html:185
+#: templates/contact.html:183
 msgid "Send an Inquiry"
 msgstr "أرسل استفسارك"
 
-#: templates/contact.html:191
+#: templates/contact.html:189
 msgid "First Name"
 msgstr "الاسم الأول"
 
-#: templates/contact.html:195
+#: templates/contact.html:193
 msgid "Last Name"
 msgstr "الكنية / اسم العائلة"
 
-#: templates/contact.html:206
+#: templates/contact.html:204
 msgid "Message"
 msgstr "الرسالة"
 
-#: templates/contact.html:207
+#: templates/contact.html:205
 msgid "How can we help you?"
 msgstr "كيف يمكننا مساعدتك؟"
 
-#: templates/contact.html:211
+#: templates/contact.html:209
 msgid "Submit Inquiry"
 msgstr "إرسال الاستفسار"
 
@@ -471,7 +487,8 @@ msgid ""
 "  Elevating our workforce through specialized education and continuous "
 "professional growth to meet international standards."
 msgstr ""
-"الارتقاء بكوادرنا من خلال التعليم المتخصص والنمو المهني المستمر لتلبية المعايير الدولية."
+"الارتقاء بكوادرنا من خلال التعليم المتخصص والنمو المهني المستمر لتلبية "
+"المعايير الدولية."
 
 #: templates/courses.html:197
 msgid "Language Training Courses"
@@ -483,7 +500,8 @@ msgid ""
 "training programs, including language courses to enhance communication "
 "skills and professional efficiency. "
 msgstr ""
-"تضع الشركة تطوير كوادرها على رأس أولوياتها من خلال برامج تدريبية مستمرة، بما في ذلك دورات اللغات لتعزيز مهارات التواصل والكفاءة المهنية."
+"تضع الشركة تطوير كوادرها على رأس أولوياتها من خلال برامج تدريبية مستمرة، بما "
+"في ذلك دورات اللغات لتعزيز مهارات التواصل والكفاءة المهنية."
 
 #: templates/courses.html:213
 msgid "Technical"
@@ -498,7 +516,8 @@ msgid ""
 " Mastering industry terminology, technical reporting, and complex "
 "documentation for engineering and contracting sectors."
 msgstr ""
-"إتقان مصطلحات الصناعة، والتقارير الفنية، والتوثيق المعقد لقطاعات الهندسة والمقاولات."
+"إتقان مصطلحات الصناعة، والتقارير الفنية، والتوثيق المعقد لقطاعات الهندسة "
+"والمقاولات."
 
 #: templates/courses.html:234
 msgid "Business"
@@ -513,7 +532,8 @@ msgid ""
 "  Enhancing business correspondence, professional presentation skills, and "
 "cross-cultural negotiation strategies."
 msgstr ""
-"تعزيز المراسلات التجارية، ومهارات العرض المهني، واستراتيجيات التفاوض عبر الثقافات المختلفة."
+"تعزيز المراسلات التجارية، ومهارات العرض المهني، واستراتيجيات التفاوض عبر "
+"الثقافات المختلفة."
 
 #: templates/courses.html:255
 msgid "Leadership"
@@ -528,7 +548,8 @@ msgid ""
 "Developing leadership qualities, interpersonal effectiveness, and emotional "
 "intelligence for organizational success."
 msgstr ""
-"تطوير الصفات القيادية، وفعالية التعامل مع الآخرين، والذكاء العاطفي لنجاح المؤسسة."
+"تطوير الصفات القيادية، وفعالية التعامل مع الآخرين، والذكاء العاطفي لنجاح "
+"المؤسسة."
 
 #: templates/home.html:8
 msgid "Shlash Al-Sulaiman Co | Engineering & General Trading Syria"
@@ -540,7 +561,8 @@ msgid ""
 "since 2011. Expert solutions in engineering, renewable energy, contracting, "
 "and trading."
 msgstr ""
-"شركة شلش السليمان - رائدة في تطوير البنية التحتية وحقول النفط منذ عام 2011. حلول خبيرة في الهندسة، الطاقة المتجددة، المقاولات، والتجارة."
+"شركة شلش السليمان - رائدة في تطوير البنية التحتية وحقول النفط منذ عام 2011. "
+"حلول خبيرة في الهندسة، الطاقة المتجددة، المقاولات، والتجارة."
 
 #: templates/home.html:10
 msgid ""
@@ -548,7 +570,8 @@ msgid ""
 "contracting, innovative engineering solutions, general trading, engineering, "
 "oilfield services, solar energy, Shlash Al-Sulaiman."
 msgstr ""
-"شركة شلاش السليمان، شركة هندسية سورية، مقاولات عامة، حلول هندسية مبتكرة، تجارة عامة، خدمات الحقول النفطية، الطاقة الشمسية."
+"شركة شلاش السليمان، شركة هندسية سورية، مقاولات عامة، حلول هندسية مبتكرة، "
+"تجارة عامة، خدمات الحقول النفطية، الطاقة الشمسية."
 
 #: templates/home.html:13
 msgid "Shlash Al-Sulaiman Trading & Contracting Co"
@@ -563,7 +586,8 @@ msgid ""
 "Leading infrastructure and oil field development since 2011. Expert "
 "solutions in engineering, renewable energy, and trading."
 msgstr ""
-"رائدون في تطوير البنية التحتية وحقول النفط منذ عام 2011. حلول خبيرة في الهندسة، الطاقة المتجددة، والتجارة."
+"رائدون في تطوير البنية التحتية وحقول النفط منذ عام 2011. حلول خبيرة في "
+"الهندسة، الطاقة المتجددة، والتجارة."
 
 #: templates/home.html:186
 msgid " Profile PDF"
@@ -582,7 +606,8 @@ msgid ""
 "Building the Future with Expertise Since 2011. Leading infrastructure and "
 "oil field development in the region."
 msgstr ""
-"بناء المستقبل بخبرة منذ عام 2011. رائدون في تطوير البنية التحتية وحقول النفط في المنطقة."
+"بناء المستقبل بخبرة منذ عام 2011. رائدون في تطوير البنية التحتية وحقول النفط "
+"في المنطقة."
 
 #: templates/home.html:243
 msgid "Explore Projects"
@@ -611,6 +636,7 @@ msgstr "من نحن"
 #: templates/home.html:312
 msgid "Leading the Way in Modern <br/>Engineering Solutions"
 msgstr "ريادة الطريق في <br/>الحلول الهندسية الحديثة"
+
 #: templates/home.html:315
 msgid ""
 "Our company was established as a specialized entity in the fields of trading "
@@ -618,7 +644,9 @@ msgid ""
 "mechanical, electrical, civil, and engineering sectors. Since our inception "
 "in 2011, we have been committed to delivering added value to our clients."
 msgstr ""
-"تأسست شركتنا ككيان متخصص في مجالات التجارة والمقاولات، بهدف تقديم حلول مبتكرة وشاملة في القطاعات الميكانيكية والكهربائية والمدنية والهندسية. ومنذ انطلاقتنا في عام 2011، التزمنا بتقديم قيمة مضافة لعملائنا."
+"تأسست شركتنا ككيان متخصص في مجالات التجارة والمقاولات، بهدف تقديم حلول "
+"مبتكرة وشاملة في القطاعات الميكانيكية والكهربائية والمدنية والهندسية. ومنذ "
+"انطلاقتنا في عام 2011، التزمنا بتقديم قيمة مضافة لعملائنا."
 
 #: templates/home.html:320
 msgid "Quality Assurance"
@@ -717,7 +745,8 @@ msgid ""
 "Our company provides oilfield manpower (drilling rigs, well- services, oil "
 "and gas pipeline crews)."
 msgstr ""
-"توفر شركتنا القوى العاملة في الحقول النفطية (منصات الحفر، خدمات الآبار، وطواقم خطوط أنابيب النفط والغاز)."
+"توفر شركتنا القوى العاملة في الحقول النفطية (منصات الحفر، خدمات الآبار، "
+"وطواقم خطوط أنابيب النفط والغاز)."
 
 #: templates/home.html:435
 msgid "Oilfield Services"
@@ -769,7 +798,8 @@ msgid ""
 "A comprehensive fleet of heavy equipment and specialized supply services "
 "including fuel, chemicals, and specialized tankers for oil rig operations."
 msgstr ""
-"أسطول شامل من المعدات الثقيلة وخدمات التوريد المتخصصة بما في ذلك الوقود والمواد الكيميائية والصهاريج المتخصصة لعمليات منصات النفط."
+"أسطول شامل من المعدات الثقيلة وخدمات التوريد المتخصصة بما في ذلك الوقود "
+"والمواد الكيميائية والصهاريج المتخصصة لعمليات منصات النفط."
 
 #: templates/machine.html:230
 msgid "Heavy Machinery Fleet"
@@ -784,7 +814,9 @@ msgid "Volvo Excavator"
 msgstr "حفارة فولفو"
 
 #: templates/machine.html:247
-msgid " Lifting capacity, along  5,900 kg"
+#, fuzzy
+#| msgid " Lifting capacity, along  5,900 kg"
+msgid " Lifting capacity, along  5,900 kg"
 msgstr "قدرة الرفع تصل إلى 5,900 كغ"
 
 #: templates/machine.html:248
@@ -801,11 +833,13 @@ msgstr ""
 #: templates/machine.html:259
 msgid "Caterpillar Loader"
 msgstr "جرافة كاتر بيلر"
+
 #: templates/machine.html:264
 msgid ""
 "Optimized for rapid loading and transport of industrial aggregates with "
 "superior fuel efficiency."
-msgstr "مصممة لتحميل ونقل المواد الصناعية بكفاءة عالية مع استهلاك اقتصادي للوقود."
+msgstr ""
+"مصممة لتحميل ونقل المواد الصناعية بكفاءة عالية مع استهلاك اقتصادي للوقود."
 
 #: templates/machine.html:274
 msgid "Mercedes Actros 6x4 Dump Truck"
@@ -815,7 +849,9 @@ msgstr "شاحنة مرسيدس أكتروس قلاب 6x4"
 msgid ""
 "Reliable heavy-duty transport solution for long-distance logistics and "
 "construction site hauling."
-msgstr "حل نقل موثوق للمهام الشاقة والخدمات اللوجستية طويلة المدى وعمليات النقل في مواقع البناء."
+msgstr ""
+"حل نقل موثوق للمهام الشاقة والخدمات اللوجستية طويلة المدى وعمليات النقل في "
+"مواقع البناء."
 
 #: templates/machine.html:291
 msgid "Specialized Fleet & Trading"
@@ -833,7 +869,9 @@ msgstr "أسطول صهاريج مياه لمنصات الحفر"
 msgid ""
 "Dedicated potable and industrial water supply services specifically "
 "configured for remote oil rig sites."
-msgstr "خدمات توريد مياه الشرب والمياه الصناعية المخصصة والمجهزة خصيصاً لمواقع منصات النفط النائية."
+msgstr ""
+"خدمات توريد مياه الشرب والمياه الصناعية المخصصة والمجهزة خصيصاً لمواقع منصات "
+"النفط النائية."
 
 #: templates/machine.html:307
 msgid "24/7 Logistics Support"
@@ -851,7 +889,8 @@ msgstr "تجارة الوقود والمواد الكيميائية"
 msgid ""
 "Official supply partner for industrial-grade fuels and specialized chemical "
 "compounds for construction."
-msgstr "شريك توريد رسمي للوقود الصناعي والمركبات الكيميائية المتخصصة لأعمال البناء."
+msgstr ""
+"شريك توريد رسمي للوقود الصناعي والمركبات الكيميائية المتخصصة لأعمال البناء."
 
 #: templates/machine.html:323
 msgid "Certified Supply Grade"
@@ -906,7 +945,9 @@ msgid ""
 "Delivering excellence across major sectors in Syria and beyond. From civil "
 "engineering to renewable energy solutions, our work speaks for our "
 "commitment to quality."
-msgstr "نقدم التميز عبر القطاعات الرئيسية في سوريا وخارجها. من الهندسة المدنية إلى حلول الطاقة المتجددة، تتحدث أعمالنا عن التزامنا بالجودة."
+msgstr ""
+"نقدم التميز عبر القطاعات الرئيسية في سوريا وخارجها. من الهندسة المدنية إلى "
+"حلول الطاقة المتجددة، تتحدث أعمالنا عن التزامنا بالجودة."
 
 #: templates/projects.html:216
 msgid "Engineering & Infrastructure"
@@ -971,7 +1012,9 @@ msgstr "دعم مواقع الحفر"
 msgid ""
 "Providing comprehensive logistical and technical support for remote oil "
 "field operations, ensuring safety and efficiency."
-msgstr "تقديم دعم لوجستي وتقني شامل لعمليات الحقول النفطية النائية، مع ضمان السلامة والكفاءة."
+msgstr ""
+"تقديم دعم لوجستي وتقني شامل لعمليات الحقول النفطية النائية، مع ضمان السلامة "
+"والكفاءة."
 
 #: templates/projects.html:303 templates/projects.html:311
 msgid "oilfield"
@@ -985,7 +1028,8 @@ msgstr "صيانة خطوط الأنابيب"
 msgid ""
 "Expert maintenance and repair services for critical oil and gas transport "
 "infrastructure across the region."
-msgstr "خدمات صيانة وإصلاح خبيرة للبنية التحتية الحيوية لنقل النفط والغاز في المنطقة."
+msgstr ""
+"خدمات صيانة وإصلاح خبيرة للبنية التحتية الحيوية لنقل النفط والغاز في المنطقة."
 
 #: templates/projects.html:322
 msgid "Oilfield Maintenance  "
@@ -1008,7 +1052,8 @@ msgid ""
 "Leading large-scale solar project implementation, from site assessment to "
 "full grid integration across the region."
 msgstr ""
-"ريادة تنفيذ مشاريع الطاقة الشمسية واسعة النطاق، بدءاً من تقييم الموقع وصولاً إلى الربط الكامل مع الشبكة في المنطقة."
+"ريادة تنفيذ مشاريع الطاقة الشمسية واسعة النطاق، بدءاً من تقييم الموقع وصولاً "
+"إلى الربط الكامل مع الشبكة في المنطقة."
 
 #: templates/projects.html:370
 msgid "Solar Power"
@@ -1027,7 +1072,8 @@ msgid ""
 "Developing infrastructure ready for smart grid integration, ensuring "
 "efficient and stable sustainable power distribution."
 msgstr ""
-"تطوير بنية تحتية جاهزة للتكامل مع الشبكات الذكية، مما يضمن توزيعاً فعالاً ومستقراً للطاقة المستدامة."
+"تطوير بنية تحتية جاهزة للتكامل مع الشبكات الذكية، مما يضمن توزيعاً فعالاً "
+"ومستقراً للطاقة المستدامة."
 
 #: templates/projects.html:390
 msgid "Grid Ready"
@@ -1046,7 +1092,8 @@ msgid ""
 "Providing energy audits, sustainable consulting, and implementing eco-"
 "friendly construction methods for a greener future."
 msgstr ""
-"تقديم تدقيق الطاقة، والاستشارات المستدامة، وتنفيذ أساليب بناء صديقة للبيئة من أجل مستقبل أكثر اخضراراً."
+"تقديم تدقيق الطاقة، والاستشارات المستدامة، وتنفيذ أساليب بناء صديقة للبيئة "
+"من أجل مستقبل أكثر اخضراراً."
 
 #: templates/projects.html:410
 msgid "Eco-Friendly"
@@ -1084,7 +1131,8 @@ msgid ""
 "Architecting the future through excellence and integrity. We align our "
 "strategic goals with sustainable practices to lead the engineering sector."
 msgstr ""
-"هندسة المستقبل من خلال التميز والنزاهة. نواءم أهدافنا الاستراتيجية مع الممارسات المستدامة لريادة القطاع الهندسي."
+"هندسة المستقبل من خلال التميز والنزاهة. نواءم أهدافنا الاستراتيجية مع "
+"الممارسات المستدامة لريادة القطاع الهندسي."
 
 #: templates/vision.html:257
 msgid "Connect With Us"
@@ -1108,7 +1156,11 @@ msgid ""
 "engineering equipment. We strive to enhance the local and regional economy "
 "while adhering to the highest standards of quality and professionalism."
 msgstr ""
-"أن نكون من بين الشركات الرائدة في قطاع المقاولات والتجارة العامة، محققين نمواً مستداماً ومتميزاً من خلال تقديم حلول مبتكرة وشاملة تلبي احتياجات العملاء. نتخصص في المقاولات العامة، وتجارة أنظمة التكييف والتبريد، والطاقة الشمسية، والعقارات، ومواد البناء، والآليات الثقيلة، والمعدات الهندسية. نسعى لتعزيز الاقتصاد المحلي والإقليمي مع الالتزام بأعلى معايير الجودة والمهنية."
+"أن نكون من بين الشركات الرائدة في قطاع المقاولات والتجارة العامة، محققين "
+"نمواً مستداماً ومتميزاً من خلال تقديم حلول مبتكرة وشاملة تلبي احتياجات العملاء. "
+"نتخصص في المقاولات العامة، وتجارة أنظمة التكييف والتبريد، والطاقة الشمسية، "
+"والعقارات، ومواد البناء، والآليات الثقيلة، والمعدات الهندسية. نسعى لتعزيز "
+"الاقتصاد المحلي والإقليمي مع الالتزام بأعلى معايير الجودة والمهنية."
 
 #: templates/vision.html:290
 msgid "Our Mission"
@@ -1121,7 +1173,9 @@ msgid ""
 "satisfaction of our clients and partners. We aspire to be their first choice "
 "for all projects while delivering added value in everything we offer."
 msgstr ""
-"تلتزم شركتنا بتقديم خدمات عالية الجودة قائمة على الابتكار والتفاني. نحن نؤمن بأن نجاحنا مرتبط برضا عملائنا وشركائنا، ونطمح لأن نكون خيارهم الأول لجميع المشاريع مع تقديم قيمة مضافة في كل ما نقدمه."
+"تلتزم شركتنا بتقديم خدمات عالية الجودة قائمة على الابتكار والتفاني. نحن نؤمن "
+"بأن نجاحنا مرتبط برضا عملائنا وشركائنا، ونطمح لأن نكون خيارهم الأول لجميع "
+"المشاريع مع تقديم قيمة مضافة في كل ما نقدمه."
 
 #: templates/vision.html:303
 msgid "Core Values"
@@ -1150,8 +1204,7 @@ msgstr "التميز"
 msgid ""
 "Delivering what we promise and adding value that goes beyond what is "
 "expected."
-msgstr ""
-"الوفاء بما نعد به وتقديم قيمة مضافة تتجاوز التوقعات."
+msgstr "الوفاء بما نعد به وتقديم قيمة مضافة تتجاوز التوقعات."
 
 #: templates/vision.html:338 templates/vision.html:341
 msgid "Resilience"
@@ -1161,8 +1214,7 @@ msgstr "المرونة"
 msgid ""
 "Adapting to changing environments while maintaining our focus on core "
 "objectives."
-msgstr ""
-"التكيف مع البيئات المتغيرة مع الحفاظ على تركيزنا على الأهداف الأساسية."
+msgstr "التكيف مع البيئات المتغيرة مع الحفاظ على تركيزنا على الأهداف الأساسية."
 
 #: templates/vision.html:351 templates/vision.html:354
 msgid "Commitment"
@@ -1187,8 +1239,7 @@ msgstr "النزاهة"
 #: templates/vision.html:381
 msgid ""
 "We act with honesty and maintain the highest ethical standards in all we do."
-msgstr ""
-"نحن نتعامل بصدق ونحافظ على أعلى المعايير الأخلاقية في كل ما نقوم به."
+msgstr "نحن نتعامل بصدق ونحافظ على أعلى المعايير الأخلاقية في كل ما نقوم به."
 
 #: templates/vision.html:396
 msgid "Ready to build your future?"
@@ -1199,7 +1250,8 @@ msgid ""
 "Discover how our vision and values translate into high-quality "
 "infrastructure and trading solutions tailored for your growth."
 msgstr ""
-"اكتشف كيف تترجم رؤيتنا وقيمنا إلى حلول تجارية وبنية تحتية عالية الجودة مصممة لنموك."
+"اكتشف كيف تترجم رؤيتنا وقيمنا إلى حلول تجارية وبنية تحتية عالية الجودة مصممة "
+"لنموك."
 
 #: templates/vision.html:402
 msgid "View Our Projects"
