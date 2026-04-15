@@ -193,7 +193,7 @@ transition-all duration-500 translate-x-full md:hidden"
         <div class="animate-fadeInUp">
 
             
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                 {% trans "Our" %} <span class="text-primary">{% trans "Portfolio" %}</span>
             </h1>
 
@@ -406,6 +406,146 @@ transition-all duration-500 translate-x-full md:hidden"
 
     </div> </div>
 
+
+ {% comment %} ggggg {% endcomment %}
+
+ <section class="py-16">
+    <div class="flex items-center gap-4 mb-10">
+        <div class="h-10 w-2 bg-primary"></div>
+        <h2 class="text-3xl font-bold font-display text-burgundy dark:text-white">
+            {% trans "Construction work for buildings." %}
+        </h2>
+    </div>
+    <div class="grid grid-cols-1 gap-12 items-center">
+        <div class="group relative project-card aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+            <img src="{{MEDIA_URL}}img/const.png" alt="Building Construction" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+            
+            <div class="overlay absolute inset-0 bg-burgundy/60 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+               
+                <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">{% trans "Construction" %}</span>
+                
+
+
+                <h3 class="text-white text-2xl font-bold mb-3">{% trans "Construction work for buildings." %}</h3>
+                <p class="text-slate-300 text-lg leading-relaxed font-medium">
+                    {% trans "Execution of residential and commercial construction projects, from excavation and foundation of concrete structures to final finishing, according to international standards." %}
+                </p>
+            </div>
+
+            <div class="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded text-xs text-white font-medium group-hover:hidden">
+                {% trans "Construction" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="border-slate-200 dark:border-slate-800">
+
+<section class="py-16">
+    <div class="flex items-center gap-4 mb-10">
+        <div class="h-10 w-2 bg-primary"></div>
+        <h2 class="text-3xl font-bold font-display text-burgundy dark:text-white">
+            {% trans "Water and sewage extension works" %}
+        </h2>
+    </div>
+    <div class="grid grid-cols-1 gap-12 items-center">
+        <div class="group relative project-card aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+            <img src="{{MEDIA_URL}}img/infra.png" alt="Water & Sanitation" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+            
+            <div class="overlay absolute inset-0 bg-burgundy/60 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">{% trans "Infrastructure" %}</span>
+                <h3 class="text-white text-2xl font-bold mb-3">{% trans "Water and sewage extension works" %}</h3>
+                <p class="text-slate-300 text-lg leading-relaxed font-medium">
+                    {% trans "We offer integrated solutions for the establishment and maintenance of water and sewage networks, including internal and external extensions using high-quality materials." %}
+                </p>
+            </div>
+
+            <div class="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded text-xs text-white font-medium group-hover:hidden">
+                {% trans "Infrastructure" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="border-slate-200 dark:border-slate-800">
+
+<section class="py-16">
+    <div class="flex items-center gap-4 mb-10">
+        <div class="h-10 w-2 bg-primary"></div>
+        <h2 class="text-3xl font-bold font-display text-burgundy dark:text-white">
+            {% trans "Road paving and transportation" %}
+        </h2>
+    </div>
+    <div class="grid grid-cols-1 gap-12 items-center">
+        <div class="group relative project-card aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+            <img src="{{MEDIA_URL}}img/road.png" alt="Road Paving" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+            
+            <div class="overlay absolute inset-0 bg-burgundy/60 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">{% trans "Transport" %}</span>
+                <h3 class="text-white text-2xl font-bold mb-3">{% trans "Road paving and transportation" %}</h3>
+                <p class="text-slate-300 text-lg leading-relaxed font-medium">
+                    {% trans "Paving and equipping road and transportation networks and developing urban infrastructure to ensure safe and efficient transportation." %}
+                </p>
+            </div>
+
+            <div class="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded text-xs text-white font-medium group-hover:hidden">
+                {% trans "Transport" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="border-slate-200 dark:border-slate-800">
+
+<section class="py-16">
+    <div class="flex items-center gap-4 mb-10">
+        <div class="h-10 w-2 bg-primary"></div>
+        <h2 class="text-3xl font-bold font-display text-burgundy dark:text-white">
+            {% trans "Building maintenance and building rehabilitation." %}
+        </h2>
+    </div>
+    <div class="grid grid-cols-1 gap-12 items-center">
+        <div class="group relative project-card aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+            <img src="{{MEDIA_URL}}img/maint.png" alt="Building Maintenance" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+            
+            <div class="overlay absolute inset-0 bg-burgundy/60 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">{% trans "Maintenance" %}</span>
+                <h3 class="text-white text-2xl font-bold mb-3">{% trans "Building maintenance and building rehabilitation." %}</h3>
+                <p class="text-slate-300 text-lg leading-relaxed font-medium">
+                    {% trans "Revitalizing old buildings through comprehensive restoration services, addressing structural problems, and upgrading facades and systems." %}
+                </p>
+            </div>
+
+            <div class="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded text-xs text-white font-medium group-hover:hidden">
+                {% trans "Maintenance" %}
+            </div>
+        </div>
+    </div>
+</section>
+ 
+
+{% comment %} الصورة  {% endcomment %}
+
+<section class="py-16 container mx-auto px-4">
+    <div class="flex items-center gap-4 mb-10 justify-start">
+        <div class="h-10 w-2 bg-primary"></div>
+        <h2 class="text-3xl font-bold font-display text-burgundy dark:text-white">
+            {% trans "Projects Map" %}
+        </h2>
+    </div>
+
+    <div class="flex justify-center items-center w-full">
+        <div class="w-full lg:w-10/12 xl:w-8/12 shadow-2xl rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+            <img 
+                src="{{MEDIA_URL}}img/projects_map.png" 
+                alt="Projects Map" 
+                class="w-full h-auto object-contain display-block"
+            />
+        </div>
+    </div>
+</section>
+
+
 </main>
 
 <section class="py-20 px-4 sm:px-6 lg:px-8">
@@ -417,7 +557,7 @@ transition-all duration-500 translate-x-full md:hidden"
             </div>
 
             <div class="relative z-10">
-                <h2 class="text-primary dark:text-gold text-3xl md:text-5xl font-bold mb-6 font-display">
+                <h2 class="text-primary dark:text-gold text-3xl md:text-4xl font-bold mb-6 font-display">
                     {% trans "Have a Project in Mind?" %}
                 </h2>
 
@@ -431,11 +571,7 @@ transition-all duration-500 translate-x-full md:hidden"
                         <span class="material-symbols-outlined transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-2">arrow_forward</span>
                     </a>
 
-                     <a class="border border-primary bg-burgundy text-primary hover:bg-burgundy/50 border-primary font-bold py-4 px-10  rounded-lg transition-all shadow-lg text-lg flex items-center gap-2 group" href="">
-                        {% trans "Business map" %}
-                        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-2">arrow_forward</span>
-                    </a>
-                    
+
 
                 </div>
             </div>
@@ -474,6 +610,12 @@ transition-all duration-500 translate-x-full md:hidden"
 <span class="material-symbols-outlined text-primary">location_on</span>
 <span>{%trans "Deir ez-Zor, Syria"%}<br/>{%trans "Next to the Agricultural Bank"%}</span>
 </li>
+
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span>{%trans "Damascus, Ashrafieh Sahnaya"%}<br/>{%trans "next to the Arab Bank"%}</span>
+</li>
+
 <li class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary">phone</span>
 
