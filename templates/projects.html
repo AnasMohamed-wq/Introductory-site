@@ -560,11 +560,11 @@ transition-all duration-500 translate-x-full md:hidden"
     </div>
 
     <div class="grid grid-cols-1 gap-12 items-center">
-        <div class="group relative project-card overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 w-full h-auto">
+        <div class="group relative project-card aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
             
             <img src="{{MEDIA_URL}}img/Ven.png" 
                  alt="Concrete Batching Plant" 
-                 class="w-full h-auto block transition-transform duration-700 group-hover:scale-110">
+                 class="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-110">
             
             <div class="overlay absolute inset-0 bg-burgundy/60 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-0">
                 <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">{% trans "Construction" %}</span>
