@@ -2,6 +2,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.utils.translation import gettext as _
+from django.core.mail import EmailMessage
 
 # Create your views here.
 
@@ -51,28 +52,44 @@ def j(request):
 
 def send_inquiry(request):
     if request.method == 'POST':
+        # 1. سحب البيانات من الفورم
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
-        user_email = request.POST.get('email')
+        user_email = request.POST.get('email') # إيميل الزائر
         message_content = request.POST.get('message')
 
-        full_message = f"Message from: {first_name} {last_name}\nEmail: {user_email}\n\nContent:\n{message_content}"
+        # 2. تجهيز محتوى الرسالة التي ستصلك
+        subject = f"New Inquiry from {first_name} {last_name}"
+        body = (
+            f"You have a new inquiry from your website:\n\n"
+            f"Name: {first_name} {last_name}\n"
+            f"Visitor Email: {user_email}\n\n"
+            f"Message:\n{message_content}"
+        )
+
+        # 3. إعداد الإيميل (الإرسال والاستقبال بنفس الإيميل)
+        email_sender = 'anas.moh0147@gmail.com' # إيميل النظام
+        email_receiver = ['anas.moh0147@gmail.com'] # الإيميل المستلم
+
+        email = EmailMessage(
+            subject=subject,
+            body=body,
+            from_email=email_sender,
+            to=email_receiver,
+            reply_to=[user_email], # تفعيل إمكانية الرد المباشر على الزائر
+        )
 
         try:
-            send_mail(
-                subject=f"New Inquiry from {first_name}",
-                message=full_message,
-                from_email='alshlashcompany@gmail.com', # إيميل النظام
-                recipient_list=['alshlashcompany@gmail.com'], # الإيميل المستهدف
-                fail_silently=False,
-            )
+            email.send(fail_silently=False)
             messages.success(request, _("Your message has been sent successfully!"))
         except Exception as e:
+            # طباعة الخطأ في الكونسول للتصحيح أثناء التطوير
+            print(f"Mail Error: {e}") 
             messages.error(request, _("An error occurred. Please try again later."))
 
-        return redirect('contact') # العودة لصفحة التواصل
-
-
+        return redirect('contact')
+    
+    return redirect('contact')
 
 
 

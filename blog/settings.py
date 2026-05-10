@@ -127,8 +127,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your-system-email@gmail.com' # إيميل العيادة الذي سيرسل
-EMAIL_HOST_PASSWORD = 'your-app-password' # كلمة مرور التطبيقات من جوجل
+EMAIL_HOST_USER = 'anas.moh0147@gmail.com' 
+EMAIL_HOST_PASSWORD = 'qitt wfwn jwkm rjpf' 
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 

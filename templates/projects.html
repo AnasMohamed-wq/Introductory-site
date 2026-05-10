@@ -450,7 +450,7 @@ transition-all duration-500 translate-x-full md:hidden"
     </div>
     <div class="grid grid-cols-1 gap-12 items-center">
         <div class="group relative project-card aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
-            <img src="{{MEDIA_URL}}img/rehabilitation.jpeg" alt="Water & Sanitation" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <img src="{{MEDIA_URL}}img/water.jpeg" alt="Water & Sanitation" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
             
             <div class="overlay absolute inset-0 bg-burgundy/60 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                 <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">{% trans "Infrastructure" %}</span>
@@ -478,7 +478,7 @@ transition-all duration-500 translate-x-full md:hidden"
     </div>
     <div class="grid grid-cols-1 gap-12 items-center">
         <div class="group relative project-card aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
-            <img src="{{MEDIA_URL}}img/road.png" alt="Road Paving" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <img src="{{MEDIA_URL}}img/road2.png" alt="Road Paving" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
             
             <div class="overlay absolute inset-0 bg-burgundy/60 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                 <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">{% trans "Transport" %}</span>
@@ -522,6 +522,35 @@ transition-all duration-500 translate-x-full md:hidden"
         </div>
     </div>
 </section>
+
+<hr class="border-slate-200 dark:border-slate-800">
+
+<section class="py-16">
+    <div class="flex items-center gap-4 mb-10">
+        <div class="h-10 w-2 bg-primary"></div>
+        <h2 class="text-3xl font-bold font-display text-burgundy dark:text-white">
+            {% trans "Concrete Batching Plant." %}
+        </h2>
+    </div>
+    <div class="grid grid-cols-1 gap-12 items-center">
+        <div class="group relative project-card aspect-video overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800">
+            <img src="{{MEDIA_URL}}img/ven.png" alt="Concrete Batching Plant" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+            
+            <div class="overlay absolute inset-0 bg-burgundy/60 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2">{% trans "Construction" %}</span>
+                <h3 class="text-white text-2xl font-bold mb-3">{% trans "Concrete Batching Plant." %}</h3>
+                <p class="text-slate-300 text-lg leading-relaxed font-medium">
+                    {% trans "A reinforced cement mixer with a capacity of 120 cubic meters per hour and up to 240 cubic meters per hour when needed.." %}
+                </p>
+            </div>
+
+            <div class="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded text-xs text-white font-medium group-hover:hidden">
+                {% trans "Construction" %}
+            </div>
+        </div>
+    </div>
+</section>
+ 
  
 
 {% comment %} الصورة  {% endcomment %}
@@ -587,7 +616,7 @@ transition-all duration-500 translate-x-full md:hidden"
 <img alt="Shlash Logo" class="h-10" src="{{MEDIA_URL}}logo/1.jpeg"/>
  
 <p class="text-slate-300 max-w-md leading-relaxed">
-                   <span class="text-accent text-xl">{%trans "Shlash Sulaiman Trading & Contracting." %}</span> <br>  {%trans " is a leading company in Syria's trading and contracting landscape. We are committed to excellence, safety, and innovation in every project we undertake." %}
+                   <span class="text-accent text-xl">{%trans "Shlash Al-Sulaiman Trading & Contracting." %}</span> <br>  {%trans " is a leading company in Syria's trading and contracting landscape. We are committed to excellence, safety, and innovation in every project we undertake." %}
                 </p>
 
 
@@ -629,7 +658,7 @@ transition-all duration-500 translate-x-full md:hidden"
 </div>
 </div>
 <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
-<p> {%trans "© 2024 Shlash Sulaiman Trading &amp; Contracting. All Rights Reserved."%}</p>
+<p> {%trans "© 2024 Shlash Al-Sulaiman Trading &amp; Contracting. All Rights Reserved."%}</p>
 <div class="flex gap-6">
 {% comment %} <a class="hover:text-white transition-colors" href="#">{%trans "Privacy Policy"%}</a>
 <a class="hover:text-white transition-colors" href="#">{%trans "Terms of Service"%}</a> {% endcomment %}

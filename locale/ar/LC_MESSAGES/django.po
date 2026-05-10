@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-15 10:14+0000\n"
+"POT-Creation-Date: 2026-05-10 18:12+0000\n"
 "PO-Revision-Date: 2026-04-08 22:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
@@ -28,7 +28,7 @@ msgid "Arabic"
 msgstr "العربية"
 
 #: templates/about.html:175 templates/contact.html:92
-#: templates/courses.html:119 templates/home.html:171
+#: templates/courses.html:119 templates/home.html:171 templates/home.html:235
 #: templates/machine.html:129 templates/projects.html:121
 #: templates/vision.html:181
 msgid "Shlash Al-Sulaiman"
@@ -36,12 +36,12 @@ msgstr "شلاش السليمان"
 
 #: templates/about.html:179 templates/about.html:218 templates/about.html:573
 #: templates/contact.html:96 templates/contact.html:135
-#: templates/contact.html:262 templates/courses.html:123
+#: templates/contact.html:273 templates/courses.html:123
 #: templates/courses.html:162 templates/courses.html:300
 #: templates/home.html:175 templates/home.html:215 templates/home.html:484
 #: templates/machine.html:133 templates/machine.html:171
 #: templates/machine.html:412 templates/projects.html:125
-#: templates/projects.html:169 templates/projects.html:608
+#: templates/projects.html:169 templates/projects.html:637
 #: templates/vision.html:185 templates/vision.html:224
 #: templates/vision.html:445
 msgid "Home"
@@ -49,13 +49,13 @@ msgstr "الرئيسية"
 
 #: templates/about.html:180 templates/about.html:219 templates/about.html:270
 #: templates/about.html:574 templates/contact.html:97
-#: templates/contact.html:136 templates/contact.html:263
+#: templates/contact.html:136 templates/contact.html:274
 #: templates/courses.html:124 templates/courses.html:163
 #: templates/courses.html:301 templates/home.html:176 templates/home.html:216
 #: templates/home.html:485 templates/machine.html:134
 #: templates/machine.html:172 templates/machine.html:413
 #: templates/projects.html:126 templates/projects.html:170
-#: templates/projects.html:609 templates/vision.html:186
+#: templates/projects.html:638 templates/vision.html:186
 #: templates/vision.html:225 templates/vision.html:446
 msgid "About Us"
 msgstr "من نحن"
@@ -147,8 +147,10 @@ msgid "Years of Industry Leadership"
 msgstr "سنوات من القيادة في القطاع"
 
 #: templates/about.html:275
-msgid "Shalash Sulaiman Trading and Contracting"
-msgstr "شركة شلاش سليمان للتجارة والمقاولات"
+#, fuzzy
+#| msgid "Shalash Sulaiman Trading and Contracting"
+msgid "Shalash Al-Sulaiman Trading and Contracting"
+msgstr "شركة شلاش السليمان للتجارة والمقاولات"
 
 #: templates/about.html:275
 msgid ""
@@ -196,6 +198,7 @@ msgstr "حلول متنوعة"
 
 #: templates/about.html:321 templates/projects.html:225
 #: templates/projects.html:433 templates/projects.html:444
+#: templates/projects.html:548 templates/projects.html:556
 msgid "Construction"
 msgstr "البناء والتشييد"
 
@@ -349,15 +352,16 @@ msgstr "الإدارة التكيفية"
 msgid "Agile responses to complex geological and site challenges."
 msgstr "استجابات مرنة للتحديات الجيولوجية والموقعية المعقدة."
 
-#: templates/about.html:551 templates/contact.html:241
-#: templates/courses.html:279 templates/machine.html:390
-#: templates/projects.html:599 templates/vision.html:423
-msgid "Shlash Sulaiman Trading & Contracting."
-msgstr "شركة شلاش سليمان للتجارة والمقاولات."
-
-#: templates/about.html:551 templates/contact.html:241
+#: templates/about.html:551 templates/contact.html:252
 #: templates/courses.html:279 templates/home.html:476
-#: templates/machine.html:390 templates/projects.html:599
+#: templates/machine.html:390 templates/projects.html:628
+#: templates/vision.html:423
+msgid "Shlash Al-Sulaiman Trading & Contracting."
+msgstr "شلاش السليمان للتجارة والمقاولات."
+
+#: templates/about.html:551 templates/contact.html:252
+#: templates/courses.html:279 templates/home.html:476
+#: templates/machine.html:390 templates/projects.html:628
 #: templates/vision.html:423
 msgid ""
 " is a leading company in Syria's trading and contracting landscape. We are "
@@ -367,79 +371,85 @@ msgstr ""
 " هي شركة رائدة في مجال التجارة والمقاولات في سوريا. نحن ملتزمون بالتميز، "
 "والسلامة، والابتكار في كل مشروع ننفذه."
 
-#: templates/about.html:571 templates/contact.html:260
+#: templates/about.html:571 templates/contact.html:271
 #: templates/courses.html:298 templates/home.html:482
-#: templates/machine.html:410 templates/projects.html:606
+#: templates/machine.html:410 templates/projects.html:635
 #: templates/vision.html:443
 msgid "Quick Links"
 msgstr "روابط سريعة"
 
-#: templates/about.html:575 templates/contact.html:264
+#: templates/about.html:575 templates/contact.html:275
 #: templates/courses.html:302 templates/home.html:246 templates/home.html:486
-#: templates/projects.html:610 templates/vision.html:447
+#: templates/projects.html:639 templates/vision.html:447
 msgid "Our Services"
 msgstr "خدماتنا"
 
-#: templates/about.html:576 templates/contact.html:265
+#: templates/about.html:576 templates/contact.html:276
 #: templates/courses.html:303 templates/home.html:487
-#: templates/machine.html:414 templates/projects.html:611
+#: templates/machine.html:414 templates/projects.html:640
 #: templates/vision.html:448
 msgid "Major Projects"
 msgstr "المشاريع الكبرى"
 
-#: templates/about.html:577 templates/contact.html:266
+#: templates/about.html:577 templates/contact.html:277
 #: templates/courses.html:304 templates/home.html:488
-#: templates/projects.html:612 templates/vision.html:449
+#: templates/projects.html:641 templates/vision.html:449
 msgid "Our Machines"
 msgstr "آلياتنا"
 
-#: templates/about.html:581 templates/contact.html:270
+#: templates/about.html:581 templates/contact.html:281
 #: templates/courses.html:308 templates/home.html:492
-#: templates/machine.html:419 templates/projects.html:616
+#: templates/machine.html:419 templates/projects.html:645
 #: templates/vision.html:453
 msgid "Contact Info"
 msgstr "معلومات الاتصال"
 
 #: templates/about.html:585 templates/contact.html:162
-#: templates/contact.html:274 templates/courses.html:312
+#: templates/contact.html:285 templates/courses.html:312
 #: templates/home.html:496 templates/machine.html:423
-#: templates/projects.html:620 templates/vision.html:457
+#: templates/projects.html:649 templates/vision.html:457
 msgid "Deir ez-Zor, Syria"
 msgstr "دير الزور، سوريا"
 
 #: templates/about.html:585 templates/contact.html:162
-#: templates/contact.html:274 templates/courses.html:312
+#: templates/contact.html:285 templates/courses.html:312
 #: templates/home.html:496 templates/machine.html:423
-#: templates/projects.html:620 templates/vision.html:457
+#: templates/projects.html:649 templates/vision.html:457
 msgid "Next to the Agricultural Bank"
 msgstr "بجانب المصرف الزراعي"
 
 #: templates/about.html:589 templates/contact.html:164
-#: templates/contact.html:279 templates/courses.html:316
+#: templates/contact.html:290 templates/courses.html:316
 #: templates/home.html:500 templates/machine.html:428
-#: templates/projects.html:625 templates/vision.html:462
+#: templates/projects.html:654 templates/vision.html:462
 msgid "Damascus, Ashrafieh Sahnaya"
 msgstr "دمشق ,  أشرفية صحنايا"
 
 #: templates/about.html:589 templates/contact.html:164
-#: templates/contact.html:279 templates/courses.html:316
+#: templates/contact.html:290 templates/courses.html:316
 #: templates/home.html:500 templates/machine.html:428
-#: templates/projects.html:625 templates/vision.html:462
+#: templates/projects.html:654 templates/vision.html:462
 msgid "next to the Arab Bank"
 msgstr "بجانب البنك العربي"
 
-#: templates/about.html:604 templates/contact.html:295
-#: templates/courses.html:331 templates/machine.html:445
-#: templates/projects.html:641 templates/vision.html:478
-msgid "© 2024 Shlash Sulaiman Trading &amp; Contracting. All Rights Reserved."
-msgstr "© 2024 شركة شلاش سليمان للتجارة والمقاولات. جميع الحقوق محفوظة."
+#: templates/about.html:604 templates/contact.html:306
+#: templates/courses.html:331 templates/home.html:515
+#: templates/machine.html:445 templates/projects.html:670
+#: templates/vision.html:478
+msgid ""
+"© 2024 Shlash Al-Sulaiman Trading &amp; Contracting. All Rights Reserved."
+msgstr "© 2024 شركة شلاش السليمان للتجارة والمقاولات. جميع الحقوق محفوظة."
 
 #: templates/contact.html:152
+#, fuzzy
+#| msgid ""
+#| "Connecting vision with reality. Reach out to Shlash Sulaiman Trading and "
+#| "Contracting for world-class construction solutions."
 msgid ""
-"Connecting vision with reality. Reach out to Shlash Sulaiman Trading and "
+"Connecting vision with reality. Reach out to Shlash Al-Sulaiman Trading and "
 "Contracting for world-class construction solutions."
 msgstr ""
-"نربط الرؤية بالواقع. تواصل مع شركة شلاش سليمان للتجارة والمقاولات للحصول على "
+"نربط الرؤية بالواقع. تواصل مع شركة شلاش السليمان للتجارة والمقاولات للحصول على "
 "حلول إنشائية بمستويات عالمية."
 
 #: templates/contact.html:161
@@ -454,7 +464,7 @@ msgstr "رقم الهاتف"
 msgid "Sun-Thu: 8am - 5pm"
 msgstr "الأحد - الخميس: 8 صباحاً - 5 مساءً"
 
-#: templates/contact.html:180 templates/contact.html:203
+#: templates/contact.html:180 templates/contact.html:214
 msgid "Email Address"
 msgstr "البريد الإلكتروني"
 
@@ -462,23 +472,23 @@ msgstr "البريد الإلكتروني"
 msgid "Send an Inquiry"
 msgstr "أرسل استفسارك"
 
-#: templates/contact.html:193
+#: templates/contact.html:204
 msgid "First Name"
 msgstr "الاسم الأول"
 
-#: templates/contact.html:197
+#: templates/contact.html:208
 msgid "Last Name"
 msgstr "الكنية / اسم العائلة"
 
-#: templates/contact.html:208
+#: templates/contact.html:219
 msgid "Message"
 msgstr "الرسالة"
 
-#: templates/contact.html:209
+#: templates/contact.html:220
 msgid "How can we help you?"
 msgstr "كيف يمكننا مساعدتك؟"
 
-#: templates/contact.html:213
+#: templates/contact.html:224
 msgid "Submit Inquiry"
 msgstr "إرسال الاستفسار"
 
@@ -600,10 +610,6 @@ msgstr ""
 #: templates/home.html:186
 msgid " Profile PDF"
 msgstr " ملف الشركة PDF"
-
-#: templates/home.html:235
-msgid "Shlash Sulaiman"
-msgstr "شلاش سليمان"
 
 #: templates/home.html:236
 msgid "Trading & Contracting Co ."
@@ -783,15 +789,6 @@ msgstr "ربط الأسواق العالمية بالاحتياجات الصنا
 #: templates/home.html:458
 msgid "Trading & Supply"
 msgstr "التجارة والتوريد"
-
-#: templates/home.html:476
-msgid "Shlash Al-Sulaiman Trading & Contracting."
-msgstr "شلاش السليمان للتجارة والمقاولات."
-
-#: templates/home.html:515
-msgid ""
-"© 2024 Shlash Al-Sulaiman Trading &amp; Contracting. All Rights Reserved."
-msgstr "© 2024 شركة شلاش السليمان للتجارة والمقاولات. جميع الحقوق محفوظة."
 
 #: templates/machine.html:198
 msgid "Precision Machinery for"
@@ -1116,7 +1113,9 @@ msgid ""
 "Execution of residential and commercial construction projects, from "
 "excavation and foundation of concrete structures to final finishing, "
 "according to international standards."
-msgstr "تنفيذ المشاريع الإنشائية السكنية والتجارية، بدءاً من أعمال الحفر وتأسيس الهياكل الخرسانية وصولاً إلى التشطيبات النهائية بمعايير عالمية."
+msgstr ""
+"تنفيذ المشاريع الإنشائية السكنية والتجارية، بدءاً من أعمال الحفر وتأسيس "
+"الهياكل الخرسانية وصولاً إلى التشطيبات النهائية بمعايير عالمية."
 
 #: templates/projects.html:456 templates/projects.html:465
 msgid "Water and sewage extension works"
@@ -1131,7 +1130,9 @@ msgid ""
 "We offer integrated solutions for the establishment and maintenance of water "
 "and sewage networks, including internal and external extensions using high-"
 "quality materials."
-msgstr "نقدم حلولاً متكاملة لتأسيس وصيانة شبكات المياه والصرف الصحي، بما في ذلك التمديدات الداخلية والخارجية باستخدام مواد عالية الجودة."
+msgstr ""
+"نقدم حلولاً متكاملة لتأسيس وصيانة شبكات المياه والصرف الصحي، بما في ذلك "
+"التمديدات الداخلية والخارجية باستخدام مواد عالية الجودة."
 
 #: templates/projects.html:484 templates/projects.html:493
 msgid "Road paving and transportation"
@@ -1145,7 +1146,9 @@ msgstr "النقل والمواصلات"
 msgid ""
 "Paving and equipping road and transportation networks and developing urban "
 "infrastructure to ensure safe and efficient transportation."
-msgstr "رصف وتجهيز شبكات الطرق والمواصلات وتطوير البنية التحتية للمدن لضمان حركة نقل آمنة وفعالة."
+msgstr ""
+"رصف وتجهيز شبكات الطرق والمواصلات وتطوير البنية التحتية للمدن لضمان حركة نقل "
+"آمنة وفعالة."
 
 #: templates/projects.html:512 templates/projects.html:521
 msgid "Building maintenance and building rehabilitation."
@@ -1159,24 +1162,36 @@ msgstr "صيانة وترميم"
 msgid ""
 "Revitalizing old buildings through comprehensive restoration services, "
 "addressing structural problems, and upgrading facades and systems."
-msgstr "إعادة الحياة للمباني القديمة عبر خدمات الترميم الشاملة، ومعالجة المشاكل الإنشائية وتحديث الواجهات والأنظمة."
+msgstr ""
+"إعادة الحياة للمباني القديمة عبر خدمات الترميم الشاملة، ومعالجة المشاكل "
+"الإنشائية وتحديث الواجهات والأنظمة."
 
-#: templates/projects.html:542
+#: templates/projects.html:540 templates/projects.html:549
+msgid "Concrete Batching Plant."
+msgstr "مجبل للإسمنت المسلح"
+
+#: templates/projects.html:551
+msgid ""
+"A reinforced cement mixer with a capacity of 120 cubic meters per hour and "
+"up to 240 cubic meters per hour when needed.."
+msgstr "مجبل لمزج الإسمنت المسلح بإستطاعة 120 متر مكعب بالساعه تصل إلى 240 متر مكعب بالساعة عند الحاجة."
+
+#: templates/projects.html:571
 msgid "Projects Map"
 msgstr "خريطة المشاريع"
 
-#: templates/projects.html:570
+#: templates/projects.html:599
 msgid "Have a Project in Mind?"
 msgstr "هل لديك مشروع قيد الدراسة؟"
 
-#: templates/projects.html:574
+#: templates/projects.html:603
 msgid ""
 "Let's build the future together. Contact our engineering team today for a "
 "comprehensive consultation."
 msgstr ""
 "لنبنِ المستقبل معاً. تواصل مع فريقنا الهندسي اليوم للحصول على استشارة شاملة."
 
-#: templates/projects.html:579
+#: templates/projects.html:608
 msgid "Start Collaboration"
 msgstr "ابدأ التعاون معنا"
 
@@ -1319,13 +1334,23 @@ msgstr ""
 msgid "View Our Projects"
 msgstr "عرض مشاريعنا"
 
-#: web/views.py:69
+#: web/views.py:84
 msgid "Your message has been sent successfully!"
 msgstr "تم إرسال رسالتك بنجاح!"
 
-#: web/views.py:71
+#: web/views.py:88
 msgid "An error occurred. Please try again later."
 msgstr "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقاً."
+
+#~ msgid "Shlash Sulaiman Trading & Contracting."
+#~ msgstr "شركة شلاش السليمان للتجارة والمقاولات."
+
+#~ msgid ""
+#~ "© 2024 Shlash Sulaiman Trading &amp; Contracting. All Rights Reserved."
+#~ msgstr "© 2024 شركة شلاش السليمان للتجارة والمقاولات. جميع الحقوق محفوظة."
+
+#~ msgid "Shlash Sulaiman"
+#~ msgstr "شلاش السليمان"
 
 #~ msgid "+963998493378"
 #~ msgstr "+963998493378"
